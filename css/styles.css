@@ -1,0 +1,101 @@
+:root {
+    /* * */
+    --border-sizing: border-box;
+    --border: #9DC88D 1px solid;
+    --grayscale-100: grayscale(100%);
+    --grayscale-0: grayscale(0%);
+    --border-none: none;
+    /* body */
+    --body-height: 100vh;
+    --body-width: 100vw;
+    --body-bg: #222629;
+    /* navbar */
+    --nav-height: 10vh;
+    /* main */
+    --flex-direction: column;
+    --main-height: 80vh;
+    --main-width: 100vw;
+        /* main > .pvp, .pvc */
+        --flex-grow: 1;
+        --transition: height 0.5s;
+        --cursor: pointer;
+        /* main > .pvp */
+        --pvp-bg: url("../img/pvp.png");
+        --pvp-bg-position: center 20%;
+        --pvp-height: 80%;
+        /* main > .pvc */
+        --pvc-bg: url("../img/pvc.png");
+        --pvc-bg-position: center 43%;
+        --pvc-height: 20%;
+        /* main > .pvp.active */
+        --pvp-active-height: 20%;
+        /* main > .pvc.active */
+        --pvc-active-height: 80%;
+    /* footer */
+    --footer-height: 10vh;
+}
+
+
+/* body */
+body {
+    height: var(--body-height);
+    width: var(--body-width);
+    background: var(--body-bg);
+}
+
+/* navbar */
+nav {
+    box-sizing: var(--border-sizing);
+    height: var(--nav-height);
+    border-bottom: var(--border);
+}
+
+/* main */
+main {
+    display: flex;
+    flex-direction: var(--flex-direction);
+    height: var(--main-height);
+    width: var(--main-width);
+}
+
+    .pvp,
+    .pvc {
+        flex-grow: var(--flex-grow);
+        transition: var(--transition);
+        cursor: var(--cursor);
+    }
+
+    .pvp {
+        box-sizing: var(--border-sizing);
+        background-image: var(--pvp-bg);
+        background-position: var(--pvp-bg-position);
+        height: var(--pvp-height);
+        border-bottom: var(--border);
+    }
+
+    .pvc {
+        background-image: var(--pvc-bg);
+        background-position: var(--pvc-bg-position);
+        height: var(--pvc-height);
+        filter: var(--grayscale-100);
+    }
+
+    .pvp.active {
+        height: var(--pvp-active-height);
+        filter: var(--grayscale-100);
+        border-bottom: var(--border-none);
+    }
+
+    .pvc.active {
+        box-sizing: var(--border-sizing);
+        border-top: var(--border);
+        height: var(--pvc-active-height);
+        filter: var(--grayscale-0);
+    }
+
+/* footer */
+footer {
+    box-sizing: var(--border-sizing);
+    height: var(--footer-height);
+    border-top: var(--border);
+}
