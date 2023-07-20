@@ -21,7 +21,7 @@
         --cursor: pointer;
         /* main > .pvp */
         --pvp-bg: url("../img/pvp.png");
-        --pvp-bg-position: center 20%;
+        --pvp-bg-position: center 40%;
         --pvp-height: 80%;
         /* main > .pvc */
         --pvc-bg: url("../img/pvc.png");
@@ -69,6 +69,8 @@ main {
         box-sizing: var(--border-sizing);
         background-image: var(--pvp-bg);
         background-position: var(--pvp-bg-position);
+        background-repeat: no-repeat;
+        background-size: cover;
         height: var(--pvp-height);
         border-bottom: var(--border);
     }
@@ -76,6 +78,8 @@ main {
     .pvc {
         background-image: var(--pvc-bg);
         background-position: var(--pvc-bg-position);
+        background-repeat: no-repeat;
+        background-size: cover;
         height: var(--pvc-height);
         filter: var(--grayscale-100);
     }
