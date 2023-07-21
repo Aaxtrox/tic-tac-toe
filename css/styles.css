@@ -145,12 +145,12 @@ main {
 
 /* footer */
 footer > div:first-of-type {
-    font-size: 1.2rem;
+    font-size: 1rem;
+    text-align: center;
+    vertical-align: middle;
+    margin: 0.2rem 0.5rem 0 0;
     font-family: 'Josefin Sans', sans-serif;
     color: #9DC88D;
-    margin-right: 20px;
-    line-height: 37px;
-    padding-top: 8px;
 }
 
 
@@ -162,18 +162,17 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: row;
     height: 10vh;
 }
 .icon {
-    width: 35px;
-    height: 35px;
+    width: 1.875rem;
+    height: 1.875rem;
+    margin: 0 0.5rem;
     border-radius: 50px;
     background: #fff;
-    margin-right: 20px;
     text-align: center;
-    font-size: 25px;
-    line-height: 37px;
+    font-size: 1.3rem;
+    line-height: 2rem;
     font-family: sans-serif;
     overflow: hidden;
     box-shadow: 2px 5px 10px rgba(150, 150, 150, .3);
@@ -211,9 +210,6 @@ a {
 @media screen and (max-height: 650px) {
     html {
         font-size: 80%;
-    }
-    footer > div:first-of-type {
-        font-size: 1.6rem;
     }
 }
 
