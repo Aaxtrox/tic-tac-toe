@@ -146,3 +146,22 @@ main {
 footer {
     height: var(--footer-height);
 }
+
+/* media queries */
+@media screen and (max-height: 650px) {
+    html {
+        font-size: 80%;
+    }
+}
+
+@media screen and (max-height: 550px) {
+    html {
+        font-size: 60%;
+    }
+}
+
+@media screen and (max-height: 450px) {
+    html {
+        font-size: 50%;
+    }
+}
