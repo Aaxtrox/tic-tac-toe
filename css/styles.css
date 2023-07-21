@@ -111,6 +111,8 @@ main {
     }
 
     .pvp {
+        box-sizing: var(--border-sizing);
+        border-bottom: var(--border);
         background-image: var(--pvp-bg);
         background-position: var(--pvp-bg-position);
         background-repeat: no-repeat;
@@ -119,8 +121,6 @@ main {
     }
 
     .pvc {
-        box-sizing: var(--border-sizing);
-        border-top: var(--border);
         background-image: var(--pvc-bg);
         background-position: var(--pvc-bg-position);
         background-repeat: no-repeat;
@@ -132,7 +132,7 @@ main {
     .pvp.active {
         height: var(--pvp-active-height);
         filter: var(--grayscale-100);
-        border-bottom: var(--border-none);
+        border: var(--border-none);
     }
 
     .pvc.active {
