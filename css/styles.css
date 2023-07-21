@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
 :root {
     /* * */
     --border-sizing: border-box;
@@ -6,11 +8,18 @@
     --grayscale-0: grayscale(0%);
     --border-none: none;
     /* body */
-    --body-height: 100vh;
-    --body-width: 100vw;
     --body-bg: #222629;
     /* navbar */
     --nav-height: 10vh;
+        /* nav > div > img */
+        --img-height: 4.5rem;
+        /* nav > div > div > span */
+        --span-font-family: 'Bebas Neue', cursive;
+        --span-font-size: 1rem;
+        --span-color: #9DC88D;
+        /* nav > div > div > span:first-of-type */
+        --span-first-of-type-font-size: 1.9rem;
+
     /* main */
     --flex-direction: column;
     --main-height: 80vh;
@@ -38,24 +47,55 @@
 
 /* body */
 body {
-    height: var(--body-height);
-    width: var(--body-width);
     background: var(--body-bg);
 }
 
 /* navbar */
 nav {
-    box-sizing: var(--border-sizing);
     height: var(--nav-height);
-    border-bottom: var(--border);
+    display: grid;
+    grid-template-columns: 1fr 5fr 1fr;
 }
+
+    nav > div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    nav > div > img {
+        height: var(--img-height);
+        width: auto;
+    }
+
+    nav > div > div {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    nav > div > div > span:first-of-type,
+    nav > div > div > span:last-of-type {
+        font-family: var(--span-font-family);
+        font-size: var(--span-font-size);
+        color: var(--span-color);
+    }
+
+    nav > div > div > span:first-of-type {
+        font-size: var(--span-first-of-type-font-size);
+    }
 
 /* main */
 main {
+    box-sizing: var(--border-sizing);
+    border-top: var(--border);
+    border-bottom: var(--border);
     display: flex;
     flex-direction: var(--flex-direction);
     height: var(--main-height);
     width: var(--main-width);
+
 }
 
     .pvp,
@@ -66,16 +106,16 @@ main {
     }
 
     .pvp {
-        box-sizing: var(--border-sizing);
         background-image: var(--pvp-bg);
         background-position: var(--pvp-bg-position);
         background-repeat: no-repeat;
         background-size: cover;
         height: var(--pvp-height);
-        border-bottom: var(--border);
     }
 
     .pvc {
+        box-sizing: var(--border-sizing);
+        border-top: var(--border);
         background-image: var(--pvc-bg);
         background-position: var(--pvc-bg-position);
         background-repeat: no-repeat;
@@ -99,7 +139,5 @@ main {
 
 /* footer */
 footer {
-    box-sizing: var(--border-sizing);
     height: var(--footer-height);
-    border-top: var(--border);
 }
