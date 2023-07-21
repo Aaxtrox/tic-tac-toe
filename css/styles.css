@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gidugu&family=Josefin+Sans:wght@700&display=swap');
 
 :root {
     /* * */
@@ -143,8 +144,67 @@ main {
     }
 
 /* footer */
+footer > div:first-of-type {
+    font-size: 1.2rem;
+    font-family: 'Josefin Sans', sans-serif;
+    color: #9DC88D;
+    margin-right: 20px;
+    line-height: 37px;
+    padding-top: 8px;
+}
+
+
+footer > div:nth-child(2) {
+    display: flex;
+}
+
 footer {
-    height: var(--footer-height);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    height: 10vh;
+}
+.icon {
+    width: 35px;
+    height: 35px;
+    border-radius: 50px;
+    background: #fff;
+    margin-right: 20px;
+    text-align: center;
+    font-size: 25px;
+    line-height: 37px;
+    font-family: sans-serif;
+    overflow: hidden;
+    box-shadow: 2px 5px 10px rgba(150, 150, 150, .3);
+    transition: all .1s ease-out;
+}
+.icon:hover {
+    width: 200px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    color: #fff;
+}
+.icon:hover i {
+    color: #fff;
+}
+.icon .fa-linkedin-in {
+    color: #0077B5;
+}
+.lnk:hover {
+    background: #0077B5;
+}
+.icon .fa-github {
+    color: #000;
+}
+.git:hover {
+    background: #000;
+}
+a {
+    text-decoration: none;
+    color: #fff;
 }
 
 /* media queries */
@@ -152,11 +212,20 @@ footer {
     html {
         font-size: 80%;
     }
+    footer > div:first-of-type {
+        font-size: 1.6rem;
+    }
 }
 
 @media screen and (max-height: 550px) {
     html {
         font-size: 60%;
+    }
+    .icon {
+        width: 30px;
+        height: 30px;
+        font-size: 20px;
+        line-height: 30px;
     }
 }
 

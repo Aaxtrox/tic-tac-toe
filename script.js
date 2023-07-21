@@ -16,6 +16,10 @@ const active = (() => {
     });
 })();
 
+
+//current year for links section
+document.getElementById("year").innerHTML = new Date().getFullYear();
+
 // run module active
 active;
 
