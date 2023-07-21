@@ -12,13 +12,14 @@
     /* navbar */
     --nav-height: 10vh;
         /* nav > div > img */
-        --img-height: 4.5rem;
+        --img-height: 4rem;
+        --img-padding-right: 1.1rem;
         /* nav > div > div > span */
         --span-font-family: 'Bebas Neue', cursive;
-        --span-font-size: 1rem;
+        --span-font-size: 1.4rem;
         --span-color: #9DC88D;
         /* nav > div > div > span:first-of-type */
-        --span-first-of-type-font-size: 1.9rem;
+        --span-first-of-type-font-size: 2.6rem;
 
     /* main */
     --flex-direction: column;
@@ -66,6 +67,7 @@ nav {
     nav > div > img {
         height: var(--img-height);
         width: auto;
+        padding-right: var(--img-padding-right);
     }
 
     nav > div > div {
@@ -77,6 +79,8 @@ nav {
 
     nav > div > div > span:first-of-type,
     nav > div > div > span:last-of-type {
+        display: block;
+        height: var(--span-font-size);
         font-family: var(--span-font-family);
         font-size: var(--span-font-size);
         color: var(--span-color);
@@ -84,6 +88,7 @@ nav {
 
     nav > div > div > span:first-of-type {
         font-size: var(--span-first-of-type-font-size);
+        height: var(--span-first-of-type-font-size);
     }
 
 /* main */
