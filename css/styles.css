@@ -15,12 +15,14 @@
         /* nav > div > img */
         --img-height: 4rem;
         --img-padding-right: 1.1rem;
-        /* nav > div > div > span */
-        --span-font-family: 'Bebas Neue', cursive;
-        --span-font-size: 1.4rem;
-        --span-color: #9DC88D;
-        /* nav > div > div > span:first-of-type */
-        --span-first-of-type-font-size: 2.6rem;
+        /* nav > div > div > div */
+        --div-font-family: 'Bebas Neue', cursive;
+        --div-font-size: 1.58rem;
+        --div-color: #9DC88D;
+        --div-height: 1.4rem;
+        /* nav > div > div > div:first-of-type */
+        --div-first-of-type-font-size: 3rem;
+        --div-first-of-type-height: 2.4rem;
 
     /* main */
     --flex-direction: column;
@@ -78,18 +80,17 @@ nav {
         align-items: center;
     }
 
-    nav > div > div > span:first-of-type,
-    nav > div > div > span:last-of-type {
-        display: block;
-        height: var(--span-font-size);
-        font-family: var(--span-font-family);
-        font-size: var(--span-font-size);
-        color: var(--span-color);
+    nav > div > div > div:first-of-type,
+    nav > div > div > div:last-of-type {
+        font-family: var(--div-font-family);
+        font-size: var(--div-font-size);
+        color: var(--div-color);
+        height: var(--div-height);
     }
 
-    nav > div > div > span:first-of-type {
-        font-size: var(--span-first-of-type-font-size);
-        height: var(--span-first-of-type-font-size);
+    nav > div > div > div:first-of-type {
+        font-size: var(--div-first-of-type-font-size);
+        height: var(--div-first-of-type-height);
     }
 
 /* main */
@@ -216,12 +217,6 @@ a {
 @media screen and (max-height: 550px) {
     html {
         font-size: 60%;
-    }
-    .icon {
-        width: 30px;
-        height: 30px;
-        font-size: 20px;
-        line-height: 30px;
     }
 }
 
