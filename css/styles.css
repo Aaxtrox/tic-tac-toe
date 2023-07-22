@@ -276,6 +276,8 @@ main {
       
     .btn--primary {
         color: black;
+        font-size: 1.6rem;
+        font-family: 'Anton', sans-serif;
     }
       
     .btn--border {
@@ -387,27 +389,27 @@ a {
     html {
         font-size: 90%;
     }
-    .pvp_menu,
-    .pvc_menu {
-        left: 10%;
-        width: 80vw;
+    .pvp_menu {
+        left: 15%;
+        width: 70vw;
     }
 }
 
 @media screen and (max-width: 1000px) {
     html {
-        font-size: 70%;
+        font-size: 80%;
     }
 
-    .pvp_menu,
-    .pvc_menu {
-        left: 5%;
-        width: 90vw;
+    .pvp_menu {
+        left: 10%;
+        width: 80vw;
     }
 }
 
-@media screen and (max-width: 600px) {
-    html {
-        font-size: 60%;
+@media screen and (max-width: 800px) {
+    .pvp_menu {
+        left: 0;
+        width: 100%;
+        border-radius: 0;
     }
 }
