@@ -197,11 +197,6 @@ main {
         height: 40vh;
         width: 50vw;
         border-radius: 15px;
-        font-size: 2rem;
-        font-family: 'Anton', sans-serif;
-        display: grid;
-        grid-template-columns: 2fr 1fr 2fr;
-        grid-template-rows: 2fr 1fr;
         background: rgba(255, 255, 255, 0.52);
         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
         backdrop-filter: blur(5px);
@@ -212,6 +207,14 @@ main {
     .pvp_menu {
         left: 25%;
         transition: all 0.2s ease-in-out;
+    }
+
+    .pvp_menu > div:first-of-type {
+        font-size: 2rem;
+        font-family: 'Anton', sans-serif;
+        display: grid;
+        grid-template-columns: 2fr 1fr 2fr;
+        margin: 2rem;
     }
 
     .pvc_menu {
@@ -229,21 +232,33 @@ main {
         transition: all 0.2s ease-in-out;
     }
 
-    .pvp_menu > div:first-of-type > img,
-    .pvp_menu > div:nth-child(3) > img {
+    .pvp_menu > div:first-of-type > div:first-of-type > img,
+    .pvp_menu > div:first-of-type > div:nth-child(3) > img {
         height: 8rem;
         width: auto;
         border-radius: 20px;
-        padding: 0 1rem;
+        padding: 0;
     }
 
-    .pvp_menu > div:first-of-type,
-    .pvp_menu > div:nth-child(3) {
+    .pvp_menu > div:first-of-type > div:first-of-type,
+    .pvp_menu > div:first-of-type > div:nth-child(2),
+    .pvp_menu > div:first-of-type > div:last-child {
         display: flex;
-        justify-content: center;
+        justify-content: space-between;
         align-items: center;
     }
+
+    .pvp_menu > div:first-of-type > div:nth-child(2) {
+        justify-content: center;
+    }
     
+    .wrapper {
+        position: absolute;
+        top: 75%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
     .btn {
         position: relative;
         display: inline-block;
@@ -254,7 +269,6 @@ main {
         overflow: hidden;
         z-index: 1;
         cursor: pointer;
-      
         &:focus {
             outline: none;
         }
@@ -373,11 +387,22 @@ a {
     html {
         font-size: 90%;
     }
+    .pvp_menu,
+    .pvc_menu {
+        left: 10%;
+        width: 80vw;
+    }
 }
 
 @media screen and (max-width: 1000px) {
     html {
         font-size: 70%;
+    }
+
+    .pvp_menu,
+    .pvc_menu {
+        left: 5%;
+        width: 90vw;
     }
 }
 
