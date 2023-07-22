@@ -189,6 +189,41 @@ main {
         transition: all 0.1s ease-in-out;
     }
 
+    .pvp_menu,
+    .pvc_menu {
+        position: absolute;
+        top: 3%;
+        transition: all 0.2s ease-in-out;
+        width: 60vw;
+        height: 60vh;
+        border-radius: 15px;
+        background: rgba(255, 255, 255, 0.52);
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .pvp_menu {
+        left: 20%;
+        transition: all 0.2s ease-in-out;
+    }
+
+    .pvc_menu {
+        left: -70%;
+        transition: all 0.2s ease-in-out;
+    }
+
+    .pvp_menu.active {
+        left: -70%;
+        transition: all 0.2s ease-in-out;
+    }
+
+    .pvc_menu.active {
+        left: 20%;
+        transition: all 0.2s ease-in-out;
+    }
+
 /* footer */
 footer > div:first-of-type {
     font-size: 1rem;

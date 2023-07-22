@@ -5,6 +5,8 @@ const active = (() => {
     const pvc = document.querySelector('.pvc');
     const pvp_glass = document.querySelector('.pvp_glass');
     const pvc_glass = document.querySelector('.pvc_glass');
+    const pvp_menu = document.querySelector('.pvp_menu');
+    const pvc_menu = document.querySelector('.pvc_menu');
 
 
     // on pvc click add active class to pvc and pvp otherwise on pvp click remove active class from pvc and pvp
@@ -13,6 +15,8 @@ const active = (() => {
         pvp.classList.add('active');
         pvp_glass.classList.add('active');
         pvc_glass.classList.add('active');
+        pvp_menu.classList.add('active');
+        pvc_menu.classList.add('active');
     });
 
     pvp.addEventListener('click', () => {
@@ -20,6 +24,8 @@ const active = (() => {
         pvc.classList.remove('active');
         pvp_glass.classList.remove('active');
         pvc_glass.classList.remove('active');
+        pvp_menu.classList.remove('active');
+        pvc_menu.classList.remove('active');
     });
 })();
 
