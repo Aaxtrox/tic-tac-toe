@@ -152,8 +152,6 @@ main {
     .pvp_glass,
     .pvc_glass {
         position: absolute;
-        top: 36%;
-        left: 0;
         width: 100%;
         height: 10vh;
         background: rgba(255, 255, 255, 0.52);
@@ -161,10 +159,25 @@ main {
         backdrop-filter: blur(5px);
         -webkit-backdrop-filter: blur(5px);
         border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .pvp_glass {
+        top: 100%;
+        left: 0;
+        transition: all 0.1s ease-in-out;
+    }
+
+    .pvc_glass {
+        top: 36%;
+        left: 0;
         transition: all 0.5s ease-in-out;
     }
 
-    .pvp_glass.active,
+    .pvp_glass.active {
+        top: 36%;
+        transition: all 0.5s ease-in-out;
+    }
+
     .pvc_glass.active {
         top: 100%;
         transition: all 0.1s ease-in-out;

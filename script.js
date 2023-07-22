@@ -11,14 +11,14 @@ const active = (() => {
     pvc.addEventListener('click', () => {
         pvc.classList.add('active');
         pvp.classList.add('active');
-        pvp_glass.classList.remove('active');
+        pvp_glass.classList.add('active');
         pvc_glass.classList.add('active');
     });
 
     pvp.addEventListener('click', () => {
         pvp.classList.remove('active');
         pvc.classList.remove('active');
-        pvp_glass.classList.add('active');
+        pvp_glass.classList.remove('active');
         pvc_glass.classList.remove('active');
     });
 })();
