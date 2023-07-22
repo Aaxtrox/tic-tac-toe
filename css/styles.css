@@ -168,19 +168,19 @@ main {
     }
 
     .pvp_glass {
-        top: 100%;
+        top: -36%;
         left: 0;
         transition: all 0.1s ease-in-out;
     }
 
     .pvc_glass {
-        top: 36%;
+        top: 20%;
         left: 0;
         transition: all 0.5s ease-in-out;
     }
 
     .pvp_glass.active {
-        top: 36%;
+        top: 20%;
         transition: all 0.5s ease-in-out;
     }
 
