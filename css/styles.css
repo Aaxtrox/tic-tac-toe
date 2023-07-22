@@ -192,15 +192,16 @@ main {
     .pvp_menu,
     .pvc_menu {
         position: absolute;
-        top: 0;
+        top: 20%;
         transition: all 0.2s ease-in-out;
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        height: 20vh;
+        height: 40vh;
+        width: 50vw;
+        border-radius: 15px;
         font-size: 2rem;
         font-family: 'Anton', sans-serif;
+        display: grid;
+        grid-template-columns: 2fr 1fr 2fr;
+        grid-template-rows: 2fr 1fr;
         background: rgba(255, 255, 255, 0.52);
         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
         backdrop-filter: blur(5px);
@@ -209,7 +210,7 @@ main {
     }
 
     .pvp_menu {
-        left: 0;
+        left: 25%;
         transition: all 0.2s ease-in-out;
     }
 
@@ -224,12 +225,12 @@ main {
     }
 
     .pvc_menu.active {
-        left: 0;
+        left: 25%;
         transition: all 0.2s ease-in-out;
     }
 
     .pvp_menu > div:first-of-type > img,
-    .pvp_menu > div:last-of-type > img {
+    .pvp_menu > div:nth-child(3) > img {
         height: 8rem;
         width: auto;
         border-radius: 20px;
@@ -237,17 +238,10 @@ main {
     }
 
     .pvp_menu > div:first-of-type,
-    .pvp_menu > div:last-of-type {
+    .pvp_menu > div:nth-child(3) {
         display: flex;
         justify-content: center;
         align-items: center;
-    }
-
-    .wrapper {
-        position: absolute;
-        top: 60%;
-        left: 50%;
-        transform: translate(-50%, -50%);
     }
     
     .btn {
@@ -375,20 +369,20 @@ a {
 }
 
 /* media queries */
-@media screen and (max-height: 650px) {
+@media screen and (max-width: 1300px) {
     html {
-        font-size: 80%;
+        font-size: 90%;
     }
 }
 
-@media screen and (max-height: 550px) {
+@media screen and (max-width: 1000px) {
+    html {
+        font-size: 70%;
+    }
+}
+
+@media screen and (max-width: 600px) {
     html {
         font-size: 60%;
-    }
-}
-
-@media screen and (max-height: 450px) {
-    html {
-        font-size: 50%;
     }
 }
