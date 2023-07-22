@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Gidugu&family=Josefin+Sans:wght@700&display=swap');
 
 :root {
@@ -151,6 +152,11 @@ main {
 
     .pvp_glass,
     .pvc_glass {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 3rem;
+        font-family: 'Anton', sans-serif;
         position: absolute;
         width: 100%;
         height: 10vh;
