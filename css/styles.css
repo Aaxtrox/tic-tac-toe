@@ -210,11 +210,12 @@ main {
     }
 
     .pvp_menu > div:first-of-type {
+        width: 100%;
         font-size: 2rem;
         font-family: 'Anton', sans-serif;
-        display: grid;
-        grid-template-columns: 2fr 1fr 2fr;
-        margin: 2rem;
+        display: flex;
+        justify-content: space-between;
+        margin-top: 2rem;
     }
 
     .pvc_menu {
@@ -232,6 +233,8 @@ main {
         transition: all 0.2s ease-in-out;
     }
 
+
+
     .pvp_menu > div:first-of-type > div:first-of-type > img,
     .pvp_menu > div:first-of-type > div:nth-child(3) > img {
         height: 6rem;
@@ -246,10 +249,6 @@ main {
         display: flex;
         justify-content: center;
         align-items: center;
-    }
-
-    .pvp_menu > div:first-of-type > div:nth-child(2) {
-        justify-content: center;
     }
     
     .wrapper {
@@ -385,59 +384,23 @@ a {
 }
 
 /* media queries */
-@media screen and (max-height: 700px) {
+@media screen and (max-width: 1200px) {
     html {
         font-size: 80%;
     }
 
     nav > div > div > div:first-of-type {
-        height: 2.6rem;
+        margin-bottom: 2px;
     }
 }
 
-@media screen and (max-height: 600px) {
+@media screen and (max-width: 900px) {
     html {
         font-size: 70%;
     }
 }
 
-@media screen and (max-height: 500px) {
-    html {
-        font-size: 60%;
-    }
-}
-
-@media screen and (max-height: 400px) {
-    html {
-        font-size: 50%;
-    }
-}
-
-@media screen and (max-height: 350px) {
-    nav > div > div {
-        flex-direction: row;
-    }
-
-    nav > div > div > div:last-of-type {
-        font-size: 3rem;
-        padding-left: 0.5rem;
-        height: 3.1rem;
-    }
-
-    nav > div > div > div:first-of-type {
-        height: 3.1rem;
-    }
-
-    nav > div > img {
-        height: 3rem;
-    }
-
-    nav {
-        grid-template-columns: 3fr 3fr 3fr;
-    }
-}
-
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 700px) {
     .pvp_menu {
         width: 100%;
         left: 0;
