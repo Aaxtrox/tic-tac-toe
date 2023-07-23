@@ -57,7 +57,6 @@ body {
 
 /* navbar */
 nav {
-    height: var(--nav-height);
     display: grid;
     grid-template-columns: 1fr 5fr 1fr;
 }
@@ -71,7 +70,7 @@ nav {
     nav > div > img {
         height: var(--img-height);
         width: auto;
-        padding-right: var(--img-padding-right);
+        padding: 0.8rem 1.1rem 0.8rem 0.8rem;
     }
 
     nav > div > div {
