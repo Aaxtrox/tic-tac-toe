@@ -5,6 +5,7 @@
 :root {
     /* * */
     --border: #9DC88D 1px solid;
+    --font-family: 'Anton', sans-serif;
     /* body */
     --body-bg: #222629;
     /* navbar */
@@ -36,6 +37,10 @@
         --pvp-active-height: 20%;
         /* main > .pvc.active */
         --pvc-active-height: 80%;
+        /* .pvp_glass, .pvc_glass */
+        --font-size: 3rem;
+        --height: 10vh;
+
     /* footer */
     --footer-height: 10vh;
 }
@@ -93,7 +98,6 @@ main {
     flex-direction: column;
     height: var(--main-height);
     width: var(--main-width);
-
 }
 
     .pvp,
@@ -105,7 +109,6 @@ main {
     }
 
     .pvp {
-        position: relative;
         overflow: hidden;
         box-sizing: border-box;
         border-bottom: var(--border);
@@ -117,7 +120,6 @@ main {
     }
 
     .pvc {
-        position: relative;
         overflow: hidden;
         background-image: var(--pvc-bg);
         background-position: var(--pvc-bg-position);
@@ -145,11 +147,11 @@ main {
         display: flex;
         justify-content: center;
         align-items: center;
-        font-size: 3rem;
-        font-family: 'Anton', sans-serif;
+        font-size: var(--font-size);
+        font-family: var(--font-family);
         position: absolute;
         width: 100%;
-        height: 10vh;
+        height: var(--height);
         background: rgba(255, 255, 255, 0.52);
         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
         backdrop-filter: blur(5px);
@@ -178,7 +180,7 @@ main {
         top: 100%;
         transition: all 0.1s ease-in-out;
     }
-
+/* * */
     .pvp_menu,
     .pvc_menu {
         position: absolute;
