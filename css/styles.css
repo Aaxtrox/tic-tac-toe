@@ -4,11 +4,7 @@
 
 :root {
     /* * */
-    --border-sizing: border-box;
     --border: #9DC88D 1px solid;
-    --grayscale-100: grayscale(100%);
-    --grayscale-0: grayscale(0%);
-    --border-none: none;
     /* body */
     --body-bg: #222629;
     /* navbar */
@@ -26,13 +22,8 @@
         --div-first-of-type-height: 2.4rem;
 
     /* main */
-    --flex-direction: column;
     --main-height: 80vh;
     --main-width: 100vw;
-        /* main > .pvp, .pvc */
-        --flex-grow: 1;
-        --transition: height 0.5s;
-        --cursor: pointer;
         /* main > .pvp */
         --pvp-bg: url("../img/pvp.png");
         --pvp-bg-position: center 40%;
@@ -95,11 +86,11 @@ nav {
 
 /* main */
 main {
-    box-sizing: var(--border-sizing);
+    box-sizing: border-box;
     border-top: var(--border);
     border-bottom: var(--border);
     display: flex;
-    flex-direction: var(--flex-direction);
+    flex-direction: column;
     height: var(--main-height);
     width: var(--main-width);
 
@@ -108,15 +99,15 @@ main {
     .pvp,
     .pvc {
         position: relative;
-        flex-grow: var(--flex-grow);
-        transition: var(--transition);
-        cursor: var(--cursor);
+        flex-grow: 1;
+        transition: height 0.5s;
+        cursor: pointer;
     }
 
     .pvp {
         position: relative;
         overflow: hidden;
-        box-sizing: var(--border-sizing);
+        box-sizing: border-box;
         border-bottom: var(--border);
         background-image: var(--pvp-bg);
         background-position: var(--pvp-bg-position);
@@ -133,20 +124,20 @@ main {
         background-repeat: no-repeat;
         background-size: cover;
         height: var(--pvc-height);
-        filter: var(--grayscale-100);
+        filter: grayscale(100%);
     }
 
     .pvp.active {
         height: var(--pvp-active-height);
-        filter: var(--grayscale-100);
-        border: var(--border-none);
+        filter: grayscale(100%);
+        border: none;
     }
 
     .pvc.active {
-        box-sizing: var(--border-sizing);
+        box-sizing: border-box;
         border-top: var(--border);
         height: var(--pvc-active-height);
-        filter: var(--grayscale-0);
+        filter: grayscale(0%);
     }
 
     .pvp_glass,
