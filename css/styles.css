@@ -12,7 +12,7 @@
     --nav-height: 10vh;
         /* nav > div > img */
         --img-height: 4rem;
-        --img-padding-right: 1.1rem;
+        --img-padding: 0.8rem 1.1rem 0.8rem 0.8rem;
         /* nav > div > div > div */
         --div-font-family: 'Bebas Neue', cursive;
         --div-font-size: 1.58rem;
@@ -43,11 +43,12 @@
         /* .pvp_menu, .pvc_menu */
         --menu-height: 40vh;
         --menu-width: 50vw;
-        --border-radius: 15px;
-
-
-    /* footer */
-    --footer-height: 10vh;
+        /* .pvp_menu > div */
+        --pvp-font-size: 2rem;
+        --pvp-margin-top: 2rem;
+        /* .pvp_menu > img */
+        --pvp-img-height: 6rem;
+        --pvp-img-margin: 0 1rem;
 }
 
 
@@ -61,7 +62,7 @@ nav {
     display: grid;
     grid-template-columns: 1fr 5fr 1fr;
 }
-
+    /* img and name */
     nav > div {
         display: flex;
         justify-content: center;
@@ -71,9 +72,10 @@ nav {
     nav > div > img {
         height: var(--img-height);
         width: auto;
-        padding: 0.8rem 1.1rem 0.8rem 0.8rem;
+        padding: var(--img-padding);
     }
-
+    
+    /* name */
     nav > div > div {
         display: flex;
         flex-direction: column;
@@ -81,6 +83,7 @@ nav {
         align-items: center;
     }
 
+    /* name: top and bottom */
     nav > div > div > div:first-of-type,
     nav > div > div > div:last-of-type {
         font-family: var(--div-font-family);
@@ -105,6 +108,7 @@ main {
     width: var(--main-width);
 }
 
+    /* pvp and pvc cards */
     .pvp,
     .pvc {
         position: relative;
@@ -113,6 +117,7 @@ main {
         cursor: pointer;
     }
 
+    /* pvp card */
     .pvp {
         overflow: hidden;
         box-sizing: border-box;
@@ -124,6 +129,14 @@ main {
         height: var(--pvp-height);
     }
 
+    .pvp.active {
+        height: var(--pvp-active-height);
+        filter: grayscale(100%);
+        border: none;
+    }
+
+    /* pvc card */
+
     .pvc {
         overflow: hidden;
         background-image: var(--pvc-bg);
@@ -134,12 +147,6 @@ main {
         filter: grayscale(100%);
     }
 
-    .pvp.active {
-        height: var(--pvp-active-height);
-        filter: grayscale(100%);
-        border: none;
-    }
-
     .pvc.active {
         box-sizing: border-box;
         border-top: var(--border);
@@ -147,6 +154,7 @@ main {
         filter: grayscale(0%);
     }
 
+    /* glass effect on cards to display card name */
     .pvp_glass,
     .pvc_glass {
         display: flex;
@@ -164,20 +172,22 @@ main {
         border: 1px solid rgba(255, 255, 255, 0.3);
     }
 
+    /* pvp_glass card */
     .pvp_glass {
-        top: -36%;
+        top: -20%;
         left: 0;
         transition: all 0.1s ease-in-out;
     }
 
-    .pvc_glass {
+    .pvp_glass.active {
         top: 20%;
-        left: 0;
         transition: all 0.5s ease-in-out;
     }
 
-    .pvp_glass.active {
+    /* pvc_glass card */
+    .pvc_glass {
         top: 20%;
+        left: 0;
         transition: all 0.5s ease-in-out;
     }
 
@@ -186,6 +196,7 @@ main {
         transition: all 0.1s ease-in-out;
     }
 
+    /* menu with start game button */
     .pvp_menu,
     .pvc_menu {
         position: absolute;
@@ -193,7 +204,7 @@ main {
         transition: all 0.2s ease-in-out;
         height: var(--menu-height);
         width: var(--menu-width);
-        border-radius: var(--border-radius);
+        border-radius: 15px;
         background: rgba(255, 255, 255, 0.52);
         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
         backdrop-filter: blur(5px);
@@ -201,22 +212,9 @@ main {
         border: 1px solid rgba(255, 255, 255, 0.3);
     }
 
+    /* pvp_menu with start game button */
     .pvp_menu {
         left: 25%;
-        transition: all 0.2s ease-in-out;
-    }
-
-    .pvp_menu > div:first-of-type {
-        width: 100%;
-        font-size: 2rem;
-        font-family: 'Anton', sans-serif;
-        display: flex;
-        justify-content: space-between;
-        margin-top: 2rem;
-    }
-/* * */
-    .pvc_menu {
-        left: -100%;
         transition: all 0.2s ease-in-out;
     }
 
@@ -225,29 +223,43 @@ main {
         transition: all 0.2s ease-in-out;
     }
 
-    .pvc_menu.active {
-        left: 25%;
-        transition: all 0.2s ease-in-out;
+    .pvp_menu > div {
+        width: 100%;
+        font-size: var(--pvp-font-size);
+        font-family: var(--font-family);
+        display: flex;
+        justify-content: space-between;
+        margin-top: var(--pvp-margin-top);
     }
 
-
-
-    .pvp_menu > div:first-of-type > div:first-of-type > img,
-    .pvp_menu > div:first-of-type > div:nth-child(3) > img {
-        height: 6rem;
+    .pvp_menu > div > div:first-of-type > img,
+    .pvp_menu > div > div:nth-child(3) > img {
+        height: var(--pvp-img-height);
         width: auto;
         border-radius: 20px;
-        margin: 0 1rem;
+        margin: var(--pvp-img-margin);
     }
 
-    .pvp_menu > div:first-of-type > div:first-of-type,
-    .pvp_menu > div:first-of-type > div:nth-child(2),
-    .pvp_menu > div:first-of-type > div:last-child {
+    .pvp_menu > div > div:first-of-type,
+    .pvp_menu > div > div:nth-child(2),
+    .pvp_menu > div > div:last-child {
         display: flex;
         justify-content: center;
         align-items: center;
     }
+
+    /* pvc_menu with start game button */
+    .pvc_menu {
+        left: -100%;
+        transition: all 0.2s ease-in-out;
+    }
+
+    .pvc_menu.active {
+        left: 25%;
+        transition: all 0.2s ease-in-out;
+    }
     
+    /* start game button */
     .wrapper {
         position: absolute;
         top: 75%;
