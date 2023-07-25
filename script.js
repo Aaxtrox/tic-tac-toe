@@ -36,19 +36,22 @@ const year = (() => {
 
 // module to add preloader
 const loading = (() => {
-    //grab id preloader
+    // grab id preloader
     const preloader = document.getElementById('preloader');
     // grab id spinner
     const spinner = document.getElementById('spinner');
 
-    // on body load add class load to preloader and loader
-    window.addEventListener('loader', () => {
+    // when body loads add loader class to preloader and spinner
+    window.addEventListener('load', loader);
+
+    function loader() {
         preloader.classList.add('loader');
         spinner.classList.add('loader');
-    });
+    }
 })();
 
 // run module
 active;
 year;
 loading;
+
