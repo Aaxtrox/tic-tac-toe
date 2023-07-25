@@ -1,4 +1,4 @@
-//create module active
+//create module active to toggle between menus
 const active = (() => {
     // grab pvp and pvc class and .glass class
     const pvp = document.querySelector('.pvp');
@@ -29,10 +29,26 @@ const active = (() => {
     });
 })();
 
+// module to add current year to footer
+const year = (() => {
+    document.getElementById("year").innerHTML = new Date().getFullYear();
+})();
 
-//current year for links section
-document.getElementById("year").innerHTML = new Date().getFullYear();
+// module to add preloader
+const loading = (() => {
+    //grab preloader
+    const preloader = document.querySelector('.preloader');
+    // grab loader
+    const loader = document.querySelector('.loader');
 
-// run module active
+    // on body load add class load to preloader and loader
+    window.addEventListener('load', () => {
+        preloader.classList.add('load');
+        loader.classList.add('load');
+    });
+})();
+
+// run module
 active;
-
+year;
+loading;

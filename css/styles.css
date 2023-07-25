@@ -50,7 +50,71 @@
         --pvp-img-height: 6rem;
         --pvp-img-margin: 0 1rem;
 }
+/* preloader background */
+.preloader {
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    background: var(--body-bg);
+    z-index: 1000;
+}
 
+/* preloader spinner */
+#spinner {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 50px;
+    width: 50px;
+    margin: -25px 0 0 -25px;
+    border: 4px rgba(0, 0, 0, 0.25) solid;
+    border-top: 4px black solid;
+    border-radius: 50%;
+    -webkit-animation: spin 1s infinite linear;
+            animation: spin 1s infinite linear;
+  }
+
+  /* preloader spinner animation */
+  #loader {
+    animation: spin 1s forwards;
+  }
+
+  @keyframes spin {
+    100% {
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+  
+  @-webkit-keyframes spin {
+    from {
+      -webkit-transform: rotate(0deg);
+              transform: rotate(0deg);
+    }
+    to {
+      -webkit-transform: rotate(359deg);
+              transform: rotate(359deg);
+    }
+  }
+  @keyframes spin {
+    from {
+      -webkit-transform: rotate(0deg);
+              transform: rotate(0deg);
+      -webkit-transform: rotate(0deg);
+              transform: rotate(0deg);
+    }
+    to {
+      -webkit-transform: rotate(359deg);
+              transform: rotate(359deg);
+      -webkit-transform: rotate(359deg);
+              transform: rotate(359deg);
+    }
+  }
 
 /* body */
 body {
