@@ -223,7 +223,7 @@ main {
         transition: all 0.2s ease-in-out;
     }
 
-    .pvp_menu > div {
+    .pvp_menu > div:first-of-type {
         width: 100%;
         font-size: var(--pvp-font-size);
         font-family: var(--font-family);
@@ -262,7 +262,7 @@ main {
     /* start game button */
     .wrapper {
         position: absolute;
-        top: 75%;
+        top: 70%;
         left: 50%;
         transform: translate(-50%, -50%);
     }
