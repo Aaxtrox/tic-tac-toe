@@ -1,6 +1,5 @@
 //create module active to toggle between menus
 const active = (() => {
-    // grab pvp and pvc class and .glass class
     const pvp = document.querySelector('.pvp');
     const pvc = document.querySelector('.pvc');
     const pvp_glass = document.querySelector('.pvp_glass');
@@ -9,7 +8,7 @@ const active = (() => {
     const pvc_menu = document.querySelector('.pvc_menu');
 
 
-    // on pvc click add active class to pvc and pvp otherwise on pvp click remove active class from pvc and pvp
+    // on pvc click add active class
     pvc.addEventListener('click', () => {
         pvc.classList.add('active');
         pvp.classList.add('active');
@@ -36,9 +35,8 @@ const year = (() => {
 
 // module to add preloader
 const loading = (() => {
-    // grab id preloader
+    // grab id
     const preloader = document.getElementById('preloader');
-    // grab id spinner
     const spinner = document.getElementById('spinner');
 
     // when body loads add loader class to preloader and spinner

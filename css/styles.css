@@ -6,6 +6,11 @@
     /* * */
     --border: #9DC88D 1px solid;
     --font-family: 'Anton', sans-serif;
+    /* preloader */
+    --preloader-font-size: 2rem;
+    --preloader-font-color: #9DC88D;
+    --spinner-size: 50px;
+    --spinner-color: 4px #9DC88D solid;
     /* body */
     --body-bg: #222629;
     /* navbar */
@@ -62,6 +67,18 @@
     z-index: 1000;
 }
 
+/* text above spinner */
+#preloader > div:first-of-type {
+    display: block;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: var(--preloader-font-size);
+    color: var(--preloader-font-color);
+    font-family: var(--font-family);
+}
+
 /* preloader spinner */
 #spinner {
     display: block;
@@ -69,11 +86,11 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    height: 50px;
-    width: 50px;
+    height: var(--spinner-size);
+    width: var(--spinner-size);
     margin: -25px 0 0 -25px;
     border: 4px rgba(0, 0, 0, 0.25) solid;
-    border-top: 4px black solid;
+    border-top: var(--spinner-color);
     border-radius: 50%;
     -webkit-animation: spinning 1s infinite linear;
             animation: spinning 1s infinite linear;
