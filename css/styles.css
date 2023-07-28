@@ -581,3 +581,22 @@ a {
     }
 }
 
+@media screen and (max-height: 750px) {
+    html {
+        font-size: 65%;
+    }
+}
+
+@media screen and (max-height: 550px) {
+    html {
+        font-size: 50%;
+    }
+}
+
+@media screen and (max-height: 450px) {
+    .pvp_menu,
+    .pvc_menu.active {
+        top: 30%;
+        height: 60%;
+    }
+}

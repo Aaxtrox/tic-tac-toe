@@ -76,9 +76,25 @@ const toggle = (() => {
     });
 })();
 
+// module query
+const query = (() => {
+    // if logo_img height is bigger than nav height height
+    const logo_img = document.querySelector('.logo_img');
+    const nav = document.querySelector('nav');
+    const footer = document.querySelector('footer');
+
+    if (logo_img.clientHeight > nav.clientHeight) {
+        nav.style.height = 'fit-content';
+        // save nav height to variable
+        const navHeight = nav.clientHeight;
+        // add nav height to footer
+        footer.style.height = `${navHeight}px`;
+    }
+})();
+
 // run module
 active;
 year;
 loading;
 toggle;
-
+query;
