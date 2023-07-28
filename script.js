@@ -92,9 +92,36 @@ const query = (() => {
     }
 })();
 
+// module to resize both menus
+const resize = (() => {
+    // grab id pvp_menu and pvc_menu.active
+    const pvp_menu = document.querySelector('.pvp_menu');
+    const pvc_menu = document.querySelector('.pvc_menu');
+    const first = document.getElementById('first');
+    const mid = document.getElementById('mid');
+    const pvc_glass = document.querySelector('.pvc_glass');
+
+    // run every time window is resized
+    window.addEventListener('resize', () => {
+        //take first height and assign it to mid
+        mid.style.height = `${first.clientHeight}px`;
+        // if first height is bigger than pvp_menu height or pvc_menu height
+        if (first.clientHeight > pvp_menu.clientHeight || first.clientHeight > pvc_menu.clientHeight) {
+            // save first height to variable and add 10px
+            const firstHeight = first.clientHeight + 5;
+            // add first height to pvp_menu and pvc_menu
+            pvp_menu.style.height = `${firstHeight}px`;
+            pvc_menu.style.height = `${firstHeight}px`;
+            // change top of pvp_menu and pvc_menu to place them in the middle
+            pvp_menu.style.top = `calc(50% - ${firstHeight / 2}px)`;
+            pvc_menu.style.top = `calc(50% - ${firstHeight / 2}px)`;
+        }
+    });
+})();
 // run module
 active;
 year;
 loading;
 toggle;
 query;
+resize;
