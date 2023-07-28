@@ -16,7 +16,7 @@
     /* navbar */
     --nav-height: 10vh;
         /* nav > div > img */
-        --img-height: 4rem;
+        --img-height: 3rem;
         --img-padding: 0.8rem 1.1rem 0.8rem 0.8rem;
         /* nav > div > div > div */
         --div-font-family: 'Bebas Neue', cursive;
@@ -142,6 +142,7 @@ body {
 nav {
     display: grid;
     grid-template-columns: 1fr 5fr 1fr;
+    height: fit-content;
 }
     /* img and name */
     nav > div {
@@ -431,6 +432,7 @@ footer {
     justify-content: center;
     height: 10vh;
 }
+
 .icon {
     width: 1.875rem;
     height: 1.875rem;
@@ -445,6 +447,7 @@ footer {
     box-shadow: 2px 5px 10px rgba(150, 150, 150, .3);
     transition: all .1s ease-out;
 }
+
 .icon:hover {
     width: 12.5rem;
     cursor: pointer;
@@ -453,21 +456,27 @@ footer {
     justify-content: space-evenly;
     color: #fff;
 }
+
 .icon:hover i {
     color: #fff;
 }
+
 .icon .fa-linkedin-in {
     color: #0077B5;
 }
+
 .lnk:hover {
     background: #0077B5;
 }
+
 .icon .fa-github {
     color: #000;
 }
+
 .git:hover {
     background: #000;
 }
+
 a {
     text-decoration: none;
     color: #fff;
