@@ -357,18 +357,18 @@ main {
 
     .pvc_menu.active > div:nth-child(2) {
         display: grid;
-        grid-template-rows: 1fr 1fr 1fr;
+        grid-template-rows: repeat(5, 1fr);
         justify-items: center;
         align-items: center;
         height: 100%;
     }
 
     .pvc_menu.active > div:nth-child(2) > div:first-of-type {
-        grid-row: 2;
+        grid-row: 3;
     }
 
     .pvc_menu.active > div:nth-child(2) > div:last-of-type {
-        grid-row: 3;
+        grid-row: 4;
     }
 
     .img {
@@ -401,23 +401,12 @@ main {
         transition: .5s;
         border-radius: 0 0 5px 5px;
     }
-    
-    /* start game button 
-    .wrapper {
-        position: absolute;
-        top: 70%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-    }
-
-    */
-    
 
     .btn {
         position: relative;
         display: inline-block;
         letter-spacing: 1.2px;
-        padding: 10px 23px;
+        padding: 0.625rem 1.438rem;
         text-align: center;
         text-transform: uppercase;
         overflow: hidden;
@@ -576,7 +565,7 @@ a {
 
 @media screen and (max-width: 600px) {
     html {
-        font-size: 60%;
+        font-size: 55%;
     }
 }
 
