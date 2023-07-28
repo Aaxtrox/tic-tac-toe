@@ -359,7 +359,7 @@ main {
     }
 
     .img {
-        border-radius: 20px 20px 0 0;
+        border-radius: 5px 5px 0 0;
         height: 11rem;
         width: 10.313rem;
     }
@@ -368,7 +368,7 @@ main {
         position: relative;
         display: flex;
         background: #fff;
-        border-radius: 0 0 20px 20px;
+        border-radius: 0 0 5px 5px;
     }
 
     .button {
@@ -388,7 +388,7 @@ main {
         width: 50%;
         background: #9DC88D;
         transition: .5s;
-        border-radius: 0 0 20px 20px;
+        border-radius: 0 0 5px 5px;
     }
     
     /* start game button */
