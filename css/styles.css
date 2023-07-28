@@ -339,25 +339,32 @@ main {
 
     .pvc_menu.active {
         left: 25%;
-        transition: all 0.2s ease-in-out;
-        display: flex;
-        font-family: var(--font-family);
+        transition: all 0.2s ease-in-out;3
     }
 
-    .pvc_menu.active > div:first-of-type,
-    .pvc_menu.active > div:last-of-type {
+    .pvc_menu.active > div {
+        margin-top: 2rem;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        font-family: var(--font-family);
+        font-size: 2rem;
+    }
+
+    .pvc_menu.active > div > div:first-of-type,
+    .pvc_menu.active > div > div:last-of-type {
         display: flex;
         flex-direction: column;
         height: fit-content;
     }
 
     .img {
-        height: 11rem;
-        width: 10.25rem;
         border-radius: 20px 20px 0 0;
+        height: 11rem;
+        width: 10.313rem;
     }
 
-    .pvc_menu > div > div {
+    .pvc_menu > div > div > div {
         position: relative;
         display: flex;
         background: #fff;
@@ -369,6 +376,8 @@ main {
         text-align: center;
         z-index: 1;
         cursor: pointer;
+        font-size: 1rem;
+        margin: .3rem 0;
     }
 
     #btn,
@@ -394,7 +403,7 @@ main {
         position: relative;
         display: inline-block;
         letter-spacing: 1.2px;
-        padding: 12px 32px;
+        padding: 10px 23px;
         text-align: center;
         text-transform: uppercase;
         overflow: hidden;
@@ -551,7 +560,7 @@ a {
     }
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 600px) {
     html {
         font-size: 50%;
     }
@@ -565,13 +574,7 @@ a {
     }
 }
 
-@media screen and (max-height: 430px) {
-    html {
-        font-size: 50%;
-    }
-}
-
-@media screen and (max-height: 400px) {
+@media screen and (max-height: 550px) {
     .pvp_menu,
     .pvc_menu.active {
         top: 0;
