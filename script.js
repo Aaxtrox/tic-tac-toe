@@ -48,8 +48,37 @@ const loading = (() => {
     }
 })();
 
+// module for toggle button
+const toggle = (() => {
+    // grab id
+    const btn = document.getElementById('btn');
+    const btn1 = document.getElementById('btn1');
+    const leftClick = document.getElementById('leftClick');
+    const rightClick = document.getElementById('rightClick');
+    const leftClick1 = document.getElementById('leftClick1');
+    const rightClick1 = document.getElementById('rightClick1');
+
+    // add event listener to button
+    leftClick.addEventListener('click', () => {
+        btn.style.left = '0';
+    });
+
+    rightClick.addEventListener('click', () => {
+        btn.style.left = '50%';
+    });
+
+    leftClick1.addEventListener('click', () => {
+        btn1.style.left = '0';
+    });
+
+    rightClick1.addEventListener('click', () => {
+        btn1.style.left = '50%';
+    });
+})();
+
 // run module
 active;
 year;
 loading;
+toggle;
 

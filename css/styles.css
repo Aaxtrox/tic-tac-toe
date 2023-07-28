@@ -234,6 +234,7 @@ main {
         border-top: var(--border);
         height: var(--pvc-active-height);
         filter: grayscale(0%);
+        cursor: auto;
     }
 
     /* glass effect on cards to display card name */
@@ -339,6 +340,46 @@ main {
     .pvc_menu.active {
         left: 25%;
         transition: all 0.2s ease-in-out;
+        display: flex;
+        font-family: var(--font-family);
+    }
+
+    .pvc_menu.active > div:first-of-type,
+    .pvc_menu.active > div:last-of-type {
+        display: flex;
+        flex-direction: column;
+        height: fit-content;
+    }
+
+    .img {
+        height: 11rem;
+        width: 10.25rem;
+        border-radius: 20px 20px 0 0;
+    }
+
+    .pvc_menu > div > div {
+        position: relative;
+        display: flex;
+        background: #fff;
+        border-radius: 0 0 20px 20px;
+    }
+
+    .button {
+        width: 50%;
+        text-align: center;
+        z-index: 1;
+        cursor: pointer;
+    }
+
+    #btn,
+    #btn1 {
+        position: absolute;
+        left: 0;
+        height: 100%;
+        width: 50%;
+        background: #9DC88D;
+        transition: .5s;
+        border-radius: 0 0 20px 20px;
     }
     
     /* start game button */
