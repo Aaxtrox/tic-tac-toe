@@ -99,11 +99,10 @@ const resize = (() => {
     const pvc_menu = document.querySelector('.pvc_menu');
     const first = document.getElementById('first');
     const mid = document.getElementById('mid');
-    const pvc_glass = document.querySelector('.pvc_glass');
 
     // run every time window is resized
     window.addEventListener('resize', () => {
-        //take first height and assign it to mid
+        // assign first height to mid height
         mid.style.height = `${first.clientHeight}px`;
         // if first height is bigger than pvp_menu height or pvc_menu height
         if (first.clientHeight > pvp_menu.clientHeight || first.clientHeight > pvc_menu.clientHeight) {

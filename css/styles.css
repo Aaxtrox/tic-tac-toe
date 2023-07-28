@@ -331,7 +331,6 @@ main {
 
     #mid > div:last-of-type {
         grid-row: 3;
-        align-self: flex-end;
     }
 
     .pvp_menu > div > div:nth-child(2) {
@@ -372,7 +371,6 @@ main {
         grid-template-rows: repeat(3, 1fr);
         justify-items: center;
         align-items: center;
-        height: 100%;
     }
 
     #mid > div:first-of-type {
@@ -580,24 +578,3 @@ a {
         font-size: 55%;
     }
 }
-/*
-@media screen and (max-height: 750px) {
-    html {
-        font-size: 65%;
-    }
-}
-
-@media screen and (max-height: 550px) {
-    html {
-        font-size: 50%;
-    }
-}
-
-@media screen and (max-height: 450px) {
-    .pvp_menu,
-    .pvc_menu.active {
-        top: 30%;
-        height: 60%;
-    }
-}
-*/
