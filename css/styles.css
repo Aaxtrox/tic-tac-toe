@@ -142,7 +142,7 @@ body {
 nav {
     display: grid;
     grid-template-columns: 1fr 5fr 1fr;
-    height: fit-content;
+    height: 10vh;
 }
     /* img and name */
     nav > div {
@@ -339,7 +339,7 @@ main {
 
     .pvc_menu.active {
         left: 25%;
-        transition: all 0.2s ease-in-out;3
+        transition: all 0.2s ease-in-out;
     }
 
     .pvc_menu.active > div {
