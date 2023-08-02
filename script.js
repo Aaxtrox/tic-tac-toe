@@ -83,13 +83,16 @@ const query = (() => {
     const nav = document.querySelector('nav');
     const footer = document.querySelector('footer');
 
-    if (logo_img.clientHeight > nav.clientHeight) {
-        nav.style.height = 'fit-content';
-        // save nav height to variable
-        const navHeight = nav.clientHeight;
-        // add nav height to footer
-        footer.style.height = `${navHeight}px`;
-    }
+    // run every time window is resized
+    window.addEventListener('resize', () => {
+        if (logo_img.clientHeight > nav.clientHeight) {
+            nav.style.height = 'fit-content';
+            // save nav height to variable
+            const navHeight = nav.clientHeight;
+            // add nav height to footer
+            footer.style.height = `${navHeight}px`;
+        }
+    });
 })();
 
 // module to resize both menus
@@ -102,8 +105,6 @@ const resize = (() => {
 
     // run every time window is resized
     window.addEventListener('resize', () => {
-        // assign first height to mid height
-        mid.style.height = `${first.clientHeight}px`;
         // if first height is bigger than pvp_menu height or pvc_menu height
         if (first.clientHeight > pvp_menu.clientHeight || first.clientHeight > pvc_menu.clientHeight) {
             // save first height to variable and add 10px
