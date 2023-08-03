@@ -1,5 +1,7 @@
 # tic-tac-toe
+"Tic Tac Toe is a classic game played on a 3x3 grid. The goal is to be the first to create a line of three of your symbols in a row, either horizontally, vertically, or diagonally.
 
+Two players take turns: one uses "X" and the other "O." They place their symbols in empty cells on the grid. The game ends when a player forms the winning pattern or when all cells are filled, resulting in a draw."
 
 ## Demo
 <a href="https://aaxtrox.github.io/tic-tac-toe/">Live Demo</a>
