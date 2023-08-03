@@ -93,6 +93,16 @@ const query = (() => {
             footer.style.height = `${navHeight}px`;
         }
     });
+    // if windows been loaded
+    window.addEventListener('load', () => {
+        if (logo_img.clientHeight > nav.clientHeight) {
+            nav.style.height = 'fit-content';
+            // save nav height to variable
+            const navHeight = nav.clientHeight;
+            // add nav height to footer
+            footer.style.height = `${navHeight}px`;
+        }
+    });
 })();
 
 // module to resize both menus
@@ -105,6 +115,21 @@ const resize = (() => {
 
     // run every time window is resized
     window.addEventListener('resize', () => {
+        // if first height is bigger than pvp_menu height or pvc_menu height
+        if (first.clientHeight > pvp_menu.clientHeight || first.clientHeight > pvc_menu.clientHeight) {
+            // save first height to variable and add 10px
+            const firstHeight = first.clientHeight + 5;
+            // add first height to pvp_menu and pvc_menu
+            pvp_menu.style.height = `${firstHeight}px`;
+            pvc_menu.style.height = `${firstHeight}px`;
+            // change top of pvp_menu and pvc_menu to place them in the middle
+            pvp_menu.style.top = `calc(50% - ${firstHeight / 2}px)`;
+            pvc_menu.style.top = `calc(50% - ${firstHeight / 2}px)`;
+        }
+    });
+
+    // if windows been loaded
+    window.addEventListener('load', () => {
         // if first height is bigger than pvp_menu height or pvc_menu height
         if (first.clientHeight > pvp_menu.clientHeight || first.clientHeight > pvc_menu.clientHeight) {
             // save first height to variable and add 10px
