@@ -2,59 +2,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Gidugu&family=Josefin+Sans:wght@700&display=swap');
 
+/* Define root variables */
 :root {
-    /* * */
-    --border: #9DC88D 1px solid;
-    --font-family: 'Anton', sans-serif;
-    /* preloader */
-    --preloader-font-size: 2rem;
-    --preloader-font-color: #9DC88D;
-    --spinner-size: 50px;
-    --spinner-color: 4px #9DC88D solid;
-    /* body */
-    --body-bg: #222629;
-    /* navbar */
-    --nav-height: 10vh;
-        /* nav > div > img */
-        --img-height: 5rem;
-        /* nav > div > div > div */
-        --div-font-family: 'Bebas Neue', cursive;
-        --div-font-size: 2.15rem;
-        --div-color: #9DC88D;
-        --div-height: 2rem;
-        /* nav > div > div > div:first-of-type */
-        --div-first-of-type-font-size: 4rem;
-        --div-first-of-type-height: 3.4rem;
-
-    /* main */
-    --main-height: 80vh;
-    --main-width: 100vw;
-        /* main > .pvp */
-        --pvp-bg: url("../img/pvp.png");
-        --pvp-bg-position: center 40%;
-        --pvp-height: 80%;
-        /* main > .pvc */
-        --pvc-bg: url("../img/pvc.png");
-        --pvc-bg-position: center 43%;
-        --pvc-height: 20%;
-        /* main > .pvp.active */
-        --pvp-active-height: 20%;
-        /* main > .pvc.active */
-        --pvc-active-height: 80%;
-        /* .pvp_glass, .pvc_glass */
-        --font-size: 3rem;
-        --height: 10vh;
-        /* .pvp_menu, .pvc_menu */
-        --menu-height: 40vh;
-        --menu-width: 50vw;
-        /* .pvp_menu > div */
-        --pvp-font-size: 2rem;
-        --pvp-margin-top: 2rem;
-        /* .pvp_menu > img */
-        --pvp-img-height: 6rem;
-        --pvp-img-margin: 0 1rem;
+    --bg-color: #222629; /* Dark background color */
+    --main-color: #9DC88D; /* Main text and border color */
+    --font-family: Anton, sans-serif; /* Default font family */
+    --main-font-size: 2.15rem; /* Default font size */
+    --main-name-height: 3rem; /* Default height for name elements */
+    --large-font-size: 4rem; /* Larger font size for main name */
+    --large-name-height: 3.8rem; /* Height for main name */
+    --logo-height: 5rem; /* Height of the logo */
+    --logo-margin: 0 2rem; /* Margin around the logo */
+    --spinner-color: #9DC88D; /* Color for the spinner top border and loading text */
+    --spinner-border-color: rgba(0, 0, 0, 0.25); /* Border color for spinner */
+    --spinner-size: 50px; /* Size of the spinner */
+    --preloader-bg: #222629; /* Background color for preloader */
 }
-/* preloader background */
+
+/* Preloader background */
 #preloader {
     display: flex;
     position: absolute;
@@ -62,23 +27,23 @@
     align-items: center;
     height: 100vh;
     width: 100vw;
-    background: var(--body-bg);
-    z-index: 1000;
+    background: var(--preloader-bg);
+    z-index: 1000; /* Ensure preloader is above other elements */
 }
 
-/* text above spinner */
+/* Text above spinner */
 #preloader > div:first-of-type {
     display: block;
     position: absolute;
     top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: var(--preloader-font-size);
-    color: var(--preloader-font-color);
-    font-family: var(--font-family);
+    font-size: 2rem;
+    color: var(--spinner-color);
+    font-family: 'Anton', sans-serif;
 }
 
-/* preloader spinner */
+/* Preloader spinner */
 #spinner {
     display: block;
     position: absolute;
@@ -87,394 +52,357 @@
     transform: translate(-50%, -50%);
     height: var(--spinner-size);
     width: var(--spinner-size);
-    margin: -25px 0 0 -25px;
-    border: 4px rgba(0, 0, 0, 0.25) solid;
-    border-top: var(--spinner-color);
+    margin: calc(-1 * var(--spinner-size) / 2);
+    border: 4px var(--spinner-border-color) solid;
+    border-top: 4px var(--spinner-color) solid;
     border-radius: 50%;
-    -webkit-animation: spinning 1s infinite linear;
-            animation: spinning 1s infinite linear;
+    animation: spinning 1s infinite linear;
 }
-  
-@-webkit-keyframes spinning {
-    from {
-        -webkit-transform: rotate(0deg);
-                transform: rotate(0deg);
-    }
-    to {
-        -webkit-transform: rotate(359deg);
-                transform: rotate(359deg);
-    }
-}
+
+/* Keyframe animation for spinner rotation */
 @keyframes spinning {
     from {
-        -webkit-transform: rotate(0deg);
-                transform: rotate(0deg);
-        -webkit-transform: rotate(0deg);
-                transform: rotate(0deg);
-}
+        transform: rotate(0deg);
+    }
     to {
-        -webkit-transform: rotate(359deg);
-                transform: rotate(359deg);
-        -webkit-transform: rotate(359deg);
-                transform: rotate(359deg);
+        transform: rotate(359deg);
     }
 }
 
-/* preloader spinner animation */
+/* Preloader spinner animation */
 .loader {
     animation: spin 1s forwards;
 }
 
+/* Keyframe animation for spinner fade-out */
 @keyframes spin {
     100% {
-        opacity: 0;
-        visibility: hidden;
+        opacity: 0; /* Fade out the preloader */
+        visibility: hidden; /* Hide the preloader */
     }
 }
 
-/* body */
+/* Background for the entire page */
 body {
-    background: var(--body-bg);
+    background: var(--bg-color);
 }
 
-/* navbar */
+/* Navigation Bar */
 nav {
     display: grid;
     grid-template-columns: 1fr 5fr 1fr;
     height: 10vh;
 }
-    /* img and name */
-    nav > div {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
 
-    nav > div > img {
-        height: var(--img-height);
-        margin: 0 2rem;
-        width: auto;
-    }
-    
-    /* name */
-    nav > div > div {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-
-    /* name: top and bottom */
-    nav > div > div > div:first-of-type,
-    nav > div > div > div:last-of-type {
-        font-family: var(--div-font-family);
-        font-size: var(--div-font-size);
-        color: var(--div-color);
-        height: var(--div-height);
-    }
-
-    nav > div > div > div:first-of-type {
-        font-size: var(--div-first-of-type-font-size);
-        height: var(--div-first-of-type-height);
-    }
-
-/* main */
-main {
-    box-sizing: border-box;
-    border-top: var(--border);
-    border-bottom: var(--border);
+/* Logo and Name Container */
+.logo-container {
     display: flex;
-    flex-direction: column;
-    height: var(--main-height);
-    width: var(--main-width);
+    justify-content: center;
+    align-items: center;
 }
 
-    /* pvp and pvc cards */
-    .pvp,
-    .pvc {
-        position: relative;
-        flex-grow: 1;
-        transition: height 0.5s;
-        cursor: pointer;
+/* Logo Image */
+.logo-img {
+    height: var(--logo-height);
+    margin: var(--logo-margin);
+    width: auto;
+}
+
+/* Name Container */
+.logo-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Large Name */
+.logo-text > div:first-of-type,
+.logo-text > div:last-of-type {
+    font-family: var(--font-family);
+    font-size: var(--main-font-size);
+    color: var(--main-color);
+    height: var(--main-name-height);
+}
+
+/* Larger font size for the main name */
+.logo-text > div:first-of-type {
+    font-size: var(--large-font-size);
+    height: var(--large-name-height);
+}
+
+/* Main Content */
+main {
+    box-sizing: border-box;
+    border-top: var(--main-color) 1px solid;
+    border-bottom: var(--main-color) 1px solid;
+    display: flex;
+    flex-direction: column;
+    height: 80vh;
+    width: 100vw;
+}
+
+/* PvP and PVC Cards */
+.game-mode {
+    position: relative;
+    flex-grow: 1;
+    transition: height 0.5s;
+    cursor: pointer;
+}
+
+/* PvP Card */
+.pvp {
+    overflow: hidden;
+    box-sizing: border-box;
+    border-bottom: var(--main-color) 1px solid;
+    background-image: url("../img/pvp.png");
+    background-position: center 40%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 80%;
+}
+
+.pvp.active {
+    height: 20%;
+    filter: grayscale(100%);
+    border: none;
+}
+
+/* PVC Card */
+.pvc {
+    overflow: hidden;
+    background-image: url("../img/pvc.png");
+    background-position: center 43%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 20%;
+    filter: grayscale(100%);
+}
+
+.pvc.active {
+    box-sizing: border-box;
+    border-top: var(--main-color) 1px solid;
+    height: 80%;
+    filter: grayscale(0%);
+    cursor: auto;
+}
+
+/* Glass effect on cards to display card name */
+.game-mode-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    font-family: var(--font-family);
+    position: absolute;
+    width: 100%;
+    height: 10vh;
+    background: rgba(255, 255, 255, 0.52);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* PvP Glass Card */
+.player {
+    top: -20%;
+    left: 0;
+    transition: all 0.3s ease-in-out;
+}
+
+.player.active {
+    top: 20%;
+    transition: all 0.3s ease-in-out;
+}
+
+/* PVC Glass Card */
+.computer {
+    top: 20%;
+    left: 0;
+    transition: all 0.3s ease-in-out;
+}
+
+.computer.active {
+    top: -20%;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Menu with Start Game Button */
+.game-mode-menu {
+    position: absolute;
+    top: 20%;
+    left: 25%;
+    transition: all 0.2s ease-in-out;
+    height: 40vh;
+    width: 50vw;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.52);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.2s ease-in-out;
+}
+
+/* PvP Menu and PvC Menu with Start Game Button */
+.menu-pvp.active {
+    left: -100%;
+    transition: all 0.2s ease-in-out;
+}
+
+.menu-pvc {
+    left: -100%;
+    transition: all 0.2s ease-in-out;
+}
+
+.menu-pvc.active {
+    left: 25%;
+    transition: all 0.2s ease-in-out;
+}
+
+.game-mode-player,
+.game-mode-computer {
+    width: 100%;
+    height: 100%;
+    font-size: 2rem;
+    font-family: var(--font-family);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.player-info,
+.player-options {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: whitesmoke;
+    border-radius: 5px;
+}
+
+/* Mid Section */
+.vs-divider {
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    justify-items: center;
+    align-items: center;
+}
+
+.vs-divider > div:first-of-type {
+    grid-row: 2;
+}
+
+.btn-wrapper {
+    grid-row: 3;
+}
+
+/* Img Styles */
+.player-img {
+    height: 15rem;
+    width: 14rem;
+    border-radius: 5px 5px 0 0;
+}
+
+/* Button Styles */
+.player-buttons {
+    position: relative;
+    display: flex;
+    width: 100%;
+}
+
+.button {
+    width: 50%;
+    text-align: center;
+    z-index: 1;
+    cursor: pointer;
+    font-size: 1.4rem;
+    margin: 0.3rem 0;
+}
+
+#btn,
+#btn1 {
+    position: absolute;
+    left: 0;
+    height: 100%;
+    width: 50%;
+    background: #9DC88D;
+    transition: .5s;
+    border-radius: 0 0 5px 5px;
+}
+
+.btn {
+    position: relative;
+    display: inline-block;
+    letter-spacing: 1.2px;
+    padding: 0.625rem 1.438rem;
+    text-align: center;
+    text-transform: uppercase;
+    overflow: hidden;
+    z-index: 1;
+    cursor: pointer;
+    &:focus {
+        outline: none;
+    }
+}
+
+.btn--primary {
+    color: black;
+    font-size: 1.6rem;
+    font-family: var(--font-family);
+}
+
+.btn--border {
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+.btn--animated {
+    transition-property: color;
+    transition-duration: 0.5s;
+    
+    &.btn--border.btn--primary {
+        border: 1px solid black;
     }
 
-    /* pvp card */
-    .pvp {
-        overflow: hidden;
-        box-sizing: border-box;
-        border-bottom: var(--border);
-        background-image: var(--pvp-bg);
-        background-position: var(--pvp-bg-position);
-        background-repeat: no-repeat;
-        background-size: cover;
-        height: var(--pvp-height);
-    }
-
-    .pvp.active {
-        height: var(--pvp-active-height);
-        filter: grayscale(100%);
-        border: none;
-    }
-
-    /* pvc card */
-
-    .pvc {
-        overflow: hidden;
-        background-image: var(--pvc-bg);
-        background-position: var(--pvc-bg-position);
-        background-repeat: no-repeat;
-        background-size: cover;
-        height: var(--pvc-height);
-        filter: grayscale(100%);
-    }
-
-    .pvc.active {
-        box-sizing: border-box;
-        border-top: var(--border);
-        height: var(--pvc-active-height);
-        filter: grayscale(0%);
-        cursor: auto;
-    }
-
-    /* glass effect on cards to display card name */
-    .pvp_glass,
-    .pvc_glass {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: var(--font-size);
-        font-family: var(--font-family);
+    &:before {
+        content: "";
         position: absolute;
-        width: 100%;
-        height: var(--height);
-        background: rgba(255, 255, 255, 0.52);
-        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-        backdrop-filter: blur(5px);
-        -webkit-backdrop-filter: blur(5px);
-        border: 1px solid rgba(255, 255, 255, 0.3);
-    }
-
-    /* pvp_glass card */
-    .pvp_glass {
-        top: -20%;
+        top: 0;
         left: 0;
-        transition: all 0.1s ease-in-out;
-    }
-
-    .pvp_glass.active {
-        top: 20%;
-        transition: all 0.5s ease-in-out;
-    }
-
-    /* pvc_glass card */
-    .pvc_glass {
-        top: 20%;
-        left: 0;
-        transition: all 0.5s ease-in-out;
-    }
-
-    .pvc_glass.active {
-        top: 100%;
-        transition: all 0.1s ease-in-out;
-    }
-
-    /* menu with start game button */
-    .pvp_menu,
-    .pvc_menu {
-        position: absolute;
-        top: 20%;
-        transition: all 0.2s ease-in-out;
-        height: var(--menu-height);
-        width: var(--menu-width);
-        border-radius: 15px;
-        background: rgba(255, 255, 255, 0.52);
-        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-        backdrop-filter: blur(5px);
-        -webkit-backdrop-filter: blur(5px);
-        border: 1px solid rgba(255, 255, 255, 0.3);
-    }
-
-    /* pvp_menu with start game button */
-    .pvp_menu {
-        left: 25%;
-        transition: all 0.2s ease-in-out;
-    }
-
-    .pvp_menu.active {
-        left: -100%;
-        transition: all 0.2s ease-in-out;
-    }
-
-    .pvp_menu > div {
-        width: 100%;
-        height: 100%;
-        font-size: var(--pvp-font-size);
-        font-family: var(--font-family);
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-    }
-
-    .pvp_menu > div > div:first-of-type,
-    .pvp_menu > div > div:last-child {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        background-color: whitesmoke;
-        border-radius: 5px;
-    }
-
-    #mid > div:first-of-type {
-        grid-row: 2;
-    }
-
-    #mid > div:last-of-type {
-        grid-row: 3;
-    }
-
-    .pvp_menu > div > div:nth-child(2) {
-        background-color: transparent;
-    }
-
-    .pvp_menu > div > div:last-child {
-        flex-direction: column-reverse;
-    }
-
-    /* pvc_menu with start game button */
-    .pvc_menu {
-        left: -100%;
-        transition: all 0.2s ease-in-out;
-    }
-
-    .pvc_menu.active {
-        left: 25%;
-        transition: all 0.2s ease-in-out;
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        font-family: var(--font-family);
-        font-size: 2rem;
-    }
-
-    .pvc_menu.active > div:first-of-type,
-    .pvc_menu.active > div:last-of-type {
-        display: flex;
-        flex-direction: column;
-        height: fit-content;
-        background: #fff;
-        border-radius: 5px;
-    }
-
-    #mid {
-        display: grid;
-        grid-template-rows: repeat(3, 1fr);
-        justify-items: center;
-        align-items: center;
-    }
-
-    #mid > div:first-of-type {
-        grid-row: 2;
-    }
-
-    #mid > div:last-of-type {
-        grid-row: 3;
-    }
-
-    .img {
-        border-radius: 5px 5px 0 0;
-        height: 15rem;
-        width: 14rem;
-    }
-
-    .pvc_menu.active > div > div {
-        position: relative;
-        display: flex;
-    }
-
-    .button {
-        width: 50%;
-        text-align: center;
-        z-index: 1;
-        cursor: pointer;
-        font-size: 1.4rem;
-        margin: .3rem 0;
-    }
-
-    #btn,
-    #btn1 {
-        position: absolute;
-        left: 0;
-        height: 100%;
-        width: 50%;
-        background: #9DC88D;
-        transition: .5s;
-        border-radius: 0 0 5px 5px;
-    }
-
-    .btn {
-        position: relative;
-        display: inline-block;
-        letter-spacing: 1.2px;
-        padding: 0.625rem 1.438rem;
-        text-align: center;
-        text-transform: uppercase;
-        overflow: hidden;
-        z-index: 1;
-        cursor: pointer;
-        &:focus {
-            outline: none;
-        }
-    }
-      
-    .btn--primary {
-        color: black;
-        font-size: 1.6rem;
-        font-family: 'Anton', sans-serif;
-    }
-      
-    .btn--border {
-        border-width: 1px;
-        border-style: solid;
-        border-radius: 10px;
-        box-sizing: border-box;
-    }
-      
-    .btn--animated {
-        transition-property: color;
+        right: 0;
+        bottom: 0;
+        background: var(--main-color);
+        transform: scaleX(0);
+        transform-origin: 0 50%;
+        transition-property: transform;
         transition-duration: 0.5s;
-      
-        &.btn--border.btn--primary {
-            border: 1px solid black;
-        }
-      
+        transition-timing-function: ease-out;
+        z-index: -1;
+    }
+        
+    &:hover {
+        color: white;
+
         &:before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: #9DC88D;
-            transform: scaleX(0);
-            transform-origin: 0 50%;
-            transition-property: transform;
-            transition-duration: 0.5s;
-            transition-timing-function: ease-out;
-            z-index: -1;
-        }
-      
-        &:hover {
-            color: white;
-      
-            &:before {
-                transform: scaleX(1);
-                transition-timing-function: cubic-bezier(0.45, 1.64, 0.47, 0.66);
-            }
+            transform: scaleX(1);
+            transition-timing-function: cubic-bezier(0.45, 1.64, 0.47, 0.66);
         }
     }
+}
 
-/* footer */
+/* Footer */
+footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 10vh;
+}
+
+/* Copyright Information */
 footer > div:first-of-type {
     font-size: 1.4rem;
     text-align: center;
@@ -487,13 +415,6 @@ footer > div:first-of-type {
 
 footer > div:nth-child(2) {
     display: flex;
-}
-
-footer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 10vh;
 }
 
 .icon {
@@ -545,14 +466,11 @@ a {
     color: #fff;
 }
 
+
 /* media queries */
 @media screen and (max-width: 1300px) {
     html {
         font-size: 80%;
-    }
-
-    nav > div > div > div:first-of-type {
-        margin-bottom: 2px;
     }
 }
 
@@ -563,8 +481,8 @@ a {
 }
 
 @media screen and (max-width: 1000px) {
-    .pvp_menu,
-    .pvc_menu.active {
+    .menu-pvp,
+    .menu-pvc.active {
         top: 30%;
         height: 40%;
         width: 100%;

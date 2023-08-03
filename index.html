@@ -9,91 +9,114 @@
     <title>Tic Tac Toe</title>
 </head>
 <body>
-    <!-- preloader -->
+    <!-- Preloader -->
     <div id="preloader">
         <div>Loading</div>
         <div id="spinner"></div>
     </div>
-    <!-- navbar -->
+    
+    <!-- Navigation Bar -->
     <nav>
-        <div>
-            <!-- logo img -->
-            <img src="./img/logo4.png" alt="logo image" class="logo_img">
-            <div>
-                <!-- name -->
-                <div>dead</div>
-                <div>end zone</div>
+        <div class="logo-container">
+            <!-- Logo Image -->
+            <img src="./img/logo4.png" alt="Logo Image" class="logo-img">
+            <!-- Logo Text -->
+            <div class="logo-text">
+                <div>DEAD</div>
+                <div>END ZONE</div>
             </div>
         </div>
     </nav>
-    <!-- main -->
+    
+    <!-- Main Content -->
     <main>
-        <!-- game mode picker -->
-        <!-- top menu for pvp game-->
-        <div class="pvp">
-            <!-- shrink menu to explain what is inside -->
-            <div class="pvp_glass">Player VS Player</div>
-            <!-- menu to start pvp game -->
-            <div class="pvp_menu">
-                <div>
-                    <!-- top of menu -->
-                    <div id="first">
-                        <img src="./img/x.png" alt="image of X" class="img">
-                        <div>Player1</div>
+        <!-- Game Mode Picker -->
+        
+        <!-- Player VS Player Menu -->
+        <div class="game-mode pvp">
+            <!-- Game Mode Title -->
+            <div class="game-mode-title player">Player VS Player</div>
+            <!-- Game Mode Menu -->
+            <div class="game-mode-menu menu-pvp">
+                <!-- Player Info -->
+                <div class="game-mode-player">
+                    <div class="player-info" id="card">
+                        <!-- Player Image -->
+                        <img src="./img/x.png" alt="Image of X" class="player-img">
+                        <div>Player 1</div>
                     </div>
-                    <div id="mid">
+                    <!-- VS Divider -->
+                    <div class="vs-divider">
                         <div>VS</div>
-                        <div class="wrapper">
+                        <!-- Start Game Button -->
+                        <div class="btn-wrapper">
                             <div class="btn btn--border btn--primary btn--animated">Start Game</div>
                         </div>
                     </div>
-                    <div>
-                        <div>Player2</div>
-                        <img src="./img/0.png" alt="image of O" class="img">
+                    <!-- Player Info -->
+                    <div class="player-info">
+                        <!-- Player Image -->
+                        <img src="./img/0.png" alt="Image of O" class="player-img">
+                        <div>Player 2</div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- bottom menu for pvc game -->
-        <div class="pvc">
-            <!-- shrink menu to explain what is inside -->
-            <div class="pvc_glass">Player VS Computer</div>
-            <!-- menu to start pvc game -->
-            <div class="pvc_menu">
-                <div id="first">
-                    <img src="./img/x.png" alt="" class="img">
-                    <div>
-                        <div id="btn"></div>
-                        <div class="button" id="leftClick">Player</div>
-                        <div class="button" id="rightClick">Computer</div>
+        
+        <!-- Player VS Computer Menu -->
+        <div class="game-mode pvc">
+            <!-- Game Mode Title -->
+            <div class="game-mode-title computer">Player VS Computer</div>
+            <!-- Game Mode Menu -->
+            <div class="game-mode-menu menu-pvc">
+                <div class="game-mode-computer">
+                    <!-- Player Options -->
+                    <div class="player-options" id="card">
+                        <!-- Player Image -->
+                        <img src="./img/x.png" alt="" class="player-img">
+                        <div class="player-buttons">
+                            <!-- Player/Computer Selection Buttons -->
+                            <div id="btn"></div>
+                            <div class="button" id="leftClick">Player</div>
+                            <div class="button" id="rightClick">Computer</div>
+                        </div>
                     </div>
-                </div>
-                <div id="mid">
-                    <div>VS</div>
-                    <div class="wrapper">
-                        <div class="btn btn--border btn--primary btn--animated">Start Game</div>
+                    <!-- VS Divider -->
+                    <div class="vs-divider">
+                        <div>VS</div>
+                        <!-- Start Game Button -->
+                        <div class="btn-wrapper">
+                            <div class="btn btn--border btn--primary btn--animated">Start Game</div>
+                        </div>
                     </div>
-                </div>
-                <div>
-                    <img src="./img/0.png" alt="" class="img">
-                    <div>
-                        <div id="btn1"></div>
-                        <div class="button" id="leftClick1">Player</div>
-                        <div class="button" id="rightClick1">Computer</div>
+                    <!-- Player Options -->
+                    <div class="player-options">
+                        <!-- Player Image -->
+                        <img src="./img/0.png" alt="" class="player-img">
+                        <div class="player-buttons">
+                            <!-- Player/Computer Selection Buttons -->
+                            <div id="btn1"></div>
+                            <div class="button" id="leftClick1">Player</div>
+                            <div class="button" id="rightClick1">Computer</div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </main>
-    <!-- footer -->
+    
+    <!-- Footer -->
     <footer>
+        <!-- Copyright -->
         <div class="Copyright">Copyright © <span id="year"></span> </br>Pawel Wojciechowski</div>
         <div>
+            <!-- Social Media Icons -->
             <div class="icon lnk">
                 <a href="https://www.linkedin.com/in/pawel-wojciechowski-908996260/">
                 <i class="fa-brands fa-linkedin-in"></i>
                 <span>Linkedin</span></a>
             </div>
+            <!-- Social Media Icons -->
             <div class="icon git">
                 <a href="https://github.com/Aaxtrox/">
                 <i class="fa-brands fa-github"></i>
@@ -101,6 +124,8 @@
             </div>
         </div>
     </footer>
-<script src="./script.js"></script>
+    
+    <!-- Scripts -->
+    <script src="./script.js"></script>
 </body>
 </html>
