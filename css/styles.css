@@ -396,7 +396,9 @@ main {
 
 /* Dropdown Styles */
 .dropdown {
-    min-width: 15rem;
+    width: 11.051rem;
+    font-size: 1.6rem;
+    font-family: var(--font-family);
     position: relative;
     grid-row: 1;
 }
@@ -409,21 +411,21 @@ main {
 /* Select Area Styles */
 .select {
     background: #2a2f3b;
-    color: #fff;
+    color: var(--main-color);
     display: flex;
     justify-content: space-between;
     align-items: center;
     border: 2px #2a2f3b solid;
-    border-radius: 0.5rem;
-    padding: 1rem;
+    border-radius: 10px;
+    padding: 0.625rem 1.438rem;
     cursor: pointer;
     transition: background 0.3s;
 }
   
 /* Styles for clicked select */
 .select-clicked {
-    border: 2px #26489a solid;
-    box-shadow: 0 0 0.8em #26489a;
+    border: 2px var(--main-color) solid;
+    box-shadow: 0 0 0.8em var(--main-color);
 }
   
 /* Hover styles for select */
@@ -453,10 +455,10 @@ main {
     background: #323741;
     border: 1px #363a43 solid;
     box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.2);
-    border-radius: 0.5em;
-    color: #9fa5b5;
+    border-radius: 10px;
+    color: var(--main-color);
     position: absolute;
-    top: 1.5em;
+    top: 1.4em;
     left: 50%;
     width: 100%;
     transform: translateX(-50%);
@@ -468,7 +470,7 @@ main {
   
 /* Dropdown Menu Item Styles */
 .menu li {
-    padding: 0.7em 0.5em;
+    padding: 0.2em 0.5em;
     margin: 0.3em 0;
     border-radius: 0.5em;
     cursor: pointer;
@@ -480,9 +482,9 @@ main {
 }
   
 /* Active (selected) menu item */
-/* .active {
+.dropdown .active {
     background: #23242a;
-} */
+}
   
 /* Menu open styles */
 .menu-open {
