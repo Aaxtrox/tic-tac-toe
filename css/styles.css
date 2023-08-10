@@ -290,7 +290,7 @@ main {
     align-items: center;
 }
 
-.vs-divider > div:nth-child(2) {
+.game-mode-player > .vs-divider > div:first-of-type {
     grid-row: 2;
 }
 
@@ -398,6 +398,7 @@ main {
 .dropdown {
     min-width: 15rem;
     position: relative;
+    grid-row: 1;
 }
   
 /* Apply box-sizing to all elements */
