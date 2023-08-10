@@ -137,6 +137,47 @@ const resizeMenus = (() => {
     });
 })();
 
+const initializeDropdown = (() => {
+    // Get all dropdown elements with the class 'dropdown'
+    const dropdowns = document.querySelectorAll('.dropdown');
+
+    // Loop through each dropdown element
+    dropdowns.forEach(dropdown => {
+    // Get elements inside the current dropdown
+    const select = dropdown.querySelector('.select'); // Select area
+    const caret = dropdown.querySelector('.caret');   // Caret icon
+    const menu = dropdown.querySelector('.menu');     // Dropdown menu
+    const options = dropdown.querySelectorAll('.menu li'); // Individual menu options
+    const selected = dropdown.querySelector('.selected'); // Selected option display
+    
+    // Toggle dropdown visibility on select click
+    select.addEventListener('click', () => {
+        select.classList.toggle('select-clicked');
+        caret.classList.toggle('caret-rotate');
+        menu.classList.toggle('menu-open');
+    });
+    
+    // Handle option selection in the dropdown menu
+    options.forEach(option => {
+        option.addEventListener('click', () => {
+        // Update the selected option display
+        selected.innerText = option.innerText;
+        
+        // Reset dropdown appearance and visibility
+        select.classList.remove('select-clicked');
+        caret.classList.remove('caret-rotate');
+        menu.classList.remove('menu-open');
+        
+        // Clear 'active' class from all options and set it for the selected option
+        options.forEach(option => {
+            option.classList.remove('active');
+        });
+        option.classList.add('active');
+        });
+    });
+    });
+})();
+
 // Run all modules
 menuToggle;
 addCurrentYear;
@@ -144,3 +185,4 @@ preloader;
 toggleButton;
 handleQuery;
 resizeMenus;
+initializeDropdown;
