@@ -332,6 +332,10 @@ main {
     border-radius: 0 0 5px 5px;
 }
 
+#btn1 {
+    left: 50%;
+}
+
 .btn {
     position: relative;
     display: inline-block;
