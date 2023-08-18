@@ -104,6 +104,24 @@ const handleQuery = (() => {
     });
 })();
 
+const ResponsiveDropdownSizer = (() => {
+    // DOM elements
+    const dropdown = document.querySelector('.dropdown');
+    const btn_wrapper = document.querySelector('.btn-wrapper');
+
+    // Run on window resize
+    window.addEventListener('resize', () => {
+        // Update dropdown width based on btn-wrapper width
+        dropdown.style.width = `${btn_wrapper.clientWidth}px`;
+    });
+
+    // Run on window load
+    window.addEventListener('load', () => {
+        // Update dropdown width based on btn-wrapper width
+        dropdown.style.width = `${btn_wrapper.clientWidth}px`;
+    });
+})();
+
 // Module to resize both menus
 const resizeMenus = (() => {
     // DOM elements
@@ -186,3 +204,4 @@ toggleButton;
 handleQuery;
 resizeMenus;
 initializeDropdown;
+ResponsiveDropdownSizer;
