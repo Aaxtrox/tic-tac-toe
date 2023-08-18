@@ -58,20 +58,29 @@ const toggleButton = (() => {
     const leftClick1 = document.getElementById('leftClick1');
     const rightClick1 = document.getElementById('rightClick1');
 
-    // Add click event listeners to buttons
+    // Update button positions based on click events
+
+    // When leftClick is clicked, align btn to the left and btn1 to the right
     leftClick.addEventListener('click', () => {
         btn.style.left = '0';
+        btn1.style.left = '50%';
     });
 
+    // When rightClick is clicked, shift btn to the right and bring btn1 to the left
     rightClick.addEventListener('click', () => {
         btn.style.left = '50%';
-    });
-
-    leftClick1.addEventListener('click', () => {
         btn1.style.left = '0';
     });
 
+    // When leftClick1 is clicked, reposition btn to the right and adjust btn1 to the left
+    leftClick1.addEventListener('click', () => {
+        btn.style.left = '50%';
+        btn1.style.left = '0';
+    });
+
+    // When rightClick1 is clicked, slide btn to the left and position btn1 to the right
     rightClick1.addEventListener('click', () => {
+        btn.style.left = '0';
         btn1.style.left = '50%';
     });
 })();
@@ -104,6 +113,7 @@ const handleQuery = (() => {
     });
 })();
 
+// Module to resize dropdown
 const ResponsiveDropdownSizer = (() => {
     // DOM elements
     const dropdown = document.querySelector('.dropdown');
