@@ -12,7 +12,7 @@
     --large-font-size: 4rem; /* Larger font size for main name */
     --large-name-height: 3.8rem; /* Height for main name */
     --logo-height: 5rem; /* Height of the logo */
-    --logo-margin: 0 2rem; /* Margin around the logo */
+    --logo-margin: 0.5rem 0 0.5rem 2rem; /* Margin around the logo */
     --spinner-color: #9DC88D; /* Color for the spinner top border and loading text */
     --spinner-border-color: rgba(0, 0, 0, 0.25); /* Border color for spinner */
     --spinner-size: 50px; /* Size of the spinner */
@@ -101,35 +101,35 @@ nav {
     align-items: center;
 }
 
-/* Logo Image */
-.logo-img {
+/* Logo Image, Name Image */
+.logo {
     height: var(--logo-height);
     margin: var(--logo-margin);
     width: auto;
 }
 
 /* Name Container */
-.logo-text {
+/* .logo-text {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-}
+} */
 
 /* Large Name */
-.logo-text > div:first-of-type,
+/* .logo-text > div:first-of-type,
 .logo-text > div:last-of-type {
     font-family: var(--font-family);
     font-size: var(--main-font-size);
     color: var(--main-color);
     height: var(--main-name-height);
-}
+} */
 
 /* Larger font size for the main name */
-.logo-text > div:first-of-type {
+/* .logo-text > div:first-of-type {
     font-size: var(--large-font-size);
     height: var(--large-name-height);
-}
+} */
 
 /* Main Content */
 main {

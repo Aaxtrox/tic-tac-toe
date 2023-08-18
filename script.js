@@ -79,7 +79,7 @@ const toggleButton = (() => {
 // Module to handle query
 const handleQuery = (() => {
     // DOM elements
-    const logoImg = document.querySelector('.logo-img');
+    const logoImg = document.querySelector('.logo');
     const nav = document.querySelector('nav');
     const footer = document.querySelector('footer');
 
