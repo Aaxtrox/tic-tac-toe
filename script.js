@@ -180,7 +180,6 @@ const resizeMenus = (() => {
     const menu_pvp = document.querySelector('.menu-pvp');
     const menu_pvc = document.querySelector('.menu-pvc');
     const card = document.getElementById('card');
-    const vs_divider = document.querySelector('.vd-divider');
 
     // Run on window resize
     window.addEventListener('resize', () => {
@@ -207,6 +206,26 @@ const resizeMenus = (() => {
     });
 })();
 
+// Game Board Module
+const showBoard = (() => {
+    // DOM elements
+    const main = document.querySelector('main');
+    const btn_wrapper_pvp = document.querySelector('.btn-wrapper-pvp');
+    const btn_wrapper_pvc = document.querySelector('.btn-wrapper-pvc');
+    const board = document.querySelector('.board');
+
+    // Event listeners to show the board when buttons are clicked
+    btn_wrapper_pvp.addEventListener('click', () => {
+        main.style.display = 'none';
+        board.style.display = 'block';
+    });
+
+    btn_wrapper_pvc.addEventListener('click', () => {
+        main.style.display = 'none';
+        board.style.display = 'block';
+    });
+})();
+
 // Run all modules
 menuToggle;
 addCurrentYear;
@@ -216,3 +235,4 @@ handleQuery;
 resizeMenus;
 initializeDropdown;
 ResponsiveDropdownSizer;
+showBoard;

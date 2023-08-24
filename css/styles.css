@@ -117,6 +117,7 @@ nav {
 
 /* Main Content */
 main {
+    visibility: visible;
     box-sizing: border-box;
     border-top: var(--main-color) 1px solid;
     border-bottom: var(--main-color) 1px solid;
@@ -556,6 +557,13 @@ a {
     color: #fff;
 }
 
+/* Game board styling */
+.board {
+    display: none;
+    height: 80vh;
+    width: 100vw;
+    background-color: var(--bg-color);
+}
 
 /* media queries */
 @media screen and (max-width: 1500px) {
