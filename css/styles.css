@@ -7,16 +7,23 @@
     --bg-color: #222629; /* Dark background color */
     --main-color: #9DC88D; /* Main text and border color */
     --font-family: Anton, sans-serif; /* Default font family */
-    --main-font-size: 2.15rem; /* Default font size */
-    --main-name-height: 3rem; /* Default height for name elements */
-    --large-font-size: 4rem; /* Larger font size for main name */
-    --large-name-height: 3.8rem; /* Height for main name */
     --logo-height: 5rem; /* Height of the logo */
     --logo-margin: 0.5rem 0 0.5rem 2rem; /* Margin around the logo */
-    --spinner-color: #9DC88D; /* Color for the spinner top border and loading text */
     --spinner-border-color: rgba(0, 0, 0, 0.25); /* Border color for spinner */
     --spinner-size: 50px; /* Size of the spinner */
-    --preloader-bg: #222629; /* Background color for preloader */
+    --preloader-font-size: 2rem; /* Font size for the loading text */
+    --glass-font-size: 3rem; /* Font size for the glass effect */
+    --cards-font-size: 2rem; /* Font size for the cards with start game button*/
+    --img-height: 15rem; /* Height of the X and O images */
+    --img-width: 14rem; /* Width of the X and O images */
+    --switch-font-size: 1.4rem; /* Font size for the switch buttons */
+    --switch-margin: 0.3rem 0; /* Margin around the switch buttons */
+    --start-button-padding: 0.625rem 1.438rem; /* Padding for the start game button */
+    --start-button-font-size: 1.6rem; /* Font size for the start game button */
+    --dropdown-font-size: 1.6rem; /* Font size for the dropdown menu */
+    --dropdown-width: 11.051rem; /* Width of the dropdown menu */
+    --dropdown-select-padding: 0.625rem 1.438rem; /* Padding for the select dropdown menu */
+    --dropdown-padding: 0.2em 0.5em; /* Padding for the dropdown menu */
 }
 
 /* Preloader background */
@@ -27,7 +34,7 @@
     align-items: center;
     height: 100vh;
     width: 100vw;
-    background: var(--preloader-bg);
+    background: var(--bg-color);
     z-index: 1000; /* Ensure preloader is above other elements */
 }
 
@@ -38,9 +45,9 @@
     top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 2rem;
+    font-size: var(--preloader-font-size);
     color: var(--spinner-color);
-    font-family: 'Anton', sans-serif;
+    font-family: var(--font-family);
 }
 
 /* Preloader spinner */
@@ -54,7 +61,7 @@
     width: var(--spinner-size);
     margin: calc(-1 * var(--spinner-size) / 2);
     border: 4px var(--spinner-border-color) solid;
-    border-top: 4px var(--spinner-color) solid;
+    border-top: 4px var(--main-color) solid;
     border-radius: 50%;
     animation: spinning 1s infinite linear;
 }
@@ -107,29 +114,6 @@ nav {
     margin: var(--logo-margin);
     width: auto;
 }
-
-/* Name Container */
-/* .logo-text {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-} */
-
-/* Large Name */
-/* .logo-text > div:first-of-type,
-.logo-text > div:last-of-type {
-    font-family: var(--font-family);
-    font-size: var(--main-font-size);
-    color: var(--main-color);
-    height: var(--main-name-height);
-} */
-
-/* Larger font size for the main name */
-/* .logo-text > div:first-of-type {
-    font-size: var(--large-font-size);
-    height: var(--large-name-height);
-} */
 
 /* Main Content */
 main {
@@ -192,7 +176,7 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 3rem;
+    font-size: var(--glass-font-size);
     font-family: var(--font-family);
     position: absolute;
     width: 100%;
@@ -228,7 +212,7 @@ main {
     transition: all 0.3s ease-in-out;
 }
 
-/* Menu with Start Game Button */
+/* Card with Start Game Button */
 .game-mode-menu {
     position: absolute;
     top: 20%;
@@ -245,7 +229,7 @@ main {
     transition: all 0.2s ease-in-out;
 }
 
-/* PvP Menu and PvC Menu with Start Game Button */
+/* PvP Card and PvC Card with Start Game Button */
 .menu-pvp.active {
     left: -100%;
     transition: all 0.2s ease-in-out;
@@ -261,17 +245,19 @@ main {
     transition: all 0.2s ease-in-out;
 }
 
+/* Game Mode Menu */
 .game-mode-player,
 .game-mode-computer {
     width: 100%;
     height: 100%;
-    font-size: 2rem;
+    font-size: var(--cards-font-size);
     font-family: var(--font-family);
     display: flex;
     justify-content: space-around;
     align-items: center;
 }
 
+/* Title and Switch under X and O img */
 .player-info,
 .player-options {
     display: flex;
@@ -282,7 +268,7 @@ main {
     border-radius: 5px;
 }
 
-/* Mid Section */
+/* Divider between X and O img */
 .vs-divider {
     display: grid;
     grid-template-rows: repeat(3, 1fr);
@@ -290,22 +276,19 @@ main {
     align-items: center;
 }
 
+/* Divider inside PvP card */
 .game-mode-player > .vs-divider > div:first-of-type {
     grid-row: 2;
 }
 
-.btn-wrapper {
-    grid-row: 3;
-}
-
-/* Img Styles */
+/* X and O images */
 .player-img {
-    height: 15rem;
-    width: 14rem;
+    height: var(--img-height);
+    width: var(--img-width);
     border-radius: 5px 5px 0 0;
 }
 
-/* Button Styles */
+/* Button Switch Styles */
 .player-buttons {
     position: relative;
     display: flex;
@@ -317,8 +300,8 @@ main {
     text-align: center;
     z-index: 1;
     cursor: pointer;
-    font-size: 1.4rem;
-    margin: 0.3rem 0;
+    font-size: var(--switch-font-size);
+    margin: var(--switch-margin);
 }
 
 #btn,
@@ -327,7 +310,7 @@ main {
     left: 0;
     height: 100%;
     width: 50%;
-    background: #9DC88D;
+    background: var(--main-color);
     transition: .5s;
     border-radius: 0 0 5px 5px;
 }
@@ -336,11 +319,16 @@ main {
     left: 50%;
 }
 
+/* Start Game Button */
+.btn-wrapper {
+    grid-row: 3;
+}
+
 .btn {
     position: relative;
     display: inline-block;
     letter-spacing: 1.2px;
-    padding: 0.625rem 1.438rem;
+    padding: var(--start-button-padding);
     text-align: center;
     text-transform: uppercase;
     overflow: hidden;
@@ -353,7 +341,7 @@ main {
 
 .btn--primary {
     color: black;
-    font-size: 1.6rem;
+    font-size: var(--start-button-font-size);
     font-family: var(--font-family);
 }
 
@@ -400,8 +388,8 @@ main {
 
 /* Dropdown Styles */
 .dropdown {
-    width: 11.051rem;
-    font-size: 1.6rem;
+    width: var(--dropdown-width);
+    font-size: var(--dropdown-font-size);
     font-family: var(--font-family);
     position: relative;
     grid-row: 1;
@@ -421,7 +409,7 @@ main {
     align-items: center;
     border: 2px #2a2f3b solid;
     border-radius: 10px;
-    padding: 0.625rem 1.438rem;
+    padding: var(--dropdown-select-padding);
     cursor: pointer;
     transition: background 0.3s;
 }
@@ -443,7 +431,7 @@ main {
     height: 0;
     border-left: 5px solid transparent;
     border-right: 5px solid transparent;
-    border-top: 6px solid #fff;
+    border-top: 6px solid var(--main-color);
     transition: 0.3s;
 }
   
@@ -455,7 +443,7 @@ main {
 /* Dropdown Menu Styles */
 .menu {
     list-style: none;
-    padding: 0.2em 0.5em;
+    padding: var(--dropdown-padding);
     background: #323741;
     border: 1px #363a43 solid;
     box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.2);
@@ -474,7 +462,7 @@ main {
   
 /* Dropdown Menu Item Styles */
 .menu li {
-    padding: 0.2em 0.5em;
+    padding: var(--dropdown-padding);
     margin: 0.3em 0;
     border-radius: 0.5em;
     cursor: pointer;

@@ -1,3 +1,16 @@
+// Module to handle preloader
+const preloader = (() => {
+    // Grab preloader and spinner elements
+    const preloader = document.getElementById('preloader');
+    const spinner = document.getElementById('spinner');
+
+    // Add 'loader' class to preloader and spinner after window load
+    window.addEventListener('load', () => {
+        preloader.classList.add('loader');
+        spinner.classList.add('loader');
+    });
+})();
+
 // Module for toggling between menus
 const menuToggle = (() => {
     // DOM elements
@@ -30,25 +43,7 @@ const menuToggle = (() => {
     });
 })();
 
-// Module to add current year to footer
-const addCurrentYear = (() => {
-    document.getElementById("year").innerHTML = new Date().getFullYear();
-})();
-
-// Module to handle preloader
-const preloader = (() => {
-    // Grab preloader and spinner elements
-    const preloader = document.getElementById('preloader');
-    const spinner = document.getElementById('spinner');
-
-    // Add 'loader' class to preloader and spinner after window load
-    window.addEventListener('load', () => {
-        preloader.classList.add('loader');
-        spinner.classList.add('loader');
-    });
-})();
-
-// Module for toggle button
+// Module for switch button Player or Computer
 const toggleButton = (() => {
     // DOM elements
     const btn = document.getElementById('btn');
@@ -85,86 +80,7 @@ const toggleButton = (() => {
     });
 })();
 
-// Module to handle query
-const handleQuery = (() => {
-    // DOM elements
-    const logoImg = document.querySelector('.logo');
-    const nav = document.querySelector('nav');
-    const footer = document.querySelector('footer');
-
-    // Run on window resize
-    window.addEventListener('resize', () => {
-        if (logoImg.clientHeight > nav.clientHeight) {
-            // Update nav and footer heights based on logo_img height
-            nav.style.height = 'fit-content';
-            const navHeight = nav.clientHeight;
-            footer.style.height = `${navHeight}px`;
-        }
-    });
-
-    // Run on window load
-    window.addEventListener('load', () => {
-        if (logoImg.clientHeight > nav.clientHeight) {
-            // Update nav and footer heights based on logo_img height
-            nav.style.height = 'fit-content';
-            const navHeight = nav.clientHeight;
-            footer.style.height = `${navHeight}px`;
-        }
-    });
-})();
-
-// Module to resize dropdown
-const ResponsiveDropdownSizer = (() => {
-    // DOM elements
-    const dropdown = document.querySelector('.dropdown');
-    const btn_wrapper = document.querySelector('.btn-wrapper');
-
-    // Run on window resize
-    window.addEventListener('resize', () => {
-        // Update dropdown width based on btn-wrapper width
-        dropdown.style.width = `${btn_wrapper.clientWidth}px`;
-    });
-
-    // Run on window load
-    window.addEventListener('load', () => {
-        // Update dropdown width based on btn-wrapper width
-        dropdown.style.width = `${btn_wrapper.clientWidth}px`;
-    });
-})();
-
-// Module to resize both menus
-const resizeMenus = (() => {
-    // DOM elements
-    const menu_pvp = document.querySelector('.menu-pvp');
-    const menu_pvc = document.querySelector('.menu-pvc');
-    const card = document.getElementById('card');
-    const vs_divider = document.querySelector('.vd-divider');
-
-    // Run on window resize
-    window.addEventListener('resize', () => {
-        if (card.clientHeight > menu_pvp.clientHeight || card.clientHeight > menu_pvc.clientHeight) {
-            // Calculate new heights and update menu positions
-            const cardHeight = card.clientHeight + 5;
-            menu_pvp.style.height = `${cardHeight}px`;
-            menu_pvp.style.top = `calc(50% - ${cardHeight / 2}px)`;
-            menu_pvc.style.height = `${cardHeight}px`;
-            menu_pvc.style.top = `calc(50% - ${cardHeight / 2}px)`;
-        }
-    });
-
-    // Run on window load
-    window.addEventListener('load', () => {
-        if (card.clientHeight > menu_pvp.clientHeight || card.clientHeight > menu_pvc.clientHeight) {
-            // Calculate new heights and update menu positions
-            const cardHeight = card.clientHeight + 5;
-            menu_pvp.style.height = `${cardHeight}px`;
-            menu_pvp.style.top = `calc(50% - ${cardHeight / 2}px)`;
-            menu_pvc.style.height = `${cardHeight}px`;
-            menu_pvc.style.top = `calc(50% - ${cardHeight / 2}px)`;
-        }
-    });
-})();
-
+// Module to initialize dropdown
 const initializeDropdown = (() => {
     // Get all dropdown elements with the class 'dropdown'
     const dropdowns = document.querySelectorAll('.dropdown');
@@ -203,6 +119,91 @@ const initializeDropdown = (() => {
         option.classList.add('active');
         });
     });
+    });
+})();
+
+// Module to add current year to footer
+const addCurrentYear = (() => {
+    document.getElementById("year").innerHTML = new Date().getFullYear();
+})();
+
+// Module to handle query for navbar and footer
+const handleQuery = (() => {
+    // DOM elements
+    const logoImg = document.querySelector('.logo');
+    const nav = document.querySelector('nav');
+    const footer = document.querySelector('footer');
+
+    // Run on window resize
+    window.addEventListener('resize', () => {
+        if (logoImg.clientHeight > nav.clientHeight) {
+            // Update nav and footer heights based on logo_img height
+            nav.style.height = 'fit-content';
+            const navHeight = nav.clientHeight;
+            footer.style.height = `${navHeight}px`;
+        }
+    });
+
+    // Run on window load
+    window.addEventListener('load', () => {
+        if (logoImg.clientHeight > nav.clientHeight) {
+            // Update nav and footer heights based on logo_img height
+            nav.style.height = 'fit-content';
+            const navHeight = nav.clientHeight;
+            footer.style.height = `${navHeight}px`;
+        }
+    });
+})();
+
+// Module to resize dropdown to match start button width
+const ResponsiveDropdownSizer = (() => {
+    // DOM elements
+    const dropdown = document.querySelector('.dropdown');
+    const btn_wrapper = document.querySelector('.btn-wrapper');
+
+    // Run on window resize
+    window.addEventListener('resize', () => {
+        // Update dropdown width based on btn-wrapper width
+        dropdown.style.width = `${btn_wrapper.clientWidth}px`;
+    });
+
+    // Run on window load
+    window.addEventListener('load', () => {
+        // Update dropdown width based on btn-wrapper width
+        dropdown.style.width = `${btn_wrapper.clientWidth}px`;
+    });
+})();
+
+// Module to resize both menus with start button
+const resizeMenus = (() => {
+    // DOM elements
+    const menu_pvp = document.querySelector('.menu-pvp');
+    const menu_pvc = document.querySelector('.menu-pvc');
+    const card = document.getElementById('card');
+    const vs_divider = document.querySelector('.vd-divider');
+
+    // Run on window resize
+    window.addEventListener('resize', () => {
+        if (card.clientHeight > menu_pvp.clientHeight || card.clientHeight > menu_pvc.clientHeight) {
+            // Calculate new heights and update menu positions
+            const cardHeight = card.clientHeight + 5;
+            menu_pvp.style.height = `${cardHeight}px`;
+            menu_pvp.style.top = `calc(50% - ${cardHeight / 2}px)`;
+            menu_pvc.style.height = `${cardHeight}px`;
+            menu_pvc.style.top = `calc(50% - ${cardHeight / 2}px)`;
+        }
+    });
+
+    // Run on window load
+    window.addEventListener('load', () => {
+        if (card.clientHeight > menu_pvp.clientHeight || card.clientHeight > menu_pvc.clientHeight) {
+            // Calculate new heights and update menu positions
+            const cardHeight = card.clientHeight + 5;
+            menu_pvp.style.height = `${cardHeight}px`;
+            menu_pvp.style.top = `calc(50% - ${cardHeight / 2}px)`;
+            menu_pvc.style.height = `${cardHeight}px`;
+            menu_pvc.style.top = `calc(50% - ${cardHeight / 2}px)`;
+        }
     });
 })();
 
