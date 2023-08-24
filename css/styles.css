@@ -265,7 +265,7 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: whitesmoke;
+    background-color: #6B6E70;
     border-radius: 5px;
 }
 
@@ -478,12 +478,52 @@ main {
 .dropdown .active {
     background: #23242a;
 }
-  
+
 /* Menu open styles */
 .menu-open {
     display: block;
     opacity: 1;
-}  
+}
+
+/* Game board styling */
+.board {
+    display: none;
+    height: 80vh;
+    width: 100vw;
+    background-color: var(--bg-color);
+}
+
+.board-grid {
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 14rem);
+    grid-template-rows: repeat(3, 14rem);
+    gap: 1rem 1rem;
+    align-content: center;
+    justify-content: center;
+    margin: 0 1rem;
+}
+
+.card {
+    background-color: #474B4F;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+.card:hover {
+    /* background-color: #2a2d35; */
+    transform: scale(1.05);
+    transition: all 0.3s ease;
+}
+
+.card > img {
+    width: 80%;
+    height: auto;
+}
 
 /* Footer */
 footer {
@@ -557,14 +597,6 @@ a {
     color: #fff;
 }
 
-/* Game board styling */
-.board {
-    display: none;
-    height: 80vh;
-    width: 100vw;
-    background-color: var(--bg-color);
-}
-
 /* media queries */
 @media screen and (max-width: 1500px) {
     html {
@@ -592,5 +624,10 @@ a {
 @media screen and (max-width: 600px) {
     html {
         font-size: 55%;
+    }
+
+    .board-grid {
+        grid-template-columns: repeat(3, 9rem);
+        grid-template-rows: repeat(3, 9rem);
     }
 }
