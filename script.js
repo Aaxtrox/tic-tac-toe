@@ -226,6 +226,20 @@ const showBoard = (() => {
     });
 })();
 
+// Prevent refresh when board has display block
+const preventRefresh = (() => {
+    // DOM elements
+    const board = document.querySelector('.board');
+
+    // Prevent refresh when board is displayed
+    window.addEventListener('beforeunload', (e) => {
+        if (board.style.display === 'block') {
+            e.preventDefault();
+            e.returnValue = '';
+        }
+    });
+})();
+
 // Run all modules
 menuToggle;
 addCurrentYear;
@@ -236,3 +250,4 @@ resizeMenus;
 initializeDropdown;
 ResponsiveDropdownSizer;
 showBoard;
+preventRefresh;
