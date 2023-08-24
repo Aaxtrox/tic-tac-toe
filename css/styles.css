@@ -635,8 +635,8 @@ a {
 
 @media screen and (max-height: 900px) {
     .board-grid {
-        grid-template-columns: repeat(3, 10rem);
-        grid-template-rows: repeat(3, 10rem);
+        grid-template-columns: repeat(3, 11rem);
+        grid-template-rows: repeat(3, 11rem);
     }
 }
 
