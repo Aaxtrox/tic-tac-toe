@@ -486,6 +486,8 @@ main {
 }
 
 /* Game board styling */
+
+/* Styles for the game board container */
 .board {
     display: none;
     height: 80vh;
@@ -493,6 +495,7 @@ main {
     background-color: var(--bg-color);
 }
 
+/* Styles for the game grid within the board */
 .board-grid {
     height: 100%;
     display: grid;
@@ -504,6 +507,7 @@ main {
     margin: 0 1rem;
 }
 
+/* Styles for individual game squares (cards) */
 .card {
     background-color: #474B4F;
     border-radius: 10px;
@@ -514,15 +518,17 @@ main {
     cursor: pointer;
 }
 
+/* Hover effect for game cards */
 .card:hover {
     /* background-color: #2a2d35; */
     transform: scale(1.05);
     transition: all 0.3s ease;
 }
 
+/* Styling for images inside game cards */
 .card > img {
-    width: 80%;
-    height: auto;
+    width: auto;
+    height: 60%;
 }
 
 /* Footer */
@@ -625,9 +631,17 @@ a {
     html {
         font-size: 55%;
     }
+}
 
+@media screen and (max-height: 900px) {
     .board-grid {
-        grid-template-columns: repeat(3, 9rem);
-        grid-template-rows: repeat(3, 9rem);
+        grid-template-columns: repeat(3, 10rem);
+        grid-template-rows: repeat(3, 10rem);
+    }
+}
+
+@media screen and (max-height: 650px) {
+    .board {
+        height: fit-content;
     }
 }

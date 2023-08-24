@@ -240,30 +240,6 @@ const preventRefresh = (() => {
     });
 })();
 
-// Module to handle query for board grid
-const handleQueryBoard = (() => {
-    // if sum of 3 card heights and 2r gaps is greater than board height, change board height to fit content and add 1 rem margin to top and bottom
-    // DOM elements
-    const board = document.querySelector('.board');
-    const card = document.getElementById('card');
-
-    // on window resize
-    window.addEventListener('resize', () => {
-        if (card.clientHeight * 3 + 2 > board.clientHeight) {
-            board.style.height = 'fit-content';
-            board.style.margin = '1rem 0';
-        }
-    });
-
-    // on window load
-    window.addEventListener('load', () => {
-        if (card.clientHeight * 3 + 2 > board.clientHeight) {
-            board.style.height = 'fit-content';
-            board.style.margin = '1rem 0';
-        }
-    });
-})();
-
 // Run all modules
 menuToggle;
 addCurrentYear;
@@ -275,4 +251,3 @@ initializeDropdown;
 ResponsiveDropdownSizer;
 showBoard;
 preventRefresh;
-handleQueryBoard;
