@@ -240,21 +240,21 @@ const preventRefresh = (() => {
     });
 })();
 
-// Prevent selection of cards
-const preventSelection = (() => {
-    // Get all card elements
-    const cards = document.querySelectorAll('.card');
+// // Prevent selection of cards
+// const preventSelection = (() => {
+//     // Get all card elements
+//     const cards = document.querySelectorAll('.card');
 
-    // Prevent selection by touching or clicking
-    cards.forEach(card => {
-        card.addEventListener('touchstart', (e) => {
-            e.preventDefault();
-        });
-        card.addEventListener('mousedown', (e) => {
-            e.preventDefault();
-        });
-    });
-})();
+//     // Prevent selection by touching or clicking
+//     cards.forEach(card => {
+//         card.addEventListener('touchstart', (e) => {
+//             e.preventDefault();
+//         });
+//         card.addEventListener('mousedown', (e) => {
+//             e.preventDefault();
+//         });
+//     });
+// })();
 
 // Initialize card flipping functionality
 const cardsFlip = (() => {
@@ -293,5 +293,5 @@ initializeDropdown;
 ResponsiveDropdownSizer;
 showBoard;
 preventRefresh;
-preventSelection;
+// preventSelection;
 cardsFlip;
