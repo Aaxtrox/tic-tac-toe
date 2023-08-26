@@ -240,6 +240,32 @@ const preventRefresh = (() => {
     });
 })();
 
+// Initialize card flipping functionality
+const cardsFlip = (() => {
+    // Get all card elements
+    const cards = document.querySelectorAll('.card');
+
+    // Add click event listener to each card
+    cards.forEach(card => {
+        // Find the front and back of the card
+        const front = card.querySelector('.front');
+        const back = card.querySelector('.back');
+        // Initialize a flag to track if the card is flipped
+        let isFlipped = false;
+
+        // Toggle card when clicked
+        card.addEventListener('click', () => {
+            // Check if the card is not already flipped
+            if (!isFlipped) {
+            front.classList.toggle('active');
+            back.classList.toggle('active');
+            // Set the flag to true to indicate that the card is flipped
+            isFlipped = true;
+            }
+        });
+    });
+})();
+
 // Run all modules
 menuToggle;
 addCurrentYear;
@@ -251,3 +277,4 @@ initializeDropdown;
 ResponsiveDropdownSizer;
 showBoard;
 preventRefresh;
+cardsFlip;

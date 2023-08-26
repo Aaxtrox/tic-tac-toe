@@ -507,28 +507,62 @@ main {
     margin: 0 1rem;
 }
 
-/* Styles for individual game squares (cards) */
+/* Card Flip Animation Styles */
+
+/* Center and style the card container */
 .card {
-    background-color: #474B4F;
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.2);
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     cursor: pointer;
 }
 
-/* Hover effect for game cards */
-.card:hover {
-    /* background-color: #2a2d35; */
-    transform: scale(1.05);
-    transition: all 0.3s ease;
+/* Styling for both front and back sides of the card */
+.front, .back {
+    background-color: #474B4F;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    backface-visibility: hidden;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.6s linear; /* Smooth flip animation */
+    border-radius: 10px;
 }
 
-/* Styling for images inside game cards */
-.card > img {
-    width: auto;
-    height: 60%;
+/* Styling for images on the front of the card */
+.front img {
+    height: auto;
+    width: 90%;
+}
+
+/* Styling for images on the back of the card */
+.back img {
+    height: 100%;
+    width: 100%;
+}
+
+/* Initial state of the front side (not flipped) */
+.front {
+    transform: perspective(600px) rotateY(0deg);
+}
+
+/* Initial state of the back side (flipped) */
+.back {
+    transform: perspective(600px) rotateY(180deg);
+}
+
+/* Styles for the front side when it's active (flipped) */
+.front.active {
+    transform: perspective(600px) rotateY(-180deg); /* Show the back side */
+}
+
+/* Styles for the back side when it's active (flipped) */
+.back.active {
+    transform: perspective(600px) rotateY(0deg); /* Show the front side */
 }
 
 /* Footer */
