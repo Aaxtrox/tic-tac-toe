@@ -64,12 +64,14 @@ const toggleButton = (() => {
     // When rightClick is clicked, shift btn to the right and bring btn1 to the left
     rightClick.addEventListener('click', () => {
         btn.style.left = '50%';
+        btn.classList.add('active');
         btn1.style.left = '0';
     });
 
     // When leftClick1 is clicked, reposition btn to the right and adjust btn1 to the left
     leftClick1.addEventListener('click', () => {
         btn.style.left = '50%';
+        btn.classList.add('active');
         btn1.style.left = '0';
     });
 
@@ -282,6 +284,66 @@ const cardsFlip = (() => {
     });
 })();
 
+// Wrap Code in a Self-Executing Function
+const gameStart = (() => {
+    // Retrieve DOM elements for the PvP and PvC buttons.
+    const pvpBtn = document.getElementById('pvp-btn');
+    const pvcBtn = document.getElementById('pvc-btn');
+
+    let game = ''; // Initialize a variable to store the selected game mode.
+
+    // Add a click event listener to the "PvP" button.
+    pvpBtn.addEventListener('click', () => {
+        game = 'pvp'; // Set the game mode to Player vs. Player.
+        gameMode(game); // Call the gameMode function with the 'pvp' mode.
+    });
+
+    // Add a click event listener to the "PvC" button.
+    pvcBtn.addEventListener('click', () => {
+        game = 'pvc'; // Set the game mode to Player vs. Computer.
+        gameMode(game); // Call the gameMode function with the 'pvc' mode.
+    });
+})();
+
+
+// Define a function called gameMode that takes a game mode ('pvc' or 'other') as an argument.
+const gameMode = (game) => {
+    // Retrieve DOM elements for 'li' elements and the 'btn' element.
+    const li = document.querySelectorAll('li');
+    const btn = document.getElementById('btn');
+
+    let gameLevel = ''; // Initialize a variable to store the game level.
+    let gamePlayer = ''; // Initialize a variable to store the player's symbol ('X' or 'O').
+    let gameComputer = ''; // Initialize a variable to store the computer's symbol ('X' or 'O').
+
+    // Check if the selected game mode is 'pvc' (Player vs. Computer).
+    if (game === 'pvc') {
+        // Iterate through each 'li' element to find the one with the 'active' class.
+        li.forEach(li => {
+            if (li.classList.contains('active')) {
+                gameLevel = li.textContent; // Set the game level based on the 'active' 'li'.
+            }
+        });
+
+        // Determine the player's and computer's symbols based on the 'btn' class.
+        if (btn.classList.contains('active')) {
+            gamePlayer = 'O';
+            gameComputer = 'X';
+        } else if (!btn.classList.contains('active')) {
+            gamePlayer = 'X';
+            gameComputer = 'O';
+        }
+
+        // Return an object containing the game data.
+        return {
+            game,
+            gameLevel,
+            gamePlayer,
+            gameComputer
+        };
+    }
+};
+
 // Run all modules
 menuToggle;
 addCurrentYear;
@@ -295,3 +357,4 @@ showBoard;
 preventRefresh;
 // preventSelection;
 cardsFlip;
+gameStart;
