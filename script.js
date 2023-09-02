@@ -344,6 +344,39 @@ const gameMode = (game) => {
     }
 };
 
+// Define the pvpGame function
+const pvpGame = (() => {
+    // Select DOM elements
+    const cards = document.querySelectorAll('.card');
+    const backs = document.querySelectorAll('.back img');
+    const fronts = document.querySelectorAll('.front');
+    
+    let playerTurn = 1; // Initialize player's turn to Player 1
+    
+    // Add a click event listener to each card
+    cards.forEach((card, index) => {
+        card.addEventListener('click', () => {
+            if (!card.classList.contains('active')) {
+                // Mark the clicked card and its front as active
+                card.classList.add('active');
+                fronts[index].classList.add('active');
+                
+                // Count active front cards
+                const activeFronts = document.querySelectorAll('.front.active');
+                
+                // Determine player's turn and change the back image
+                if (activeFronts.length % 2 !== 0) {
+                    playerTurn = 2; // Odd active fronts, Player 2's turn
+                    backs[index].src = 'img/x.png'; // Change back image to '0.png'
+                } else {
+                    playerTurn = 1; // Even active fronts, Player 1's turn
+                    backs[index].src = 'img/0.png'; // Change back image to 'x.png'
+                }
+            }
+        });
+    });
+})();
+
 // Run all modules
 menuToggle;
 addCurrentYear;
@@ -358,3 +391,4 @@ preventRefresh;
 // preventSelection;
 cardsFlip;
 gameStart;
+pvpGame;
