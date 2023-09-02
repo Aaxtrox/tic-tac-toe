@@ -242,21 +242,25 @@ const preventRefresh = (() => {
     });
 })();
 
-// // Prevent selection of cards
-// const preventSelection = (() => {
-//     // Get all card elements
-//     const cards = document.querySelectorAll('.card');
+// Prevent text selection on cards
+const preventTextSelection = (() => {
+    // Get all card elements
+    const cards = document.querySelectorAll('.card');
 
-//     // Prevent selection by touching or clicking
-//     cards.forEach(card => {
-//         card.addEventListener('touchstart', (e) => {
-//             e.preventDefault();
-//         });
-//         card.addEventListener('mousedown', (e) => {
-//             e.preventDefault();
-//         });
-//     });
-// })();
+    // Prevent text selection by touching or clicking
+    cards.forEach(card => {
+        card.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+        });
+        card.addEventListener('mousedown', (e) => {
+            // Only prevent text selection if the click is not on an <img> element
+            if (!e.target.tagName || e.target.tagName.toLowerCase() !== 'img') {
+                e.preventDefault();
+            }
+        });
+    });
+})();
+
 
 // Initialize card flipping functionality
 const cardsFlip = (() => {
