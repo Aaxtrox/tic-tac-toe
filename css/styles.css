@@ -495,7 +495,7 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 3rem;
+    font-size: 2rem;
     font-family: var(--font-family);
     color: var(--main-color);
 }
@@ -538,8 +538,8 @@ main {
 .card-grid {
     height: 100%;
     display: grid;
-    grid-template-columns: repeat(3, 14rem);
-    grid-template-rows: repeat(3, 14rem);
+    /* grid-template-columns: repeat(3, 14rem);
+    grid-template-rows: repeat(3, 14rem); */
     gap: 1rem 1rem;
     align-content: center;
     justify-content: center;

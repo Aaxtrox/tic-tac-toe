@@ -378,6 +378,49 @@ const pvcGame = (() => {
     // do nothing
 });
 
+// Module to handle responsive behavior of the card grid within the board
+const boardResponsive = (() => {
+    // Select the .board and .card-grid elements
+    const board = document.querySelector('.board');
+    const card_grid = document.querySelector('.card-grid');
+
+    // Get the font size in rem units
+    const rem = parseFloat(getComputedStyle(document.documentElement).fontSize);
+
+    // Define a function to calculate and set the card grid height
+    const heightCalc = () => {
+        // Get the current height of the card grid
+        const gridHeight = card_grid.clientHeight;
+
+        // Calculate the desired height for each card (assuming a 3x3 grid)
+        const cardHeight = (gridHeight / 3) - (2 * rem);
+
+        // Set the grid template rows and columns based on the calculated card height
+        card_grid.style.gridTemplateRows = `repeat(3, ${cardHeight}px)`;
+        card_grid.style.gridTemplateColumns = `repeat(3, ${cardHeight}px)`;
+    };
+
+    // Define a function to check if the board is displayed as a block
+    const checkDisplay = () => {
+        // Get the computed style of the .board element to check its display property
+        const boardDisplayStyle = getComputedStyle(board).display;
+
+        // If the board is displayed as 'block', call the heightCalc function
+        if (boardDisplayStyle === 'block') {
+            heightCalc();
+        }
+    };
+
+    // Create a ResizeObserver to monitor changes in the .board element
+    const observer = new ResizeObserver(checkDisplay);
+
+    // Start observing the .board element for changes in its dimensions
+    observer.observe(board);
+
+    // Call the heightCalc function initially to set the initial grid template
+    heightCalc();
+})();
+
 // Run all modules
 menuToggle;
 addCurrentYear;
@@ -391,3 +434,4 @@ showBoard;
 preventRefresh;
 cardsFlip;
 gameStart;
+boardResponsive;
