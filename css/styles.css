@@ -490,6 +490,29 @@ main {
 
 /* Game board styling */
 
+/* Center and style the game information */
+.game-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    font-family: var(--font-family);
+    color: var(--main-color);
+}
+
+/* Display player move information */
+.player1-move,
+.player2-move {
+    display: block;
+}
+
+/* Hide inactive player move information */
+.player1-move.active,
+.player2-move.active {
+    display: none;
+}
+
+
 /* Styles for the game board container */
 .board {
     display: none;
