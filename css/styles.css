@@ -294,6 +294,9 @@ main {
     position: relative;
     display: flex;
     width: 100%;
+    /* Add CSS to disable tap highlight effect on the cards */
+    -webkit-tap-highlight-color: transparent; /* For iOS */
+    -tap-highlight-color: transparent; /* For Android */
 }
 
 .button {
@@ -516,6 +519,9 @@ main {
     left: 50%;
     transform: translate(-50%, -50%);
     cursor: pointer;
+    /* Add CSS to disable tap highlight effect on the cards */
+    -webkit-tap-highlight-color: transparent; /* For iOS */
+    -tap-highlight-color: transparent; /* For Android */
 }
 
 /* Styling for both front and back sides of the card */

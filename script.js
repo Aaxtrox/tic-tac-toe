@@ -242,26 +242,6 @@ const preventRefresh = (() => {
     });
 })();
 
-// Prevent text selection on cards
-const preventTextSelection = (() => {
-    // Get all card elements
-    const cards = document.querySelectorAll('.card');
-
-    // Prevent text selection by touching or clicking
-    cards.forEach(card => {
-        card.addEventListener('touchstart', (e) => {
-            e.preventDefault();
-        });
-        card.addEventListener('mousedown', (e) => {
-            // Only prevent text selection if the click is not on an <img> element
-            if (!e.target.tagName || e.target.tagName.toLowerCase() !== 'img') {
-                e.preventDefault();
-            }
-        });
-    });
-})();
-
-
 // Initialize card flipping functionality
 const cardsFlip = (() => {
     // Get all card elements
@@ -392,7 +372,6 @@ initializeDropdown;
 ResponsiveDropdownSizer;
 showBoard;
 preventRefresh;
-// preventSelection;
 cardsFlip;
 gameStart;
 pvpGame;
