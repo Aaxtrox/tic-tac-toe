@@ -290,7 +290,7 @@ const gameStart = (() => {
 })();
 
 
-// Define a function called gameMode that takes a game mode ('pvc' or 'other') as an argument.
+// Define a function called gameMode that takes a game mode ('pvc' or 'pvp') as an argument.
 const gameMode = (game) => {
     // Retrieve DOM elements for 'li' elements and the 'btn' element.
     const li = document.querySelectorAll('li');
@@ -318,18 +318,25 @@ const gameMode = (game) => {
             gameComputer = 'O';
         }
 
-        // Return an object containing the game data.
-        return {
+        // Create an object containing the game data.
+        const gameData = {
             game,
             gameLevel,
             gamePlayer,
             gameComputer
         };
+
+        // Call the pvcGame module and pass the game data to it.
+        pvcGame(gameData);
+
+    } else if (game == 'pvp') {
+        // Call the pvpGame module when the game mode is 'pvp'.
+        pvpGame();
     }
 };
 
 // Define the pvpGame function
-const pvpGame = (() => {
+const pvpGame = () => {
     // Select DOM elements
     const cards = document.querySelectorAll('.card');
     const backs = document.querySelectorAll('.back img');
@@ -359,7 +366,11 @@ const pvpGame = (() => {
             }
         });
     });
-})();
+};
+
+const pvcGame = (() => {
+    // do nothing
+});
 
 // Run all modules
 menuToggle;
@@ -374,4 +385,3 @@ showBoard;
 preventRefresh;
 cardsFlip;
 gameStart;
-pvpGame;
