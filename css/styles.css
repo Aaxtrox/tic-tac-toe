@@ -501,15 +501,19 @@ main {
 }
 
 /* Display player move information */
-.player1-move,
-.player2-move {
+.player1-move {
     display: block;
+}
+.player2-move {
+    display: none;
 }
 
 /* Hide inactive player move information */
-.player1-move.active,
-.player2-move.active {
+.player1-move.active {
     display: none;
+}
+.player2-move.active {
+    display: block;
 }
 
 

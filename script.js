@@ -341,6 +341,8 @@ const pvpGame = () => {
     const cards = document.querySelectorAll('.card');
     const backs = document.querySelectorAll('.back img');
     const fronts = document.querySelectorAll('.front');
+    const player1_move = document.querySelector('.player1-move');
+    const player2_move = document.querySelector('.player2-move');
     
     let playerTurn = 1; // Initialize player's turn to Player 1
     
@@ -359,9 +361,13 @@ const pvpGame = () => {
                 if (activeFronts.length % 2 !== 0) {
                     playerTurn = 2; // Odd active fronts, Player 2's turn
                     backs[index].src = 'img/x.png'; // Change back image to '0.png'
+                    player1_move.classList.add('active'); // Remove 'active' class from Player 1's move
+                    player2_move.classList.add('active'); // Add 'active' class to Player 2's move
                 } else {
                     playerTurn = 1; // Even active fronts, Player 1's turn
                     backs[index].src = 'img/0.png'; // Change back image to 'x.png'
+                    player2_move.classList.remove('active'); // Remove 'active' class from Player 2's move
+                    player1_move.classList.remove('active'); // Add 'active' class to Player 1's move
                 }
             }
         });
