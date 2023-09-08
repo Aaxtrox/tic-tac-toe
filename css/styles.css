@@ -498,8 +498,17 @@ main {
     background-color: var(--bg-color);
 }
 
-/* Styles for the game grid within the board */
 .board-grid {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-rows: 1fr 5fr;
+    align-content: center;
+    justify-content: center;
+}
+
+/* Styles for the game grid within the board */
+.card-grid {
     height: 100%;
     display: grid;
     grid-template-columns: repeat(3, 14rem);
@@ -670,18 +679,5 @@ a {
 @media screen and (max-width: 600px) {
     html {
         font-size: 55%;
-    }
-}
-
-@media screen and (max-height: 900px) {
-    .board-grid {
-        grid-template-columns: repeat(3, 11rem);
-        grid-template-rows: repeat(3, 11rem);
-    }
-}
-
-@media screen and (max-height: 650px) {
-    .board {
-        height: fit-content;
     }
 }
