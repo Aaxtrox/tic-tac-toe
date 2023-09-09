@@ -383,12 +383,15 @@ const boardResponsive = (() => {
     // Select the .board and .card-grid elements
     const board = document.querySelector('.board');
     const card_grid = document.querySelector('.card-grid');
+    const board_grid = document.querySelector('.board-grid');
 
     // Get the font size in rem units
     const rem = parseFloat(getComputedStyle(document.documentElement).fontSize);
 
     // Define a function to calculate and set the card grid height
     const heightCalc = () => {
+        // Get the current width of the board grid
+        const gridWidth = board_grid.clientWidth;
         // Get the current height of the card grid
         const gridHeight = card_grid.clientHeight;
 
@@ -398,6 +401,13 @@ const boardResponsive = (() => {
         // Set the grid template rows and columns based on the calculated card height
         card_grid.style.gridTemplateRows = `repeat(3, ${cardHeight}px)`;
         card_grid.style.gridTemplateColumns = `repeat(3, ${cardHeight}px)`;
+
+        // if card-grid is bigger than board-grid, calculate desire width for each card (assuming a 3x3 grid)
+        if (gridWidth < card_grid.clientWidth) {
+            const cardWidth = (gridWidth / 3) - (2 * rem);
+            card_grid.style.gridTemplateRows = `repeat(3, ${cardWidth}px)`;
+            card_grid.style.gridTemplateColumns = `repeat(3, ${cardWidth}px)`;
+        }
     };
 
     // Define a function to check if the board is displayed as a block

@@ -538,8 +538,6 @@ main {
 .card-grid {
     height: 100%;
     display: grid;
-    /* grid-template-columns: repeat(3, 14rem);
-    grid-template-rows: repeat(3, 14rem); */
     gap: 1rem 1rem;
     align-content: center;
     justify-content: center;
