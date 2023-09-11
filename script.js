@@ -345,6 +345,12 @@ const pvpGame = () => {
     const player2_move = document.querySelector('.player2-move');
     
     let playerTurn = 1; // Initialize player's turn to Player 1
+    let flippedCards = new Array(9).fill(null); // Array to store flipped card values
+    
+    // Function to determine the value based on img src
+    const determineValue = (src) => {
+        return src.endsWith('x.png') ? 'X' : '0';
+    };
     
     // Add a click event listener to each card
     cards.forEach((card, index) => {
@@ -369,14 +375,30 @@ const pvpGame = () => {
                     player2_move.classList.remove('active'); // Remove 'active' class from Player 2's move
                     player1_move.classList.remove('active'); // Add 'active' class to Player 1's move
                 }
+
+                // Determine the value based on the img src
+                const cardValue = determineValue(backs[index].src);
+                
+                // Store the flipped card's value
+                flippedCards[index] = cardValue;
+                
+                // Log the flippedCards array to the console
+                console.log(flippedCards);
+
+                // Check if there is a winner
+                checkWinner(flippedCards);
             }
         });
     });
 };
 
-const pvcGame = (() => {
+const pvcGame = () => {
     // do nothing
-});
+};
+
+const checkWinner = () => {
+    // do nothing
+};
 
 // Module to handle responsive behavior of the card grid within the board
 const boardResponsive = (() => {
