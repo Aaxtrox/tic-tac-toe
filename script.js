@@ -432,16 +432,24 @@ const boardResponsive = (() => {
 })();
 
 // Run all modules
+
+// User interface and interaction
 menuToggle;
-addCurrentYear;
-preloader;
 toggleButton;
+initializeDropdown;
+preventRefresh;
+
+// Responsive Design
+ResponsiveDropdownSizer;
+boardResponsive;
 handleQuery;
 resizeMenus;
-initializeDropdown;
-ResponsiveDropdownSizer;
+
+// Page Loading and Initialization
+addCurrentYear;
+preloader;
+
+// Game Logic and Functionality
 showBoard;
-preventRefresh;
 cardsFlip;
 gameStart;
-boardResponsive;

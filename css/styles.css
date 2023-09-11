@@ -494,7 +494,7 @@ main {
 .game-info {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: end;
     font-size: 2rem;
     font-family: var(--font-family);
     color: var(--main-color);
