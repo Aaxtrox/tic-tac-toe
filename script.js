@@ -396,8 +396,33 @@ const pvcGame = () => {
     // do nothing
 };
 
-const checkWinner = () => {
-    // do nothing
+const checkWinner = (flippedCards, cards) => {
+    // winning combinations
+    const winningCombos = [
+        [0, 1, 2], [3, 4, 5], [6, 7, 8], // horizontal
+        [0, 3, 6], [1, 4, 7], [2, 5, 8], // vertical
+        [0, 4, 8], [2, 4, 6] // diagonal
+    ];
+
+    // Iterate through each winning combination
+    winningCombos.forEach(combo => {
+        // Get the values of the flipped cards based on the winning combination
+        const card1 = flippedCards[combo[0]];
+        const card2 = flippedCards[combo[1]];
+        const card3 = flippedCards[combo[2]];
+
+        // Check if all three cards have the same value and are not null
+        if (card1 && card1 === card2 && card2 === card3) {
+            // Display the winner
+            console.log(`Winner found with value: ${card1}`);
+        }
+    });
+
+    // Check if all cards are flipped and there is no winner
+    if (!flippedCards.includes(null)) {
+        // Display a tie
+        console.log("It's a tie!");
+    }
 };
 
 // Module to handle responsive behavior of the card grid within the board
