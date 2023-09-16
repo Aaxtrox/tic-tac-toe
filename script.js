@@ -397,6 +397,9 @@ const pvcGame = () => {
 };
 
 const checkWinner = (flippedCards, cards) => {
+    // Select the .board element
+    const board = document.querySelector('.board');
+
     // winning combinations
     const winningCombos = [
         [0, 1, 2], [3, 4, 5], [6, 7, 8], // horizontal
@@ -415,6 +418,9 @@ const checkWinner = (flippedCards, cards) => {
         if (card1 && card1 === card2 && card2 === card3) {
             // Display the winner
             console.log(`Winner found with value: ${card1}`);
+
+            // Block the board
+            board.style.pointerEvents = 'none';
         }
     });
 
