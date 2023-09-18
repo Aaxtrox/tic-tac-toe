@@ -451,11 +451,17 @@ const checkWinner = (flippedCards, cards) => {
         if (card1 && card1 === card2 && card2 === card3) {
             // Display the winner
             console.log(`Winner found with value: ${card1}`);
+
+            // Hide the navigation menu
             nav_menu.style.visibility = 'hidden';
+
+            // Make the game status container visible
             game_status_container.style.visibility = 'visible';
 
             // Block the board
             board.style.pointerEvents = 'none';
+
+            gameStatus(card1);
         }
     });
 
@@ -463,8 +469,36 @@ const checkWinner = (flippedCards, cards) => {
     if (!flippedCards.includes(null)) {
         // Display a tie
         console.log("It's a tie!");
+
+        // Hide the navigation menu
         nav_menu.style.visibility = 'hidden';
+
+        // Make the game status container visible
         game_status_container.style.visibility = 'visible';
+
+        gameStatus('tie');
+    }
+};
+
+// Define a function to update the game status based on the provided 'status' parameter
+const gameStatus = (status) => {
+    // Select the game status element in the DOM
+    const game_status = document.querySelector('.game-status');
+
+    console.log(status);
+
+    // Check if 'status' is equal to 'X' (indicating Player 1 wins)
+    if (status === 'X') {
+        // Update the game status text to indicate that Player 1 wins
+        game_status.innerText = 'Player 1 wins!';
+    } 
+    // Check if 'status' is equal to '0' (indicating Player 2 wins)
+    else if (status === '0') {
+        // Update the game status text to indicate that Player 2 wins
+        game_status.innerText = 'Player 2 wins!';
+    } else if (status === 'tie'){
+        // Update the game status text to indicate that it's a tie
+        game_status.innerText = "It's a tie!";
     }
 };
 
