@@ -292,7 +292,6 @@ const gameStart = (() => {
     });
 })();
 
-
 // Define a function called gameMode that takes a game mode ('pvc' or 'pvp') as an argument.
 const gameMode = (game) => {
     // Retrieve DOM elements for 'li' elements and the 'btn' element.
@@ -400,8 +399,9 @@ const pvcGame = () => {
 };
 
 const checkWinner = (flippedCards, cards) => {
-    // Select the .board element
+    // Select DOM elements
     const board = document.querySelector('.board');
+    const nav_menu = document.querySelector('.nav-menu');
 
     // winning combinations
     const winningCombos = [
@@ -421,6 +421,7 @@ const checkWinner = (flippedCards, cards) => {
         if (card1 && card1 === card2 && card2 === card3) {
             // Display the winner
             console.log(`Winner found with value: ${card1}`);
+            nav_menu.style.visibility = 'hidden';
 
             // Block the board
             board.style.pointerEvents = 'none';
@@ -431,6 +432,7 @@ const checkWinner = (flippedCards, cards) => {
     if (!flippedCards.includes(null)) {
         // Display a tie
         console.log("It's a tie!");
+        nav_menu.style.visibility = 'hidden';
     }
 };
 
