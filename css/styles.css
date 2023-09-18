@@ -96,9 +96,31 @@ body {
 
 /* Navigation Bar */
 nav {
-    display: grid;
-    grid-template-columns: 1fr 5fr 1fr;
+    display: flex;
+    justify-content: space-between;
     height: 10vh;
+}
+
+/* Navigation menu styles */
+.nav-menu {
+    visibility: hidden;
+    display: flex;
+    align-items: center;
+    font-family: var(--font-family);
+    font-size: 2rem;
+    color: var(--main-color);
+}
+
+/* Menu item spacing */
+.game-menu {
+    margin-right: 1rem;
+}
+
+/* Hover effect for menu items */
+.game-menu:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    transition: all 0.2s ease-in-out;
 }
 
 /* Logo and Name Container */

@@ -215,16 +215,19 @@ const showBoard = (() => {
     const btn_wrapper_pvp = document.querySelector('.btn-wrapper-pvp');
     const btn_wrapper_pvc = document.querySelector('.btn-wrapper-pvc');
     const board = document.querySelector('.board');
+    const nav_menu = document.querySelector('.nav-menu');
 
     // Event listeners to show the board when buttons are clicked
     btn_wrapper_pvp.addEventListener('click', () => {
         main.style.display = 'none';
         board.style.display = 'block';
+        nav_menu.style.visibility = 'visible';
     });
 
     btn_wrapper_pvc.addEventListener('click', () => {
         main.style.display = 'none';
         board.style.display = 'block';
+        nav_menu.style.visibility = 'visible';
     });
 })();
 
