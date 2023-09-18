@@ -631,7 +631,8 @@ main {
     visibility: hidden;
     width: 50%;
     height: 50%;
-    background-color: var(--bg-color);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     position: absolute;
     top: 50%;
     left: 50%;
@@ -648,7 +649,6 @@ main {
 .game-status {
     font-size: 3rem;
     font-family: var(--font-family);
-    color: var(--main-color);
 }
 
 .status-btn {
