@@ -250,25 +250,37 @@ const cardsFlip = (() => {
     // Get all card elements
     const cards = document.querySelectorAll('.card');
 
+    // Function to reset isFlipped for all cards
+    function resetIsFlipped() {
+        cards.forEach(card => {
+            card.isFlipped = false;
+        });
+    }
+
     // Add click event listener to each card
     cards.forEach(card => {
         // Find the front and back of the card
         const front = card.querySelector('.front');
         const back = card.querySelector('.back');
         // Initialize a flag to track if the card is flipped
-        let isFlipped = false;
+        card.isFlipped = false;
 
         // Toggle card when clicked
         card.addEventListener('click', () => {
             // Check if the card is not already flipped
-            if (!isFlipped) {
-            front.classList.toggle('active');
-            back.classList.toggle('active');
-            // Set the flag to true to indicate that the card is flipped
-            isFlipped = true;
+            if (!card.isFlipped) {
+                front.classList.toggle('active');
+                back.classList.toggle('active');
+                // Set the flag to true to indicate that the card is flipped
+                card.isFlipped = true;
             }
         });
     });
+
+    // Return an object with the reset function
+    return {
+        resetIsFlipped,
+    };
 })();
 
 // Wrap Code in a Self-Executing Function
@@ -500,6 +512,24 @@ const newGame = (() => {
     });
 })();
 
+// Initialize the restart functionality
+const restart = (() => {
+    // Select DOM elements
+    const restartButton = document.querySelector('.restart');
+
+    // Add a click event listener to the restart button
+    restartButton.addEventListener('click', () => {
+        // Reset card states
+        cardsFlip.resetIsFlipped();
+        // Flip all cards back to their original state
+        const cards = document.querySelectorAll('.card');
+        cards.forEach(card => {
+            card.querySelector('.front').classList.remove('active');
+            card.querySelector('.back').classList.remove('active');
+        });
+    });
+})();
+
 // Run all modules
 
 // User interface and interaction
@@ -523,3 +553,4 @@ showBoard;
 cardsFlip;
 gameStart;
 newGame;
+restart;
