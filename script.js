@@ -489,6 +489,17 @@ const boardResponsive = (() => {
     heightCalc();
 })();
 
+const newGame = (() => {
+    // Select DOM elements
+    const new_game = document.querySelector('.new-game');
+
+    // Add a click event listener to the new game button
+    new_game.addEventListener('click', () => {
+        // Reload the page
+        location.reload();
+    });
+})();
+
 // Run all modules
 
 // User interface and interaction
@@ -511,3 +522,4 @@ preloader;
 showBoard;
 cardsFlip;
 gameStart;
+newGame;
