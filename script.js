@@ -357,6 +357,7 @@ const pvpGame = () => {
     const fronts = document.querySelectorAll('.front');
     const player1_move = document.querySelector('.player1-move');
     const player2_move = document.querySelector('.player2-move');
+    const restartButton = document.querySelector('.restart');
     
     let playerTurn = 1; // Initialize player's turn to Player 1
     let flippedCards = new Array(9).fill(null); // Array to store flipped card values
@@ -365,6 +366,22 @@ const pvpGame = () => {
     const determineValue = (src) => {
         return src.endsWith('x.png') ? 'X' : '0';
     };
+
+    // Add a click event listener to the restart button
+    restartButton.addEventListener('click', () => {
+        // Reset the flippedCards array by creating a new array with null values
+        flippedCards = new Array(9).fill(null);
+
+        // Remove the 'active' class from clicked cards
+        cards.forEach(card => {
+            card.classList.remove('active');
+        });
+
+        // Remove the 'active' class from the fronts of the clicked cards
+        fronts.forEach(front => {
+            front.classList.remove('active');
+        });
+    });
     
     // Add a click event listener to each card
     cards.forEach((card, index) => {
