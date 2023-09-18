@@ -431,6 +431,7 @@ const checkWinner = (flippedCards, cards) => {
     // Select DOM elements
     const board = document.querySelector('.board');
     const nav_menu = document.querySelector('.nav-menu');
+    const game_status_container = document.querySelector('.game-status-container');
 
     // winning combinations
     const winningCombos = [
@@ -451,6 +452,7 @@ const checkWinner = (flippedCards, cards) => {
             // Display the winner
             console.log(`Winner found with value: ${card1}`);
             nav_menu.style.visibility = 'hidden';
+            game_status_container.style.visibility = 'visible';
 
             // Block the board
             board.style.pointerEvents = 'none';
@@ -462,6 +464,7 @@ const checkWinner = (flippedCards, cards) => {
         // Display a tie
         console.log("It's a tie!");
         nav_menu.style.visibility = 'hidden';
+        game_status_container.style.visibility = 'visible';
     }
 };
 

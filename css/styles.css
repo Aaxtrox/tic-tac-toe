@@ -627,6 +627,20 @@ main {
     transform: perspective(600px) rotateY(0deg); /* Show the front side */
 }
 
+.game-status-container {
+    visibility: hidden;
+    width: 50%;
+    height: 50%;
+    background-color: var(--bg-color);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    border: 1px solid var(--main-color);
+    border-radius: 20px;
+}
+
 /* Footer */
 footer {
     display: flex;
