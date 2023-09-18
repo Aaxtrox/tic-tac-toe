@@ -429,7 +429,7 @@ const pvcGame = () => {
 
 const checkWinner = (flippedCards, cards) => {
     // Select DOM elements
-    const board = document.querySelector('.board');
+    const board_grid = document.querySelector('.board-grid');
     const nav_menu = document.querySelector('.nav-menu');
     const game_status_container = document.querySelector('.game-status-container');
 
@@ -459,7 +459,7 @@ const checkWinner = (flippedCards, cards) => {
             game_status_container.style.visibility = 'visible';
 
             // Block the board
-            board.style.pointerEvents = 'none';
+            board_grid.style.pointerEvents = 'none';
 
             gameStatus(card1);
         }

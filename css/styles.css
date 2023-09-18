@@ -639,19 +639,21 @@ main {
     z-index: 1;
     border: 1px solid var(--main-color);
     border-radius: 20px;
-}
-
-.game-status-container {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
+    flex-direction: column;
 }
 
 .game-status {
     font-size: 3rem;
     font-family: var(--font-family);
     color: var(--main-color);
+}
+
+.status-btn {
+    display: flex;
+    gap: 1rem;
 }
 
 /* Footer */
