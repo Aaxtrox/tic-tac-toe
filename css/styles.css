@@ -641,6 +641,19 @@ main {
     border-radius: 20px;
 }
 
+.game-status-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.game-status {
+    font-size: 3rem;
+    font-family: var(--font-family);
+    color: var(--main-color);
+}
+
 /* Footer */
 footer {
     display: flex;
