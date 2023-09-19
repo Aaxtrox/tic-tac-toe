@@ -432,6 +432,7 @@ const checkWinner = (flippedCards, cards) => {
     const board_grid = document.querySelector('.board-grid');
     const nav_menu = document.querySelector('.nav-menu');
     const game_status_container = document.querySelector('.game-status-container');
+    const game_info = document.querySelector('.game-info');
 
     // winning combinations
     const winningCombos = [
@@ -455,6 +456,9 @@ const checkWinner = (flippedCards, cards) => {
             // Hide the navigation menu
             nav_menu.style.visibility = 'hidden';
 
+            // Hide the game info
+            game_info.style.visibility = 'hidden';
+
             // Make the game status container visible
             game_status_container.style.visibility = 'visible';
 
@@ -472,6 +476,9 @@ const checkWinner = (flippedCards, cards) => {
 
         // Hide the navigation menu
         nav_menu.style.visibility = 'hidden';
+
+        // Hide the game info
+        game_info.style.visibility = 'hidden';
 
         // Make the game status container visible
         game_status_container.style.visibility = 'visible';
