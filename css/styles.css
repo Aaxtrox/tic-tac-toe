@@ -629,8 +629,8 @@ main {
 
 .game-status-container {
     visibility: hidden;
-    width: 50%;
-    height: 50%;
+    width: 50rem;
+    height: 30rem;
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     position: absolute;
@@ -752,8 +752,28 @@ a {
     }
 }
 
+@media screen and (max-width: 900px) {
+    .game-status-container {
+        width: 40rem;
+        height: 25rem;
+    }
+}
+
 @media screen and (max-width: 600px) {
     html {
         font-size: 55%;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .game-status-container {
+        width: 30rem;
+        height: 20rem;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    html {
+        font-size: 50%;
     }
 }
