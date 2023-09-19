@@ -522,14 +522,6 @@ main {
     color: var(--main-color);
 }
 
-/* Display player move information */
-.player1-move {
-    display: block;
-}
-.player2-move {
-    display: none;
-}
-
 /* Hide inactive player move information */
 .player1-move.active {
     display: none;

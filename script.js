@@ -355,9 +355,8 @@ const pvpGame = () => {
     const cards = document.querySelectorAll('.card');
     const backs = document.querySelectorAll('.back img');
     const fronts = document.querySelectorAll('.front');
-    const player1_move = document.querySelector('.player1-move');
-    const player2_move = document.querySelector('.player2-move');
     const restartButtons = document.querySelectorAll('#restart');
+    const game_info = document.querySelector('.game-info');
     
     let playerTurn = 1; // Initialize player's turn to Player 1
     let flippedCards = new Array(9).fill(null); // Array to store flipped card values
@@ -400,13 +399,12 @@ const pvpGame = () => {
                 if (activeFronts.length % 2 !== 0) {
                     playerTurn = 2; // Odd active fronts, Player 2's turn
                     backs[index].src = 'img/x.png'; // Change back image to '0.png'
-                    player1_move.classList.add('active'); // Remove 'active' class from Player 1's move
-                    player2_move.classList.add('active'); // Add 'active' class to Player 2's move
+                    game_info.innerText = "Player 2's Move"; // Display correct player's turn inside game-info
+
                 } else {
                     playerTurn = 1; // Even active fronts, Player 1's turn
                     backs[index].src = 'img/0.png'; // Change back image to 'x.png'
-                    player2_move.classList.remove('active'); // Remove 'active' class from Player 2's move
-                    player1_move.classList.remove('active'); // Add 'active' class to Player 1's move
+                    game_info.innerText = "Player 1's Move"; // Display correct player's turn inside game-info
                 }
 
                 // Determine the value based on the img src
@@ -458,14 +456,14 @@ const checkWinner = (flippedCards, cards) => {
             // Hide the navigation menu
             nav_menu.style.visibility = 'hidden';
 
-            // Hide the game info
-            game_info.style.visibility = 'hidden';
-
             // Make the game status container visible
             game_status_container.style.visibility = 'visible';
 
             // Block the board
             board_grid.style.pointerEvents = 'none';
+
+            // Hide the game info
+            game_info.style.visibility = 'hidden';
 
             gameStatus(card1);
         }
@@ -609,6 +607,9 @@ const restart = (() => {
 
             // Show the game info
             game_info.style.visibility = 'visible';
+
+            // Reset the game info to Player 1's Move
+            game_info.innerText = "Player 1's Move";
         });
     });
 })();
