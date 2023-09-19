@@ -357,7 +357,7 @@ const pvpGame = () => {
     const fronts = document.querySelectorAll('.front');
     const player1_move = document.querySelector('.player1-move');
     const player2_move = document.querySelector('.player2-move');
-    const restartButton = document.querySelector('.restart');
+    const restartButtons = document.querySelectorAll('#restart');
     
     let playerTurn = 1; // Initialize player's turn to Player 1
     let flippedCards = new Array(9).fill(null); // Array to store flipped card values
@@ -367,19 +367,21 @@ const pvpGame = () => {
         return src.endsWith('x.png') ? 'X' : '0';
     };
 
-    // Add a click event listener to the restart button
-    restartButton.addEventListener('click', () => {
-        // Reset the flippedCards array by creating a new array with null values
-        flippedCards = new Array(9).fill(null);
+    // Add a click event listener to the all restart buttons
+    restartButtons.forEach(restartButton => {
+        restartButton.addEventListener('click', () => {
+            // Reset the flippedCards array by creating a new array with null values
+            flippedCards = new Array(9).fill(null);
 
-        // Remove the 'active' class from clicked cards
-        cards.forEach(card => {
-            card.classList.remove('active');
-        });
+            // Remove the 'active' class from clicked cards
+            cards.forEach(card => {
+                card.classList.remove('active');
+            });
 
-        // Remove the 'active' class from the fronts of the clicked cards
-        fronts.forEach(front => {
-            front.classList.remove('active');
+            // Remove the 'active' class from the fronts of the clicked cards
+            fronts.forEach(front => {
+                front.classList.remove('active');
+            });
         });
     });
     
@@ -564,7 +566,6 @@ const boardResponsive = (() => {
 
 const newGame = (() => {
     // Select DOM elements
-    const new_game = document.getElementById('new-game');
     const new_games = document.querySelectorAll('#new-game');
 
     // Add a click event listener to the all new game buttons
@@ -579,17 +580,31 @@ const newGame = (() => {
 // Initialize the restart functionality
 const restart = (() => {
     // Select DOM elements
-    const restartButton = document.querySelector('.restart');
+    const restartButtons = document.querySelectorAll('#restart');
+    const game_status_container = document.querySelector('.game-status-container');
+    const board_grid = document.querySelector('.board-grid');
+    const nav_menu = document.querySelector('.nav-menu');
 
-    // Add a click event listener to the restart button
-    restartButton.addEventListener('click', () => {
-        // Reset card states
-        cardsFlip.resetIsFlipped();
-        // Flip all cards back to their original state
-        const cards = document.querySelectorAll('.card');
-        cards.forEach(card => {
-            card.querySelector('.front').classList.remove('active');
-            card.querySelector('.back').classList.remove('active');
+    // Add a click event listener to the all restart buttons
+    restartButtons.forEach(restartButton => {
+        restartButton.addEventListener('click', () => {
+            // Reset card states
+            cardsFlip.resetIsFlipped();
+            // Flip all cards back to their original state
+            const cards = document.querySelectorAll('.card');
+            cards.forEach(card => {
+                card.querySelector('.front').classList.remove('active');
+                card.querySelector('.back').classList.remove('active');
+            });
+
+            // Hide the game status container
+            game_status_container.style.visibility = 'hidden';
+
+            // Unblock the board
+            board_grid.style.pointerEvents = 'auto';
+
+            // Show the navigation menu
+            nav_menu.style.visibility = 'visible';
         });
     });
 })();
