@@ -564,12 +564,15 @@ const boardResponsive = (() => {
 
 const newGame = (() => {
     // Select DOM elements
-    const new_game = document.querySelector('.new-game');
+    const new_game = document.getElementById('new-game');
+    const new_games = document.querySelectorAll('#new-game');
 
-    // Add a click event listener to the new game button
-    new_game.addEventListener('click', () => {
-        // Reload the page
-        location.reload();
+    // Add a click event listener to the all new game buttons
+    new_games.forEach(new_game => {
+        new_game.addEventListener('click', () => {
+            // Reload the page
+            location.reload();
+        });
     });
 })();
 
