@@ -584,6 +584,7 @@ const restart = (() => {
     const game_status_container = document.querySelector('.game-status-container');
     const board_grid = document.querySelector('.board-grid');
     const nav_menu = document.querySelector('.nav-menu');
+    const game_info = document.querySelector('.game-info');
 
     // Add a click event listener to the all restart buttons
     restartButtons.forEach(restartButton => {
@@ -605,6 +606,9 @@ const restart = (() => {
 
             // Show the navigation menu
             nav_menu.style.visibility = 'visible';
+
+            // Show the game info
+            game_info.style.visibility = 'visible';
         });
     });
 })();
