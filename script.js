@@ -431,16 +431,37 @@ const pvcGame = (gameData) => {
     const backs = document.querySelectorAll('.back');
     const backs_img = document.querySelectorAll('.back img');
     const fronts = document.querySelectorAll('.front');
+    const restartButtons = document.querySelectorAll('#restart');
 
     let flippedCards = new Array(9).fill(null); // Array to store flipped card values
     let cardValue = ''; // Variable to store the flipped card's value
+
+    // Add a click event listener to the all restart buttons
+    restartButtons.forEach(restartButton => {
+        restartButton.addEventListener('click', () => {
+            // Reset the flippedCards array by creating a new array with null values
+            flippedCards = new Array(9).fill(null);
+
+            // Remove the 'active' class from clicked cards
+            cards.forEach(card => {
+                card.classList.remove('active');
+            });
+
+            // Remove the 'active' class from the fronts of the clicked cards
+            fronts.forEach(front => {
+                front.classList.remove('active');
+            });
+
+            init();
+        });
+    });
 
     const playerTurn = () => {
         // Turn on click event listener for each card
         cards.forEach(card => {
             card.style.pointerEvents = 'auto';
         });
-        
+
         // Add a click event listener to each card
         cards.forEach((card, index) => {
             card.addEventListener('click', () => {
@@ -516,15 +537,18 @@ const pvcGame = (gameData) => {
         }, 1000);
     }
 
-
-    // determine who got X and start the game
-    if (gamePlayer === 'X') {
-        // Player's turn
-        playerTurn();
-    } else if (gamePlayer === 'O') {
-        // Computer's turn
-        computerTurn();
+    const init = () => {
+        // determine who got X and start the game
+        if (gamePlayer === 'X') {
+            // Player's turn
+            playerTurn();
+        } else if (gamePlayer === 'O') {
+            // Computer's turn
+            computerTurn();
+        }
     }
+
+    init();
 };
 
 const checkWinner = (flippedCards, cards) => {
