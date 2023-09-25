@@ -441,8 +441,12 @@ const pvcGame = (gameData) => {
             card.addEventListener('click', () => {
                 if (!card.classList.contains('active')) {
 
-                    // set back img to 0.png
-                    backs_img[index].src = 'img/0.png';
+                    // set src img based on gamePlayer
+                    if (gamePlayer === 'X') {
+                        backs_img[index].src = 'img/x.png';
+                    } else if (gamePlayer === 'O') {
+                        backs_img[index].src = 'img/0.png';
+                    }
 
                     // Mark the clicked card and its front as active
                     card.classList.add('active');
@@ -476,8 +480,12 @@ const pvcGame = (gameData) => {
         // select a random index from nullValues array
         const randomIndex = Math.floor(Math.random() * nullValues.length);
 
-        // set back img to x.png
-        backs_img[nullValues[randomIndex]].src = 'img/x.png';
+        // set src img based on gameComputer
+        if (gameComputer === 'X') {
+            backs_img[nullValues[randomIndex]].src = 'img/x.png';
+        } else if (gameComputer === 'O') {
+            backs_img[nullValues[randomIndex]].src = 'img/0.png';
+        }
 
         // mark the clicked card and its front as active
         cards[nullValues[randomIndex]].classList.add('active');
