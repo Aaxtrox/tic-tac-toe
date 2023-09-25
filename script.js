@@ -423,8 +423,95 @@ const pvpGame = () => {
     });
 };
 
-const pvcGame = () => {
-    // do nothing
+const pvcGame = (gameData) => {
+    const { game, gameLevel, gamePlayer, gameComputer } = gameData;
+
+    // Select DOM elements
+    const cards = document.querySelectorAll('.card');
+    const backs = document.querySelectorAll('.back img');
+    const fronts = document.querySelectorAll('.front');
+
+    let flippedCards = new Array(9).fill(null); // Array to store flipped card values
+    let cardValue = ''; // Variable to store the flipped card's value
+
+    const playerTurn = () => {
+        // Add a click event listener to each card
+        cards.forEach((card, index) => {
+            card.addEventListener('click', () => {
+                if (!card.classList.contains('active')) {
+
+                    //change .back img src based on gamePlayer
+                    if (gamePlayer === 'X') {
+                        backs[index].src = 'img/x.png';
+                    } else if (gamePlayer === '0') {
+                        backs[index].src = 'img/0.png';
+                    }
+
+                    // Mark the clicked card and its front as active
+                    card.classList.add('active');
+                    fronts[index].classList.add('active');
+
+                    // Determine the value based on gamePlayer
+                    cardValue = gamePlayer;
+
+                    // Store the flipped card's value
+                    flippedCards[index] = cardValue;
+
+                    // Log the flippedCards array to the console
+                    console.log(flippedCards);
+
+                    // Computer's turn
+                    computerTurn();
+                }
+            });
+        });
+    }
+
+    const computerTurn = () => {
+        // grab null values from flippedCards array
+        const nullValues = flippedCards.reduce((acc, value, index) => {
+            if (value === null) {
+                acc.push(index);
+            }
+            return acc;
+        }, []);
+
+        // select a random index from nullValues array
+        const randomIndex = Math.floor(Math.random() * nullValues.length);
+
+        // change back image based on gameComputer
+        if (gameComputer === 'X') {
+            backs[nullValues[randomIndex]].src = 'img/x.png';
+        } else if (gameComputer === '0') {
+            backs[nullValues[randomIndex]].src = 'img/0.png';
+        }
+
+        // mark the clicked card and its front as active
+        cards[nullValues[randomIndex]].classList.add('active');
+        fronts[nullValues[randomIndex]].classList.add('active');
+        backs[nullValues[randomIndex]].classList.add('active');
+
+        // determine the value based on gameComputer
+        cardValue = gameComputer;
+
+        // store the flipped card's value
+        flippedCards[nullValues[randomIndex]] = cardValue;
+
+        // log the flippedCards array to the console
+        console.log(flippedCards);
+
+        playerTurn();
+    }
+
+
+    // determine who got X and start the game
+    if (gamePlayer === 'X') {
+        // Player's turn
+        playerTurn();
+    } else if (gamePlayer === 'O') {
+        // Computer's turn
+        computerTurn();
+    }
 };
 
 const checkWinner = (flippedCards, cards) => {
