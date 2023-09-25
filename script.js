@@ -428,7 +428,8 @@ const pvcGame = (gameData) => {
 
     // Select DOM elements
     const cards = document.querySelectorAll('.card');
-    const backs = document.querySelectorAll('.back img');
+    const backs = document.querySelectorAll('.back');
+    const backs_img = document.querySelectorAll('.back img');
     const fronts = document.querySelectorAll('.front');
 
     let flippedCards = new Array(9).fill(null); // Array to store flipped card values
@@ -440,12 +441,8 @@ const pvcGame = (gameData) => {
             card.addEventListener('click', () => {
                 if (!card.classList.contains('active')) {
 
-                    //change .back img src based on gamePlayer
-                    if (gamePlayer === 'X') {
-                        backs[index].src = 'img/x.png';
-                    } else if (gamePlayer === '0') {
-                        backs[index].src = 'img/0.png';
-                    }
+                    // set back img to 0.png
+                    backs_img[index].src = 'img/0.png';
 
                     // Mark the clicked card and its front as active
                     card.classList.add('active');
@@ -479,12 +476,8 @@ const pvcGame = (gameData) => {
         // select a random index from nullValues array
         const randomIndex = Math.floor(Math.random() * nullValues.length);
 
-        // change back image based on gameComputer
-        if (gameComputer === 'X') {
-            backs[nullValues[randomIndex]].src = 'img/x.png';
-        } else if (gameComputer === '0') {
-            backs[nullValues[randomIndex]].src = 'img/0.png';
-        }
+        // set back img to x.png
+        backs_img[nullValues[randomIndex]].src = 'img/x.png';
 
         // mark the clicked card and its front as active
         cards[nullValues[randomIndex]].classList.add('active');
