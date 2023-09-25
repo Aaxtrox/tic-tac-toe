@@ -487,6 +487,9 @@ const pvcGame = (gameData) => {
                     // Log the flippedCards array to the console
                     console.log(flippedCards);
 
+                    // Check if there is a winner
+                    checkWinner(flippedCards);
+
                     // Computer's turn
                     computerTurn();
                 }
@@ -532,6 +535,9 @@ const pvcGame = (gameData) => {
 
             // log the flippedCards array to the console
             console.log(flippedCards);
+
+            // check if there is a winner
+            checkWinner(flippedCards);
 
             playerTurn();
         }, 1000);
