@@ -436,6 +436,11 @@ const pvcGame = (gameData) => {
     let cardValue = ''; // Variable to store the flipped card's value
 
     const playerTurn = () => {
+        // Turn on click event listener for each card
+        cards.forEach(card => {
+            card.style.pointerEvents = 'auto';
+        });
+        
         // Add a click event listener to each card
         cards.forEach((card, index) => {
             card.addEventListener('click', () => {
@@ -469,6 +474,11 @@ const pvcGame = (gameData) => {
     }
 
     const computerTurn = () => {
+        // Turn off click event listener for each card
+        cards.forEach(card => {
+            card.style.pointerEvents = 'none';
+        });
+
         // grab null values from flippedCards array
         const nullValues = flippedCards.reduce((acc, value, index) => {
             if (value === null) {
