@@ -480,28 +480,30 @@ const pvcGame = (gameData) => {
         // select a random index from nullValues array
         const randomIndex = Math.floor(Math.random() * nullValues.length);
 
-        // set src img based on gameComputer
-        if (gameComputer === 'X') {
-            backs_img[nullValues[randomIndex]].src = 'img/x.png';
-        } else if (gameComputer === 'O') {
-            backs_img[nullValues[randomIndex]].src = 'img/0.png';
-        }
+        setTimeout(() => {
+            // set src img based on gameComputer
+            if (gameComputer === 'X') {
+                backs_img[nullValues[randomIndex]].src = 'img/x.png';
+            } else if (gameComputer === 'O') {
+                backs_img[nullValues[randomIndex]].src = 'img/0.png';
+            }
 
-        // mark the clicked card and its front as active
-        cards[nullValues[randomIndex]].classList.add('active');
-        fronts[nullValues[randomIndex]].classList.add('active');
-        backs[nullValues[randomIndex]].classList.add('active');
+            // mark the clicked card and its front as active
+            cards[nullValues[randomIndex]].classList.add('active');
+            fronts[nullValues[randomIndex]].classList.add('active');
+            backs[nullValues[randomIndex]].classList.add('active');
 
-        // determine the value based on gameComputer
-        cardValue = gameComputer;
+            // determine the value based on gameComputer
+            cardValue = gameComputer;
 
-        // store the flipped card's value
-        flippedCards[nullValues[randomIndex]] = cardValue;
+            // store the flipped card's value
+            flippedCards[nullValues[randomIndex]] = cardValue;
 
-        // log the flippedCards array to the console
-        console.log(flippedCards);
+            // log the flippedCards array to the console
+            console.log(flippedCards);
 
-        playerTurn();
+            playerTurn();
+        }, 1000);
     }
 
 
