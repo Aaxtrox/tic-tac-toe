@@ -429,7 +429,6 @@ const pvpGame = () => {
 
 const pvcGame = (gameData) => {
     const { game, gameLevel, gamePlayer, gameComputer } = gameData;
-    console.log(gameData);
 
     // Select DOM elements
     const cards = document.querySelectorAll('.card');
@@ -599,6 +598,8 @@ const checkWinner = (flippedCards, cards) => {
         [0, 4, 8], [2, 4, 6] // diagonal
     ];
 
+    let winnerFound = false; // Flag to check if a winner is found
+
     // Iterate through each winning combination
     winningCombos.forEach(combo => {
         // Get the values of the flipped cards based on the winning combination
@@ -610,6 +611,9 @@ const checkWinner = (flippedCards, cards) => {
         if (card1 && card1 === card2 && card2 === card3) {
             // Display the winner
             console.log(`Winner found with value: ${card1}`);
+
+            // Set the winnerFound flag to true
+            winnerFound = true;
 
             // Hide the navigation menu
             nav_menu.style.visibility = 'hidden';
@@ -628,7 +632,7 @@ const checkWinner = (flippedCards, cards) => {
     });
 
     // Check if all cards are flipped and there is no winner
-    if (!flippedCards.includes(null)) {
+    if (!winnerFound && !flippedCards.includes(null)) {
         // Display a tie
         console.log("It's a tie!");
 
