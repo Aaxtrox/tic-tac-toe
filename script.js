@@ -668,7 +668,7 @@ const gameStatus = (status) => {
 
     // Determine the player's and computer's symbols based on the 'btn' class.
     if (btn.classList.contains('active')) {
-        gamePlayer = '0';
+        gamePlayer = 'O';
     } else if (!btn.classList.contains('active')) {
         gamePlayer = 'X';
     }
