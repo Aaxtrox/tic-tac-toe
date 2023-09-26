@@ -295,12 +295,16 @@ const gameStart = (() => {
     pvpBtn.addEventListener('click', () => {
         game = 'pvp'; // Set the game mode to Player vs. Player.
         gameMode(game); // Call the gameMode function with the 'pvp' mode.
+        // add class active to pvpBtn
+        pvpBtn.classList.add('active');
     });
 
     // Add a click event listener to the "PvC" button.
     pvcBtn.addEventListener('click', () => {
         game = 'pvc'; // Set the game mode to Player vs. Computer.
         gameMode(game); // Call the gameMode function with the 'pvc' mode.
+        // add class active to pvcBtn
+        pvcBtn.classList.add('active');
     });
 })();
 
@@ -425,6 +429,7 @@ const pvpGame = () => {
 
 const pvcGame = (gameData) => {
     const { game, gameLevel, gamePlayer, gameComputer } = gameData;
+    console.log(gameData);
 
     // Select DOM elements
     const cards = document.querySelectorAll('.card');
@@ -433,6 +438,7 @@ const pvcGame = (gameData) => {
     const fronts = document.querySelectorAll('.front');
     const restartButtons = document.querySelectorAll('#restart');
     const game_status_container = document.querySelector('.game-status-container');
+    const game_info = document.querySelector('.game-info');
 
     let flippedCards = new Array(9).fill(null); // Array to store flipped card values
     let cardValue = ''; // Variable to store the flipped card's value
@@ -458,6 +464,9 @@ const pvcGame = (gameData) => {
     });
 
     const playerTurn = () => {
+        // Change game info to Player Move
+        game_info.innerText = "Player's Move";
+
         // Turn on click event listener for each card
         cards.forEach(card => {
             card.style.pointerEvents = 'auto';
@@ -506,6 +515,9 @@ const pvcGame = (gameData) => {
     }
 
     const computerTurn = () => {
+        // Change game info to Computer Move
+        game_info.innerText = "Computer's Move";
+
         // Turn off click event listener for each card
         cards.forEach(card => {
             card.style.pointerEvents = 'none';
@@ -637,21 +649,70 @@ const checkWinner = (flippedCards, cards) => {
 const gameStatus = (status) => {
     // Select the game status element in the DOM
     const game_status = document.querySelector('.game-status');
+    const pvpBtn = document.getElementById('pvp-btn');
+    const pvcBtn = document.getElementById('pvc-btn');
 
-    console.log(status);
+    let game = ''; // Initialize a variable to store the selected game mode.
+    let gamePlayer = ''; // Initialize a variable to store the player's symbol ('X' or 'O').
 
-    // Check if 'status' is equal to 'X' (indicating Player 1 wins)
-    if (status === 'X') {
-        // Update the game status text to indicate that Player 1 wins
-        game_status.innerText = 'Player 1 wins!';
-    } 
-    // Check if 'status' is equal to '0' (indicating Player 2 wins)
-    else if (status === '0') {
-        // Update the game status text to indicate that Player 2 wins
-        game_status.innerText = 'Player 2 wins!';
-    } else if (status === 'tie'){
-        // Update the game status text to indicate that it's a tie
-        game_status.innerText = "It's a tie!";
+    //check if pcd button was clicked and set game to pvc
+    if (pvcBtn.classList.contains('active')) {
+        game = 'pvc';
+    } else if (pvpBtn.classList.contains('active')) {
+        game = 'pvp';
+    }
+
+    // Determine the player's and computer's symbols based on the 'btn' class.
+    if (btn.classList.contains('active')) {
+        gamePlayer = '0';
+    } else if (!btn.classList.contains('active')) {
+        gamePlayer = 'X';
+    }
+
+    console.log(gamePlayer);
+    console.log(game);
+
+    // if game is pvp
+    if (game === 'pvp') {
+        // Check if 'status' is equal to 'X' (indicating Player 1 wins)
+        if (status === 'X') {
+            // Update the game status text to indicate that Player 1 wins
+            game_status.innerText = 'Player 1 wins!';
+        } 
+        // Check if 'status' is equal to '0' (indicating Player 2 wins)
+        else if (status === 'O') {
+            // Update the game status text to indicate that Player 2 wins
+            game_status.innerText = 'Player 2 wins!';
+        } else if (status === 'tie'){
+            // Update the game status text to indicate that it's a tie
+            game_status.innerText = "It's a tie!";
+        }
+    } else if (game === 'pvc') {
+        // Check if 'status' is equal to 'X' (indicating Player 1 wins)
+        if (status === 'X') {
+            // check if gamePlayer is X
+            if (gamePlayer === 'X') {
+                // Update the game status text to indicate that Player 1 wins
+                game_status.innerText = 'Player wins!';
+            } else if (gamePlayer === 'O') {
+                // Update the game status text to indicate that Player 1 wins
+                game_status.innerText = 'Computer wins!';
+            }
+        } 
+        // Check if 'status' is equal to '0' (indicating Player 2 wins)
+        else if (status === 'O') {
+            // check if gamePlayer is X
+            if (gamePlayer === 'X') {
+                // Update the game status text to indicate that Player 1 wins
+                game_status.innerText = 'Computer wins!';
+            } else if (gamePlayer === 'O') {
+                // Update the game status text to indicate that Player 1 wins
+                game_status.innerText = 'Player wins!';
+            }
+        } else if (status === 'tie'){
+            // Update the game status text to indicate that it's a tie
+            game_status.innerText = "It's a tie!";
+        }
     }
 };
 
