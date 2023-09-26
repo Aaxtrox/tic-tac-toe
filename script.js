@@ -432,6 +432,7 @@ const pvcGame = (gameData) => {
     const backs_img = document.querySelectorAll('.back img');
     const fronts = document.querySelectorAll('.front');
     const restartButtons = document.querySelectorAll('#restart');
+    const game_status_container = document.querySelector('.game-status-container');
 
     let flippedCards = new Array(9).fill(null); // Array to store flipped card values
     let cardValue = ''; // Variable to store the flipped card's value
@@ -490,8 +491,15 @@ const pvcGame = (gameData) => {
                     // Check if there is a winner
                     checkWinner(flippedCards);
 
-                    // Computer's turn
-                    computerTurn();
+                    // if game_status_container is not visible run playerTurn
+                    if (game_status_container.style.visibility !== 'visible') {
+                        computerTurn();
+                    } else if (game_status_container.style.visibility === 'visible') {
+                        // Turn off click event listener for each card
+                        cards.forEach(card => {
+                            card.style.pointerEvents = 'none';
+                        });
+                    }
                 }
             });
         });
@@ -539,7 +547,15 @@ const pvcGame = (gameData) => {
             // check if there is a winner
             checkWinner(flippedCards);
 
-            playerTurn();
+            // if game_status_container is not visible run playerTurn
+            if (game_status_container.style.visibility !== 'visible') {
+                playerTurn();
+            } else if (game_status_container.style.visibility === 'visible') {
+                // Turn off click event listener for each card
+                cards.forEach(card => {
+                    card.style.pointerEvents = 'none';
+                });
+            }
         }, 1000);
     }
 
