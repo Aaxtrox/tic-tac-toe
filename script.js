@@ -513,6 +513,95 @@ const pvcGame = (gameData) => {
         });
     }
 
+    function bestMove() {
+        let bestScore = -Infinity;
+        let move;
+        //check all available spots from flippedCards array
+        for (let i = 0; i < flippedCards.length; i++) {
+            // is the spot available?
+            if (flippedCards[i] === null) {
+                flippedCards[i] = gameComputer;
+                let score = minimax(flippedCards, 0, false);
+                flippedCards[i] = null;
+                if (score > bestScore) {
+                    bestScore = score;
+                    move = i;
+                }
+            }
+        }
+        return move;
+    }
+
+    let scores = {
+        X: -1,
+        O: 1,
+        tie: 0
+    };
+
+    function checkMinimax(flippedCards) {
+        // Flag to check if a winner is found
+        let winnerFound = false;
+
+        // winning combinations
+        const winningCombos = [
+            [0, 1, 2], [3, 4, 5], [6, 7, 8], // horizontal
+            [0, 3, 6], [1, 4, 7], [2, 5, 8], // vertical
+            [0, 4, 8], [2, 4, 6] // diagonal
+        ];
+
+        // Iterate through each winning combination
+        for (let i = 0; i < winningCombos.length; i++) {
+            // Get the values of the flipped cards based on the winning combination
+            const card1 = flippedCards[winningCombos[i][0]];
+            const card2 = flippedCards[winningCombos[i][1]];
+            const card3 = flippedCards[winningCombos[i][2]];
+
+            // Check if all three cards have the same value and are not null
+            if (card1 && card1 === card2 && card2 === card3) {
+                // return winner
+                return card1;
+            }
+        }
+
+        // Check if all cards are flipped and there is no winner
+        if (!winnerFound && !flippedCards.includes(null)) {
+            // return tie
+            return 'tie';
+        }
+
+        return false;
+    }
+
+    function minimax(flippedCards, depth, isMaximizing) {
+        let result = checkMinimax(flippedCards);
+        if (result !== false) {
+            return scores[result];
+        }
+        if (isMaximizing) {
+            let bestScore = -Infinity;
+            for (let i = 0; i < flippedCards.length; i++) {
+                if (flippedCards[i] === null) {
+                    flippedCards[i] = gameComputer;
+                    let score = minimax(flippedCards, depth + 1, false);
+                    flippedCards[i] = null;
+                    bestScore = Math.max(score, bestScore);
+                }
+            }
+            return bestScore;
+        } else {
+            let bestScore = Infinity;
+            for (let i = 0; i < flippedCards.length; i++) {
+                if (flippedCards[i] === null) {
+                    flippedCards[i] = gamePlayer;
+                    let score = minimax(flippedCards, depth + 1, true);
+                    flippedCards[i] = null;
+                    bestScore = Math.min(score, bestScore);
+                }
+            }
+            return bestScore;
+        }
+    }
+
     const computerTurn = () => {
         // Change game info to Computer Move
         game_info.innerText = "Computer's Move";
@@ -572,7 +661,40 @@ const pvcGame = (gameData) => {
                 }, 1000);
                 break;
             case 'Hard':
-                // do nothing
+                setTimeout(() => {
+                    // set src img based on gameComputer
+                    if (gameComputer === 'X') {
+                        backs_img[bestMove()].src = 'img/x.png';
+                    } else if (gameComputer === 'O') {
+                        backs_img[bestMove()].src = 'img/0.png';
+                    }
+                    // mark the clicked card and its front as active
+                    cards[bestMove()].classList.add('active');
+                    fronts[bestMove()].classList.add('active');
+                    backs[bestMove()].classList.add('active');
+        
+                    // determine the value based on gameComputer
+                    cardValue = gameComputer;
+        
+                    // store the flipped card's value
+                    flippedCards[bestMove()] = cardValue;
+        
+                    // log the flippedCards array to the console
+                    console.log(flippedCards);
+        
+                    // check if there is a winner
+                    checkWinner(flippedCards);
+        
+                    // if game_status_container is not visible run playerTurn
+                    if (game_status_container.style.visibility !== 'visible') {
+                        playerTurn();
+                    } else if (game_status_container.style.visibility === 'visible') {
+                        // Turn off click event listener for each card
+                        cards.forEach(card => {
+                            card.style.pointerEvents = 'none';
+                        });
+                    }
+                }, 1000);
                 break;
             case 'Chinese':
                 // do nothing
@@ -639,6 +761,8 @@ const checkWinner = (flippedCards, cards) => {
             game_info.style.visibility = 'hidden';
 
             gameStatus(card1);
+
+            return card1;
         }
     });
 
@@ -657,7 +781,11 @@ const checkWinner = (flippedCards, cards) => {
         game_status_container.style.visibility = 'visible';
 
         gameStatus('tie');
+
+        return 'tie';
     }
+
+    return winnerFound;
 };
 
 // Define a function to update the game status based on the provided 'status' parameter
