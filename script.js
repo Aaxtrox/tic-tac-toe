@@ -661,6 +661,9 @@ const pvcGame = (gameData) => {
                 }, 1000);
                 break;
             case 'Hard':
+                console.log('Hard');
+                break;
+            default:
                 setTimeout(() => {
                     // set src img based on gameComputer
                     if (gameComputer === 'X') {
@@ -696,11 +699,7 @@ const pvcGame = (gameData) => {
                     }
                 }, 1000);
                 break;
-            case 'Chinese':
-                // do nothing
-                break;
         }
-
     }
 
     const init = () => {
