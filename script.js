@@ -533,10 +533,10 @@ const pvcGame = (gameData) => {
     }
 
     let scores = {
-        X: -1,
-        O: 1,
+        X: gameComputer === 'X' ? 1 : -1, // Assign 1 if gameComputer is 'X', else assign -1
+        O: gameComputer === 'O' ? 1 : -1, // Assign 1 if gameComputer is 'O', else assign -1
         tie: 0
-    };
+    };    
 
     function checkMinimax(flippedCards) {
         // Flag to check if a winner is found
