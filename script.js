@@ -530,44 +530,55 @@ const pvcGame = (gameData) => {
             return acc;
         }, []);
 
-        // select a random index from nullValues array
-        const randomIndex = Math.floor(Math.random() * nullValues.length);
+        switch (gameLevel) {
+            case 'Easy':
+                // select a random index from nullValues array
+                const randomIndex = Math.floor(Math.random() * nullValues.length);
 
-        setTimeout(() => {
-            // set src img based on gameComputer
-            if (gameComputer === 'X') {
-                backs_img[nullValues[randomIndex]].src = 'img/x.png';
-            } else if (gameComputer === 'O') {
-                backs_img[nullValues[randomIndex]].src = 'img/0.png';
-            }
+                setTimeout(() => {
+                    // set src img based on gameComputer
+                    if (gameComputer === 'X') {
+                        backs_img[nullValues[randomIndex]].src = 'img/x.png';
+                    } else if (gameComputer === 'O') {
+                        backs_img[nullValues[randomIndex]].src = 'img/0.png';
+                    }
+        
+                    // mark the clicked card and its front as active
+                    cards[nullValues[randomIndex]].classList.add('active');
+                    fronts[nullValues[randomIndex]].classList.add('active');
+                    backs[nullValues[randomIndex]].classList.add('active');
+        
+                    // determine the value based on gameComputer
+                    cardValue = gameComputer;
+        
+                    // store the flipped card's value
+                    flippedCards[nullValues[randomIndex]] = cardValue;
+        
+                    // log the flippedCards array to the console
+                    console.log(flippedCards);
+        
+                    // check if there is a winner
+                    checkWinner(flippedCards);
+        
+                    // if game_status_container is not visible run playerTurn
+                    if (game_status_container.style.visibility !== 'visible') {
+                        playerTurn();
+                    } else if (game_status_container.style.visibility === 'visible') {
+                        // Turn off click event listener for each card
+                        cards.forEach(card => {
+                            card.style.pointerEvents = 'none';
+                        });
+                    }
+                }, 1000);
+                break;
+            case 'Hard':
+                // do nothing
+                break;
+            case 'Chinese':
+                // do nothing
+                break;
+        }
 
-            // mark the clicked card and its front as active
-            cards[nullValues[randomIndex]].classList.add('active');
-            fronts[nullValues[randomIndex]].classList.add('active');
-            backs[nullValues[randomIndex]].classList.add('active');
-
-            // determine the value based on gameComputer
-            cardValue = gameComputer;
-
-            // store the flipped card's value
-            flippedCards[nullValues[randomIndex]] = cardValue;
-
-            // log the flippedCards array to the console
-            console.log(flippedCards);
-
-            // check if there is a winner
-            checkWinner(flippedCards);
-
-            // if game_status_container is not visible run playerTurn
-            if (game_status_container.style.visibility !== 'visible') {
-                playerTurn();
-            } else if (game_status_container.style.visibility === 'visible') {
-                // Turn off click event listener for each card
-                cards.forEach(card => {
-                    card.style.pointerEvents = 'none';
-                });
-            }
-        }, 1000);
     }
 
     const init = () => {
