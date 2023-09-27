@@ -584,6 +584,12 @@ const pvcGame = (gameData) => {
                     flippedCards[i] = gameComputer;
                     let score = minimax(flippedCards, depth + 1, false);
                     flippedCards[i] = null;
+
+                    // score -= depth; // Decrease the score with depth
+                    if (gameLevel === 'Hard') {
+                        score -= depth;
+                    }
+
                     bestScore = Math.max(score, bestScore);
                 }
             }
@@ -595,6 +601,12 @@ const pvcGame = (gameData) => {
                     flippedCards[i] = gamePlayer;
                     let score = minimax(flippedCards, depth + 1, true);
                     flippedCards[i] = null;
+
+                    // score += depth; // Increase the score with depth
+                    if (gameLevel === 'Hard') {
+                        score += depth;
+                    }
+
                     bestScore = Math.min(score, bestScore);
                 }
             }
@@ -661,7 +673,40 @@ const pvcGame = (gameData) => {
                 }, 1000);
                 break;
             case 'Hard':
-                console.log('Hard');
+                setTimeout(() => {
+                    // set src img based on gameComputer
+                    if (gameComputer === 'X') {
+                        backs_img[bestMove()].src = 'img/x.png';
+                    } else if (gameComputer === 'O') {
+                        backs_img[bestMove()].src = 'img/0.png';
+                    }
+                    // mark the clicked card and its front as active
+                    cards[bestMove()].classList.add('active');
+                    fronts[bestMove()].classList.add('active');
+                    backs[bestMove()].classList.add('active');
+        
+                    // determine the value based on gameComputer
+                    cardValue = gameComputer;
+        
+                    // store the flipped card's value
+                    flippedCards[bestMove()] = cardValue;
+        
+                    // log the flippedCards array to the console
+                    console.log(flippedCards);
+        
+                    // check if there is a winner
+                    checkWinner(flippedCards);
+        
+                    // if game_status_container is not visible run playerTurn
+                    if (game_status_container.style.visibility !== 'visible') {
+                        playerTurn();
+                    } else if (game_status_container.style.visibility === 'visible') {
+                        // Turn off click event listener for each card
+                        cards.forEach(card => {
+                            card.style.pointerEvents = 'none';
+                        });
+                    }
+                }, 1000);
                 break;
             default:
                 setTimeout(() => {
