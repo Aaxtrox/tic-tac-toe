@@ -522,16 +522,16 @@ const pvcGame = (gameData) => {
             card.style.pointerEvents = 'none';
         });
 
-        // grab null values from flippedCards array
-        const nullValues = flippedCards.reduce((acc, value, index) => {
-            if (value === null) {
-                acc.push(index);
-            }
-            return acc;
-        }, []);
-
         switch (gameLevel) {
             case 'Easy':
+                // grab null values from flippedCards array
+                const nullValues = flippedCards.reduce((acc, value, index) => {
+                    if (value === null) {
+                        acc.push(index);
+                    }
+                    return acc;
+                }, []);
+
                 // select a random index from nullValues array
                 const randomIndex = Math.floor(Math.random() * nullValues.length);
 
