@@ -373,18 +373,20 @@ const pvpGame = () => {
     // Add a click event listener to the all restart buttons
     restartButtons.forEach(restartButton => {
         restartButton.addEventListener('click', () => {
-            // Reset the flippedCards array by creating a new array with null values
-            flippedCards = new Array(9).fill(null);
+            setTimeout(() => {
+                // Reset the flippedCards array by creating a new array with null values
+                flippedCards = new Array(9).fill(null);
 
-            // Remove the 'active' class from clicked cards
-            cards.forEach(card => {
-                card.classList.remove('active');
-            });
+                // Remove the 'active' class from clicked cards
+                cards.forEach(card => {
+                    card.classList.remove('active');
+                });
 
-            // Remove the 'active' class from the fronts of the clicked cards
-            fronts.forEach(front => {
-                front.classList.remove('active');
-            });
+                // Remove the 'active' class from the fronts of the clicked cards
+                fronts.forEach(front => {
+                    front.classList.remove('active');
+                });
+            }, 1000);
         });
     });
     
@@ -445,20 +447,22 @@ const pvcGame = (gameData) => {
     // Add a click event listener to the all restart buttons
     restartButtons.forEach(restartButton => {
         restartButton.addEventListener('click', () => {
-            // Reset the flippedCards array by creating a new array with null values
-            flippedCards = new Array(9).fill(null);
+            setTimeout(() => {
+                // Reset the flippedCards array by creating a new array with null values
+                flippedCards = new Array(9).fill(null);
 
-            // Remove the 'active' class from clicked cards
-            cards.forEach(card => {
-                card.classList.remove('active');
-            });
+                // Remove the 'active' class from clicked cards
+                cards.forEach(card => {
+                    card.classList.remove('active');
+                });
 
-            // Remove the 'active' class from the fronts of the clicked cards
-            fronts.forEach(front => {
-                front.classList.remove('active');
-            });
+                // Remove the 'active' class from the fronts of the clicked cards
+                fronts.forEach(front => {
+                    front.classList.remove('active');
+                });
 
-            init();
+                init();
+            }, 1000);
         });
     });
 
@@ -985,29 +989,31 @@ const restart = (() => {
     // Add a click event listener to the all restart buttons
     restartButtons.forEach(restartButton => {
         restartButton.addEventListener('click', () => {
-            // Reset card states
-            cardsFlip.resetIsFlipped();
-            // Flip all cards back to their original state
-            const cards = document.querySelectorAll('.card');
-            cards.forEach(card => {
-                card.querySelector('.front').classList.remove('active');
-                card.querySelector('.back').classList.remove('active');
-            });
+            setTimeout(() => {
+                // Reset card states
+                cardsFlip.resetIsFlipped();
+                // Flip all cards back to their original state
+                const cards = document.querySelectorAll('.card');
+                cards.forEach(card => {
+                    card.querySelector('.front').classList.remove('active');
+                    card.querySelector('.back').classList.remove('active');
+                });
 
-            // Hide the game status container
-            game_status_container.style.visibility = 'hidden';
+                // Hide the game status container
+                game_status_container.style.visibility = 'hidden';
 
-            // Unblock the board
-            board_grid.style.pointerEvents = 'auto';
+                // Unblock the board
+                board_grid.style.pointerEvents = 'auto';
 
-            // Show the navigation menu
-            nav_menu.style.visibility = 'visible';
+                // Show the navigation menu
+                nav_menu.style.visibility = 'visible';
 
-            // Show the game info
-            game_info.style.visibility = 'visible';
+                // Show the game info
+                game_info.style.visibility = 'visible';
 
-            // Reset the game info to Player 1's Move
-            game_info.innerText = "Player 1's Move";
+                // Reset the game info to Player 1's Move
+                game_info.innerText = "Player 1's Move";
+            }, 1000);
         });
     });
 })();
