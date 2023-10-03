@@ -1000,6 +1000,7 @@ const restart = (() => {
     // Add a click event listener to the all restart buttons
     restartButtons.forEach(restartButton => {
         restartButton.addEventListener('click', () => {
+
             // Reset card states
             cardsFlip.resetIsFlipped();
             // Flip all cards back to their original state
@@ -1023,6 +1024,18 @@ const restart = (() => {
 
             // Reset the game info to Player 1's Move
             game_info.innerText = "Player 1's Move";
+
+            // block cards
+            cards.forEach(card => {
+                card.style.pointerEvents = 'none';
+            });
+
+            // unlock cards after 1s
+            setTimeout(() => {
+                cards.forEach(card => {
+                    card.style.pointerEvents = 'auto';
+                });
+            }, 500);
         });
     });
 })();
