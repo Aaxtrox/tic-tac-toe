@@ -3,6 +3,8 @@
 
 Two players take turns: one uses "X" and the other "O." They place their symbols in empty cells on the grid. The game ends when a player forms the winning pattern or when all cells are filled, resulting in a draw."
 
+In my Tic Tac Toe game, I've added a 'Asian' difficulty level, inspired by YouTuber Steven He. It's not meant to offend anyone; rather, it pays homage to his video. Enjoy the game!
+
 ## Demo
 <a href="https://aaxtrox.github.io/tic-tac-toe/">Live Demo</a>
 
