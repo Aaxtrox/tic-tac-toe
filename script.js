@@ -466,9 +466,13 @@ const pvcGame = (gameData) => {
         // Change game info to Player Move
         game_info.innerText = "Player's Move";
 
-        // Turn on click event listener for each card
+        // check which cards got class active and set for them pointerEvents none for the rest pointerEvents auto
         cards.forEach(card => {
-            card.style.pointerEvents = 'auto';
+            if (!card.classList.contains('active')) {
+                card.style.pointerEvents = 'auto';
+            } else if (card.classList.contains('active')) {
+                card.style.pointerEvents = 'none';
+            }
         });
 
         // Add a click event listener to each card
