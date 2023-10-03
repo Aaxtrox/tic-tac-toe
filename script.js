@@ -1000,31 +1000,29 @@ const restart = (() => {
     // Add a click event listener to the all restart buttons
     restartButtons.forEach(restartButton => {
         restartButton.addEventListener('click', () => {
-            setTimeout(() => {
-                // Reset card states
-                cardsFlip.resetIsFlipped();
-                // Flip all cards back to their original state
-                const cards = document.querySelectorAll('.card');
-                cards.forEach(card => {
-                    card.querySelector('.front').classList.remove('active');
-                    card.querySelector('.back').classList.remove('active');
-                });
+            // Reset card states
+            cardsFlip.resetIsFlipped();
+            // Flip all cards back to their original state
+            const cards = document.querySelectorAll('.card');
+            cards.forEach(card => {
+                card.querySelector('.front').classList.remove('active');
+                card.querySelector('.back').classList.remove('active');
+            });
 
-                // Hide the game status container
-                game_status_container.style.visibility = 'hidden';
+            // Hide the game status container
+            game_status_container.style.visibility = 'hidden';
 
-                // Unblock the board
-                board_grid.style.pointerEvents = 'auto';
+            // Unblock the board
+            board_grid.style.pointerEvents = 'auto';
 
-                // Show the navigation menu
-                nav_menu.style.visibility = 'visible';
+            // Show the navigation menu
+            nav_menu.style.visibility = 'visible';
 
-                // Show the game info
-                game_info.style.visibility = 'visible';
+            // Show the game info
+            game_info.style.visibility = 'visible';
 
-                // Reset the game info to Player 1's Move
-                game_info.innerText = "Player 1's Move";
-            }, 500);
+            // Reset the game info to Player 1's Move
+            game_info.innerText = "Player 1's Move";
         });
     });
 })();
