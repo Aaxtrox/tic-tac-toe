@@ -245,6 +245,17 @@ const preventRefresh = (() => {
     });
 })();
 
+const preventSelection = (() => {
+    // DOM elements
+    const newGame = document.querySelector('.new-game');
+    const restart = document.querySelector('.restart');
+
+    // Prevent selection on new game and restart buttons
+    newGame.addEventListener('mousedown', (e) => {
+        e.preventDefault();
+    });
+})();
+
 // Initialize card flipping functionality
 const cardsFlip = (() => {
     // Get all card elements
@@ -1025,6 +1036,7 @@ menuToggle;
 toggleButton;
 initializeDropdown;
 preventRefresh;
+preventSelection;
 
 // Responsive Design
 ResponsiveDropdownSizer;
