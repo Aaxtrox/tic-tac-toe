@@ -397,7 +397,7 @@ const pvpGame = () => {
                 fronts.forEach(front => {
                     front.classList.remove('active');
                 });
-            }, 1000);
+            }, 500);
         });
     });
     
@@ -473,7 +473,7 @@ const pvcGame = (gameData) => {
                 });
 
                 init();
-            }, 1000);
+            }, 500);
         });
     });
 
@@ -689,7 +689,7 @@ const pvcGame = (gameData) => {
                             card.style.pointerEvents = 'none';
                         });
                     }
-                }, 1000);
+                }, 500);
                 break;
             case 'Hard':
                 setTimeout(() => {
@@ -725,7 +725,7 @@ const pvcGame = (gameData) => {
                             card.style.pointerEvents = 'none';
                         });
                     }
-                }, 1000);
+                }, 500);
                 break;
             default:
                 setTimeout(() => {
@@ -761,7 +761,7 @@ const pvcGame = (gameData) => {
                             card.style.pointerEvents = 'none';
                         });
                     }
-                }, 1000);
+                }, 500);
                 break;
         }
     }
@@ -1024,7 +1024,7 @@ const restart = (() => {
 
                 // Reset the game info to Player 1's Move
                 game_info.innerText = "Player 1's Move";
-            }, 1000);
+            }, 500);
         });
     });
 })();
