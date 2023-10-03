@@ -886,7 +886,7 @@ const gameStatus = (status) => {
             game_status.innerText = 'Player 1 wins!';
         } 
         // Check if 'status' is equal to '0' (indicating Player 2 wins)
-        else if (status === 'O') {
+        else if (status === '0') {
             // Update the game status text to indicate that Player 2 wins
             game_status.innerText = 'Player 2 wins!';
         } else if (status === 'tie'){
