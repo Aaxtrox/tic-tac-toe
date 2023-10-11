@@ -247,11 +247,10 @@ const preventRefresh = (() => {
     });
 })();
 
-// Module to prevent text selection on specific buttons (e.g., "New Game" and "Restart").
+// Module to prevent text selection on specific buttons
 const preventSelection = (() => {
     // DOM elements
     const newGame = document.querySelector('.new-game');
-    const restart = document.querySelector('.restart');
 
     // Prevent text selection on "New Game" button
     newGame.addEventListener('mousedown', (e) => {
@@ -435,9 +434,6 @@ const pvpGame = () => {
                 
                 // Store the flipped card's value
                 flippedCards[index] = cardValue;
-                
-                // Log the flippedCards array to the console
-                console.log(flippedCards);
 
                 // Check if there is a winner
                 checkWinner(flippedCards);
@@ -522,9 +518,6 @@ const pvcGame = (gameData) => {
 
                     // Store the value of the flipped card in the flippedCards array
                     flippedCards[index] = cardValue;
-
-                    // Log the current state of the flippedCards array to the console
-                    console.log(flippedCards);
 
                     // Check if there is a winner or if the game should continue
                     checkWinner(flippedCards);
@@ -705,9 +698,6 @@ const pvcGame = (gameData) => {
             // Store the flipped card's value.
             flippedCards[index] = cardValue;
             
-            // Log the flippedCards array for debugging.
-            console.log(flippedCards);
-            
             // Check if there is a winner or if the game is over.
             const gameResult = checkWinner(flippedCards);
             
@@ -799,8 +789,6 @@ const checkWinner = (flippedCards) => {
 
         // Check if all three cards have the same value and are not null
         if (card1 && card1 === card2 && card2 === card3) {
-            // A winner is found; display the winning value
-            console.log(`Winner found with value: ${card1}`);
 
             // Set the winnerFound flag to true
             winnerFound = true;
@@ -826,8 +814,6 @@ const checkWinner = (flippedCards) => {
 
     // Check if all cards are flipped and there is no winner (tie)
     if (!winnerFound && !flippedCards.includes(null)) {
-        // It's a tie; display a message
-        console.log("It's a tie!");
 
         // Hide the navigation menu
         nav_menu.style.visibility = 'hidden';
@@ -858,7 +844,7 @@ const gameStatus = (status) => {
     let game = ''; // Initialize a variable to store the selected game mode.
     let gamePlayer = ''; // Initialize a variable to store the player's symbol ('X' or 'O').
 
-    //check if pcd button was clicked and set game to pvc
+    //check if pvc button was clicked and set game to pvc
     if (pvcBtn.classList.contains('active')) {
         game = 'pvc';
     } else if (pvpBtn.classList.contains('active')) {
@@ -903,10 +889,10 @@ const gameStatus = (status) => {
         else if (status === 'O') {
             // check if gamePlayer is X
             if (gamePlayer === 'X') {
-                // Update the game status text to indicate that Player 1 wins
+                // Update the game status text to indicate that Computer wins
                 game_status.innerText = 'Computer wins!';
             } else if (gamePlayer === 'O') {
-                // Update the game status text to indicate that Player 1 wins
+                // Update the game status text to indicate that Player wins
                 game_status.innerText = 'Player wins!';
             }
         } else if (status === 'tie'){
