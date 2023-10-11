@@ -619,6 +619,7 @@ main {
     transform: perspective(600px) rotateY(0deg); /* Show the front side */
 }
 
+/* Styles for container after game end */
 .game-status-container {
     visibility: hidden;
     width: 50rem;
@@ -638,11 +639,13 @@ main {
     flex-direction: column;
 }
 
+/* Styles for text informing who is a winner, or a tie */
 .game-status {
     font-size: 3rem;
     font-family: var(--font-family);
 }
 
+/* Buttons under game-status to back to main menu or restart */
 .status-btn {
     display: flex;
     gap: 1rem;
