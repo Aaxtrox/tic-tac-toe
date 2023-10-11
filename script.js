@@ -89,38 +89,38 @@ const initializeDropdown = (() => {
 
     // Loop through each dropdown element
     dropdowns.forEach(dropdown => {
-    // Get elements inside the current dropdown
-    const select = dropdown.querySelector('.select'); // Select area
-    const caret = dropdown.querySelector('.caret');   // Caret icon
-    const menu = dropdown.querySelector('.menu');     // Dropdown menu
-    const options = dropdown.querySelectorAll('.menu li'); // Individual menu options
-    const selected = dropdown.querySelector('.selected'); // Selected option display
-    
-    // Toggle dropdown visibility on select click
-    select.addEventListener('click', () => {
-        select.classList.toggle('select-clicked');
-        caret.classList.toggle('caret-rotate');
-        menu.classList.toggle('menu-open');
-    });
-    
-    // Handle option selection in the dropdown menu
-    options.forEach(option => {
-        option.addEventListener('click', () => {
-        // Update the selected option display
-        selected.innerText = option.innerText;
+        // Get elements inside the current dropdown
+        const select = dropdown.querySelector('.select'); // Select area
+        const caret = dropdown.querySelector('.caret');   // Caret icon
+        const menu = dropdown.querySelector('.menu');     // Dropdown menu
+        const options = dropdown.querySelectorAll('.menu li'); // Individual menu options
+        const selected = dropdown.querySelector('.selected'); // Selected option display
         
-        // Reset dropdown appearance and visibility
-        select.classList.remove('select-clicked');
-        caret.classList.remove('caret-rotate');
-        menu.classList.remove('menu-open');
+        // Toggle dropdown visibility on select click
+        select.addEventListener('click', () => {
+            select.classList.toggle('select-clicked');
+            caret.classList.toggle('caret-rotate');
+            menu.classList.toggle('menu-open');
+        });
         
-        // Clear 'active' class from all options and set it for the selected option
+        // Handle option selection in the dropdown menu
         options.forEach(option => {
-            option.classList.remove('active');
+            option.addEventListener('click', () => {
+                // Update the selected option display
+                selected.innerText = option.innerText;
+                
+                // Reset dropdown appearance and visibility
+                select.classList.remove('select-clicked');
+                caret.classList.remove('caret-rotate');
+                menu.classList.remove('menu-open');
+                
+                // Clear 'active' class from all options and set it for the selected option
+                options.forEach(option => {
+                    option.classList.remove('active');
+                });
+                option.classList.add('active');
+            });
         });
-        option.classList.add('active');
-        });
-    });
     });
 })();
 
@@ -129,106 +129,108 @@ const addCurrentYear = (() => {
     document.getElementById("year").innerHTML = new Date().getFullYear();
 })();
 
-// Module to handle query for navbar and footer
+// Module to handle responsive navigation and footer height adjustment based on logo image size
 const handleQuery = (() => {
     // DOM elements
     const logoImg = document.querySelector('.logo');
     const nav = document.querySelector('nav');
     const footer = document.querySelector('footer');
 
-    // Run on window resize
-    window.addEventListener('resize', () => {
-        if (logoImg.clientHeight > nav.clientHeight) {
-            // Update nav and footer heights based on logo_img height
-            nav.style.height = 'fit-content';
-            const navHeight = nav.clientHeight;
-            footer.style.height = `${navHeight}px`;
+    // Function to update nav and footer heights based on logoImg height
+    function updateNavAndFooterHeight() {
+        if (logoImg && nav && footer) {
+            if (logoImg.clientHeight > nav.clientHeight) {
+                // Update nav and footer heights based on logo_img height
+                nav.style.height = 'fit-content';
+                const navHeight = nav.clientHeight;
+                footer.style.height = `${navHeight}px`;
+            }
         }
-    });
+    }
+
+    // Run on window resize
+    window.addEventListener('resize', updateNavAndFooterHeight);
 
     // Run on window load
-    window.addEventListener('load', () => {
-        if (logoImg.clientHeight > nav.clientHeight) {
-            // Update nav and footer heights based on logo_img height
-            nav.style.height = 'fit-content';
-            const navHeight = nav.clientHeight;
-            footer.style.height = `${navHeight}px`;
-        }
-    });
+    window.addEventListener('load', updateNavAndFooterHeight);
 })();
 
-// Module to resize dropdown to match start button width
+// Module to dynamically adjust the width of a dropdown to match a button wrapper's width
 const ResponsiveDropdownSizer = (() => {
     // DOM elements
     const dropdown = document.querySelector('.dropdown');
-    const btn_wrapper = document.querySelector('.btn-wrapper');
+    const btnWrapper = document.querySelector('.btn-wrapper');
+
+    function updateDropdownWidth() {
+        if (dropdown && btnWrapper) {
+            // Update dropdown width based on btnWrapper width
+            dropdown.style.width = `${btnWrapper.clientWidth}px`;
+        }
+    }
 
     // Run on window resize
-    window.addEventListener('resize', () => {
-        // Update dropdown width based on btn-wrapper width
-        dropdown.style.width = `${btn_wrapper.clientWidth}px`;
-    });
+    window.addEventListener('resize', updateDropdownWidth);
 
     // Run on window load
-    window.addEventListener('load', () => {
-        // Update dropdown width based on btn-wrapper width
-        dropdown.style.width = `${btn_wrapper.clientWidth}px`;
-    });
+    window.addEventListener('load', updateDropdownWidth);
+
+    // Initial update on page load
+    updateDropdownWidth();
 })();
 
-// Module to resize both menus with start button
+// Module to dynamically resize and position menus based on the card's height
 const resizeMenus = (() => {
     // DOM elements
-    const menu_pvp = document.querySelector('.menu-pvp');
-    const menu_pvc = document.querySelector('.menu-pvc');
+    const menuPvp = document.querySelector('.menu-pvp');
+    const menuPvc = document.querySelector('.menu-pvc');
     const card = document.getElementById('card');
 
-    // Run on window resize
-    window.addEventListener('resize', () => {
-        if (card.clientHeight > menu_pvp.clientHeight || card.clientHeight > menu_pvc.clientHeight) {
-            // Calculate new heights and update menu positions
+    function updateMenuSizesAndPositions() {
+        if (card && menuPvp && menuPvc) {
             const cardHeight = card.clientHeight + 5;
-            menu_pvp.style.height = `${cardHeight}px`;
-            menu_pvp.style.top = `calc(50% - ${cardHeight / 2}px)`;
-            menu_pvc.style.height = `${cardHeight}px`;
-            menu_pvc.style.top = `calc(50% - ${cardHeight / 2}px)`;
+            if (cardHeight > menuPvp.clientHeight || cardHeight > menuPvc.clientHeight) {
+                // Calculate new heights and update menu positions
+                menuPvp.style.height = `${cardHeight}px`;
+                menuPvp.style.top = `calc(50% - ${cardHeight / 2}px)`;
+                menuPvc.style.height = `${cardHeight}px`;
+                menuPvc.style.top = `calc(50% - ${cardHeight / 2}px)`;
+            }
         }
-    });
+    }
+
+    // Run on window resize
+    window.addEventListener('resize', updateMenuSizesAndPositions);
 
     // Run on window load
-    window.addEventListener('load', () => {
-        if (card.clientHeight > menu_pvp.clientHeight || card.clientHeight > menu_pvc.clientHeight) {
-            // Calculate new heights and update menu positions
-            const cardHeight = card.clientHeight + 5;
-            menu_pvp.style.height = `${cardHeight}px`;
-            menu_pvp.style.top = `calc(50% - ${cardHeight / 2}px)`;
-            menu_pvc.style.height = `${cardHeight}px`;
-            menu_pvc.style.top = `calc(50% - ${cardHeight / 2}px)`;
-        }
-    });
+    window.addEventListener('load', updateMenuSizesAndPositions);
+
+    // Initial update on page load
+    updateMenuSizesAndPositions();
 })();
 
-// Game Board Module
+// Module to display the game board and navigation menu when specific buttons are clicked
 const showBoard = (() => {
     // DOM elements
     const main = document.querySelector('main');
-    const btn_wrapper_pvp = document.querySelector('.btn-wrapper-pvp');
-    const btn_wrapper_pvc = document.querySelector('.btn-wrapper-pvc');
+    const btnWrapperPvp = document.querySelector('.btn-wrapper-pvp');
+    const btnWrapperPvc = document.querySelector('.btn-wrapper-pvc');
     const board = document.querySelector('.board');
-    const nav_menu = document.querySelector('.nav-menu');
+    const navMenu = document.querySelector('.nav-menu');
+
+    function displayGameBoard() {
+        main.style.display = 'none';
+        board.style.display = 'block';
+        navMenu.style.visibility = 'visible';
+    }
 
     // Event listeners to show the board when buttons are clicked
-    btn_wrapper_pvp.addEventListener('click', () => {
-        main.style.display = 'none';
-        board.style.display = 'block';
-        nav_menu.style.visibility = 'visible';
-    });
+    if (btnWrapperPvp) {
+        btnWrapperPvp.addEventListener('click', displayGameBoard);
+    }
 
-    btn_wrapper_pvc.addEventListener('click', () => {
-        main.style.display = 'none';
-        board.style.display = 'block';
-        nav_menu.style.visibility = 'visible';
-    });
+    if (btnWrapperPvc) {
+        btnWrapperPvc.addEventListener('click', displayGameBoard);
+    }
 })();
 
 // Prevent refresh when board has display block
@@ -245,34 +247,37 @@ const preventRefresh = (() => {
     });
 })();
 
+// Module to prevent text selection on specific buttons (e.g., "New Game" and "Restart").
 const preventSelection = (() => {
     // DOM elements
     const newGame = document.querySelector('.new-game');
     const restart = document.querySelector('.restart');
 
-    // Prevent selection on new game and restart buttons
+    // Prevent text selection on "New Game" button
     newGame.addEventListener('mousedown', (e) => {
+        // Prevent the default text selection behavior when the button is clicked
         e.preventDefault();
     });
 })();
 
-// Initialize card flipping functionality
+// Module to implement card-flipping functionality
 const cardsFlip = (() => {
     // Get all card elements
     const cards = document.querySelectorAll('.card');
 
-    // Function to reset isFlipped for all cards
+    // Function to reset the 'isFlipped' property for all cards
     function resetIsFlipped() {
         cards.forEach(card => {
             card.isFlipped = false;
         });
     }
 
-    // Add click event listener to each card
+    // Loop through each card element
     cards.forEach(card => {
         // Find the front and back of the card
         const front = card.querySelector('.front');
         const back = card.querySelector('.back');
+
         // Initialize a flag to track if the card is flipped
         card.isFlipped = false;
 
@@ -282,6 +287,7 @@ const cardsFlip = (() => {
             if (!card.isFlipped) {
                 front.classList.toggle('active');
                 back.classList.toggle('active');
+
                 // Set the flag to true to indicate that the card is flipped
                 card.isFlipped = true;
             }
@@ -294,7 +300,7 @@ const cardsFlip = (() => {
     };
 })();
 
-// Wrap Code in a Self-Executing Function
+// Game Start Module: Initializes the selected game mode (PvP or PvC) based on user interaction with buttons.
 const gameStart = (() => {
     // Retrieve DOM elements for the PvP and PvC buttons.
     const pvpBtn = document.getElementById('pvp-btn');
@@ -319,7 +325,7 @@ const gameStart = (() => {
     });
 })();
 
-// Define a function called gameMode that takes a game mode ('pvc' or 'pvp') as an argument.
+// Game Mode Selector: Determines game settings based on the selected mode ('pvc' or 'pvp').
 const gameMode = (game) => {
     // Retrieve DOM elements for 'li' elements and the 'btn' element.
     const li = document.querySelectorAll('li');
@@ -364,7 +370,7 @@ const gameMode = (game) => {
     }
 };
 
-// Define the pvpGame function
+// Two-Player Card-Flipping Game Logic
 const pvpGame = () => {
     // Select DOM elements
     const cards = document.querySelectorAll('.card');
@@ -440,6 +446,7 @@ const pvpGame = () => {
     });
 };
 
+// Player vs Computer Card-Flipping Game Logic
 const pvcGame = (gameData) => {
     const { game, gameLevel, gamePlayer, gameComputer } = gameData;
 
@@ -455,37 +462,42 @@ const pvcGame = (gameData) => {
     let flippedCards = new Array(9).fill(null); // Array to store flipped card values
     let cardValue = ''; // Variable to store the flipped card's value
 
-    // Add a click event listener to the all restart buttons
+    // Add a click event listener to all restart buttons
     restartButtons.forEach(restartButton => {
         restartButton.addEventListener('click', () => {
+            // Set a timeout to provide a visual cue for the user (500ms delay).
             setTimeout(() => {
-                // Reset the flippedCards array by creating a new array with null values
+                // Reset the flippedCards array by creating a new array with null values.
                 flippedCards = new Array(9).fill(null);
 
-                // Remove the 'active' class from clicked cards
+                // Remove the 'active' class from clicked cards to hide them.
                 cards.forEach(card => {
                     card.classList.remove('active');
                 });
 
-                // Remove the 'active' class from the fronts of the clicked cards
+                // Remove the 'active' class from the fronts of the clicked cards.
                 fronts.forEach(front => {
                     front.classList.remove('active');
                 });
 
+                // Call the 'init' function to restart the game.
                 init();
-            }, 500);
+            }, 500); // Adjust the delay duration as needed for user experience.
         });
     });
 
+    // Define the player's turn function
     const playerTurn = () => {
-        // Change game info to Player Move
+        // Update the game information to indicate it's the player's turn
         game_info.innerText = "Player's Move";
 
-        // check which cards got class active and set for them pointerEvents none for the rest pointerEvents auto
+        // Iterate through each card and manage pointer events to allow or prevent clicks
         cards.forEach(card => {
             if (!card.classList.contains('active')) {
+                // Enable pointer events for cards that are not active
                 card.style.pointerEvents = 'auto';
             } else if (card.classList.contains('active')) {
+                // Disable pointer events for cards that are already active
                 card.style.pointerEvents = 'none';
             }
         });
@@ -494,8 +506,7 @@ const pvcGame = (gameData) => {
         cards.forEach((card, index) => {
             card.addEventListener('click', () => {
                 if (!card.classList.contains('active')) {
-
-                    // set src img based on gamePlayer
+                    // Set the card's image source based on the player's symbol (X or O)
                     if (gamePlayer === 'X') {
                         backs_img[index].src = 'img/x.png';
                     } else if (gamePlayer === 'O') {
@@ -506,23 +517,23 @@ const pvcGame = (gameData) => {
                     card.classList.add('active');
                     fronts[index].classList.add('active');
 
-                    // Determine the value based on gamePlayer
+                    // Determine the value of the card based on the player's symbol (X or O)
                     cardValue = gamePlayer;
 
-                    // Store the flipped card's value
+                    // Store the value of the flipped card in the flippedCards array
                     flippedCards[index] = cardValue;
 
-                    // Log the flippedCards array to the console
+                    // Log the current state of the flippedCards array to the console
                     console.log(flippedCards);
 
-                    // Check if there is a winner
+                    // Check if there is a winner or if the game should continue
                     checkWinner(flippedCards);
 
-                    // if game_status_container is not visible run playerTurn
+                    // If the game_status_container is not visible, it's the computer's turn
                     if (game_status_container.style.visibility !== 'visible') {
                         computerTurn();
                     } else if (game_status_container.style.visibility === 'visible') {
-                        // Turn off click event listener for each card
+                        // Turn off click event listeners for each card when the game has ended
                         cards.forEach(card => {
                             card.style.pointerEvents = 'none';
                         });
@@ -532,262 +543,245 @@ const pvcGame = (gameData) => {
         });
     }
 
+    // Determines the computer's optimal move using minimax.
     function bestMove() {
-        let bestScore = -Infinity;
-        let move;
-        //check all available spots from flippedCards array
+        let bestScore = -Infinity; // Initialize the best score with negative infinity.
+        let move; // Initialize the best move (index of the optimal move).
+    
+        // Iterate through all available spots on the game board.
         for (let i = 0; i < flippedCards.length; i++) {
-            // is the spot available?
+            // Check if the current spot on the game board is available (not yet flipped).
             if (flippedCards[i] === null) {
+                // Temporarily set the current spot with the computer player's symbol.
                 flippedCards[i] = gameComputer;
+    
+                // Recursively evaluate this move using the minimax algorithm and obtain a score.
                 let score = minimax(flippedCards, 0, false);
+    
+                // Undo the temporary move (backtrack) by resetting the spot to null.
                 flippedCards[i] = null;
+    
+                // If the current move's score is better than the previous best score, update the best score and move.
                 if (score > bestScore) {
                     bestScore = score;
-                    move = i;
+                    move = i; // Update the best move.
                 }
             }
         }
+    
+        // Return the index of the best move based on the minimax algorithm, representing the optimal move for the computer player.
         return move;
     }
 
+    // Define score values for X and O symbols in the game.
     let scores = {
         X: gameComputer === 'X' ? 1 : -1, // Assign 1 if gameComputer is 'X', else assign -1
         O: gameComputer === 'O' ? 1 : -1, // Assign 1 if gameComputer is 'O', else assign -1
-        tie: 0
-    };    
+        tie: 0 // Score value for a tie game.
+    };
 
+    // Function for evaluating game status in a tic-tac-toe match, determining the winner, or a tie.
     function checkMinimax(flippedCards) {
         // Flag to check if a winner is found
         let winnerFound = false;
-
-        // winning combinations
+    
+        // Define winning combinations for tic-tac-toe
         const winningCombos = [
-            [0, 1, 2], [3, 4, 5], [6, 7, 8], // horizontal
-            [0, 3, 6], [1, 4, 7], [2, 5, 8], // vertical
-            [0, 4, 8], [2, 4, 6] // diagonal
+            [0, 1, 2], [3, 4, 5], [6, 7, 8], // Horizontal combinations
+            [0, 3, 6], [1, 4, 7], [2, 5, 8], // Vertical combinations
+            [0, 4, 8], [2, 4, 6] // Diagonal combinations
         ];
-
+    
         // Iterate through each winning combination
         for (let i = 0; i < winningCombos.length; i++) {
             // Get the values of the flipped cards based on the winning combination
             const card1 = flippedCards[winningCombos[i][0]];
             const card2 = flippedCards[winningCombos[i][1]];
             const card3 = flippedCards[winningCombos[i][2]];
-
+    
             // Check if all three cards have the same value and are not null
             if (card1 && card1 === card2 && card2 === card3) {
-                // return winner
+                // Return the winner's symbol (either 'X' or 'O')
                 return card1;
             }
         }
-
+    
         // Check if all cards are flipped and there is no winner
         if (!winnerFound && !flippedCards.includes(null)) {
-            // return tie
+            // Return 'tie' to indicate a tie game
             return 'tie';
         }
-
+    
+        // If no winner or tie is found, return false to continue the game
         return false;
-    }
+    }    
 
+    // Evaluates and scores game states using the minimax algorithm, aiming to find the best move for the computer or player.
     function minimax(flippedCards, depth, isMaximizing) {
+        // Check the current state of the game (win, lose, or tie).
         let result = checkMinimax(flippedCards);
+    
         if (result !== false) {
+            // If the game has ended, return the score (positive for a win, negative for a loss, 0 for a tie).
             return scores[result];
         }
+    
         if (isMaximizing) {
             let bestScore = -Infinity;
+    
             for (let i = 0; i < flippedCards.length; i++) {
                 if (flippedCards[i] === null) {
+                    // Simulate a potential move for the computer (maximizing player).
                     flippedCards[i] = gameComputer;
+    
+                    // Recursively calculate the score for this move, considering the opponent's best move.
                     let score = minimax(flippedCards, depth + 1, false);
+    
+                    // Undo the simulated move to explore other possibilities.
                     flippedCards[i] = null;
-
-                    // score -= depth; // Decrease the score with depth
+    
                     if (gameLevel === 'Hard') {
+                        // Adjust the score based on depth for 'Hard' difficulty. 
                         score -= depth;
                     }
-
+    
+                    // Determine the best score for maximizing (computer's perspective).
                     bestScore = Math.max(score, bestScore);
                 }
             }
+    
             return bestScore;
         } else {
             let bestScore = Infinity;
+    
             for (let i = 0; i < flippedCards.length; i++) {
                 if (flippedCards[i] === null) {
+                    // Simulate a potential move for the player (minimizing player).
                     flippedCards[i] = gamePlayer;
+    
+                    // Recursively calculate the score for this move, considering the computer's best move.
                     let score = minimax(flippedCards, depth + 1, true);
+    
+                    // Undo the simulated move to explore other possibilities.
                     flippedCards[i] = null;
-
-                    // score += depth; // Increase the score with depth
+    
                     if (gameLevel === 'Hard') {
+                        // Adjust the score based on depth for 'Hard' difficulty.
                         score += depth;
                     }
-
+    
+                    // Determine the best score for minimizing (player's perspective).
                     bestScore = Math.min(score, bestScore);
                 }
             }
+    
             return bestScore;
         }
-    }
+    }    
 
+    // Module to handle the computer's turn.
     const computerTurn = () => {
-        // Change game info to Computer Move
+        // Update game info to indicate it's the computer's move.
         game_info.innerText = "Computer's Move";
-
-        // Turn off click event listener for each card
+    
+        // Disable click event listeners for all cards.
         cards.forEach(card => {
             card.style.pointerEvents = 'none';
         });
-
+    
+        // Define a function to handle the computer's move.
+        const makeComputerMove = (index) => {
+            // Set the card's back image based on the gameComputer (X or O).
+            backs_img[index].src = gameComputer === 'X' ? 'img/x.png' : 'img/0.png';
+            
+            // Mark the clicked card and its front as active.
+            cards[index].classList.add('active');
+            fronts[index].classList.add('active');
+            backs[index].classList.add('active');
+            
+            // Determine the value based on gameComputer.
+            const cardValue = gameComputer;
+            
+            // Store the flipped card's value.
+            flippedCards[index] = cardValue;
+            
+            // Log the flippedCards array for debugging.
+            console.log(flippedCards);
+            
+            // Check if there is a winner or if the game is over.
+            const gameResult = checkWinner(flippedCards);
+            
+            // If the game is not over, proceed to the player's turn.
+            if (game_status_container.style.visibility !== 'visible') {
+                playerTurn();
+            } else {
+                // If the game is over, disable click event listeners for each card.
+                cards.forEach(card => {
+                    card.style.pointerEvents = 'none';
+                });
+            }
+        };
+    
+        // Handle the computer's move based on the selected game level.
         switch (gameLevel) {
             case 'Easy':
-                // grab null values from flippedCards array
+                // Identify empty spots (null values) in the flippedCards array.
                 const nullValues = flippedCards.reduce((acc, value, index) => {
                     if (value === null) {
                         acc.push(index);
                     }
                     return acc;
                 }, []);
-
-                // select a random index from nullValues array
+    
+                // Select a random index from nullValues array.
                 const randomIndex = Math.floor(Math.random() * nullValues.length);
-
+    
                 setTimeout(() => {
-                    // set src img based on gameComputer
-                    if (gameComputer === 'X') {
-                        backs_img[nullValues[randomIndex]].src = 'img/x.png';
-                    } else if (gameComputer === 'O') {
-                        backs_img[nullValues[randomIndex]].src = 'img/0.png';
-                    }
-        
-                    // mark the clicked card and its front as active
-                    cards[nullValues[randomIndex]].classList.add('active');
-                    fronts[nullValues[randomIndex]].classList.add('active');
-                    backs[nullValues[randomIndex]].classList.add('active');
-        
-                    // determine the value based on gameComputer
-                    cardValue = gameComputer;
-        
-                    // store the flipped card's value
-                    flippedCards[nullValues[randomIndex]] = cardValue;
-        
-                    // log the flippedCards array to the console
-                    console.log(flippedCards);
-        
-                    // check if there is a winner
-                    checkWinner(flippedCards);
-        
-                    // if game_status_container is not visible run playerTurn
-                    if (game_status_container.style.visibility !== 'visible') {
-                        playerTurn();
-                    } else if (game_status_container.style.visibility === 'visible') {
-                        // Turn off click event listener for each card
-                        cards.forEach(card => {
-                            card.style.pointerEvents = 'none';
-                        });
-                    }
+                    makeComputerMove(nullValues[randomIndex]);
                 }, 500);
                 break;
             case 'Hard':
                 setTimeout(() => {
-                    // set src img based on gameComputer
-                    if (gameComputer === 'X') {
-                        backs_img[bestMove()].src = 'img/x.png';
-                    } else if (gameComputer === 'O') {
-                        backs_img[bestMove()].src = 'img/0.png';
-                    }
-                    // mark the clicked card and its front as active
-                    cards[bestMove()].classList.add('active');
-                    fronts[bestMove()].classList.add('active');
-                    backs[bestMove()].classList.add('active');
-        
-                    // determine the value based on gameComputer
-                    cardValue = gameComputer;
-        
-                    // store the flipped card's value
-                    flippedCards[bestMove()] = cardValue;
-        
-                    // log the flippedCards array to the console
-                    console.log(flippedCards);
-        
-                    // check if there is a winner
-                    checkWinner(flippedCards);
-        
-                    // if game_status_container is not visible run playerTurn
-                    if (game_status_container.style.visibility !== 'visible') {
-                        playerTurn();
-                    } else if (game_status_container.style.visibility === 'visible') {
-                        // Turn off click event listener for each card
-                        cards.forEach(card => {
-                            card.style.pointerEvents = 'none';
-                        });
-                    }
+                    // Use the bestMove function to select the computer's move (minimax algorithm).
+                    const bestMoveIndex = bestMove();
+                    makeComputerMove(bestMoveIndex);
                 }, 500);
                 break;
             default:
+                // For other levels, perform the same actions as "Hard."
                 setTimeout(() => {
-                    // set src img based on gameComputer
-                    if (gameComputer === 'X') {
-                        backs_img[bestMove()].src = 'img/x.png';
-                    } else if (gameComputer === 'O') {
-                        backs_img[bestMove()].src = 'img/0.png';
-                    }
-                    // mark the clicked card and its front as active
-                    cards[bestMove()].classList.add('active');
-                    fronts[bestMove()].classList.add('active');
-                    backs[bestMove()].classList.add('active');
-        
-                    // determine the value based on gameComputer
-                    cardValue = gameComputer;
-        
-                    // store the flipped card's value
-                    flippedCards[bestMove()] = cardValue;
-        
-                    // log the flippedCards array to the console
-                    console.log(flippedCards);
-        
-                    // check if there is a winner
-                    checkWinner(flippedCards);
-        
-                    // if game_status_container is not visible run playerTurn
-                    if (game_status_container.style.visibility !== 'visible') {
-                        playerTurn();
-                    } else if (game_status_container.style.visibility === 'visible') {
-                        // Turn off click event listener for each card
-                        cards.forEach(card => {
-                            card.style.pointerEvents = 'none';
-                        });
-                    }
+                    const bestMoveIndex = bestMove();
+                    makeComputerMove(bestMoveIndex);
                 }, 500);
                 break;
         }
-    }
+    };    
 
+    // Initialize the game by determining the starting player and taking the appropriate action.
     const init = () => {
-        // determine who got X and start the game
+        // Determine the starting player (X or O) based on the gamePlayer value.
         if (gamePlayer === 'X') {
-            // Player's turn
+            // If the starting player is X, it's the Player's turn.
             playerTurn();
         } else if (gamePlayer === 'O') {
-            // Computer's turn
+            // If the starting player is O, it's the Computer's turn.
             computerTurn();
         }
     }
 
+    // Immediately invoke the initialization function to start the game.
     init();
 };
 
-const checkWinner = (flippedCards, cards) => {
-    // Select DOM elements
+// Function to check for a winner and update the game UI.
+const checkWinner = (flippedCards) => {
+    // Select relevant DOM elements
     const board_grid = document.querySelector('.board-grid');
     const nav_menu = document.querySelector('.nav-menu');
     const game_status_container = document.querySelector('.game-status-container');
     const game_info = document.querySelector('.game-info');
 
-    // winning combinations
+    // Define the winning combinations for the game
     const winningCombos = [
         [0, 1, 2], [3, 4, 5], [6, 7, 8], // horizontal
         [0, 3, 6], [1, 4, 7], [2, 5, 8], // vertical
@@ -797,7 +791,7 @@ const checkWinner = (flippedCards, cards) => {
     let winnerFound = false; // Flag to check if a winner is found
 
     // Iterate through each winning combination
-    winningCombos.forEach(combo => {
+    for (const combo of winningCombos) {
         // Get the values of the flipped cards based on the winning combination
         const card1 = flippedCards[combo[0]];
         const card2 = flippedCards[combo[1]];
@@ -805,7 +799,7 @@ const checkWinner = (flippedCards, cards) => {
 
         // Check if all three cards have the same value and are not null
         if (card1 && card1 === card2 && card2 === card3) {
-            // Display the winner
+            // A winner is found; display the winning value
             console.log(`Winner found with value: ${card1}`);
 
             // Set the winnerFound flag to true
@@ -817,21 +811,22 @@ const checkWinner = (flippedCards, cards) => {
             // Make the game status container visible
             game_status_container.style.visibility = 'visible';
 
-            // Block the board
+            // Block the board to prevent further moves
             board_grid.style.pointerEvents = 'none';
 
             // Hide the game info
             game_info.style.visibility = 'hidden';
 
+            // Notify the game of the winner
             gameStatus(card1);
 
             return card1;
         }
-    });
+    }
 
-    // Check if all cards are flipped and there is no winner
+    // Check if all cards are flipped and there is no winner (tie)
     if (!winnerFound && !flippedCards.includes(null)) {
-        // Display a tie
+        // It's a tie; display a message
         console.log("It's a tie!");
 
         // Hide the navigation menu
@@ -843,11 +838,13 @@ const checkWinner = (flippedCards, cards) => {
         // Make the game status container visible
         game_status_container.style.visibility = 'visible';
 
+        // Notify the game of a tie
         gameStatus('tie');
 
         return 'tie';
     }
 
+    // No winner or tie found
     return winnerFound;
 };
 
@@ -874,9 +871,6 @@ const gameStatus = (status) => {
     } else if (!btn.classList.contains('active')) {
         gamePlayer = 'X';
     }
-
-    console.log(gamePlayer);
-    console.log(game);
 
     // if game is pvp
     if (game === 'pvp') {
@@ -975,14 +969,15 @@ const boardResponsive = (() => {
     heightCalc();
 })();
 
+// Module to handle starting a new game by reloading the current page when a 'new game' button or link is clicked.
 const newGame = (() => {
-    // Select DOM elements
-    const new_games = document.querySelectorAll('#new-game');
+    // Select all DOM elements with the id 'new-game'
+    const newGames = document.querySelectorAll('#new-game');
 
-    // Add a click event listener to the all new game buttons
-    new_games.forEach(new_game => {
-        new_game.addEventListener('click', () => {
-            // Reload the page
+    // Add a click event listener to each 'new game' button or link
+    newGames.forEach(newGameElement => {
+        newGameElement.addEventListener('click', () => {
+            // Reload the current page to start a new game
             location.reload();
         });
     });
@@ -991,54 +986,56 @@ const newGame = (() => {
 // Initialize the restart functionality
 const restart = (() => {
     // Select DOM elements
-    const restartButtons = document.querySelectorAll('#restart');
-    const game_status_container = document.querySelector('.game-status-container');
-    const board_grid = document.querySelector('.board-grid');
-    const nav_menu = document.querySelector('.nav-menu');
-    const game_info = document.querySelector('.game-info');
+    const restartButtons = document.querySelectorAll('#restart'); // Get all restart buttons
+    const game_status_container = document.querySelector('.game-status-container'); // Game status container
+    const board_grid = document.querySelector('.board-grid'); // Board grid
+    const nav_menu = document.querySelector('.nav-menu'); // Navigation menu
+    const game_info = document.querySelector('.game-info'); // Game info display
 
     // Add a click event listener to the all restart buttons
     restartButtons.forEach(restartButton => {
         restartButton.addEventListener('click', () => {
 
             // Reset card states
-            cardsFlip.resetIsFlipped();
+            cardsFlip.resetIsFlipped(); // Reset card flip states to their initial state
+
             // Flip all cards back to their original state
-            const cards = document.querySelectorAll('.card');
+            const cards = document.querySelectorAll('.card'); // Get all cards
             cards.forEach(card => {
                 card.querySelector('.front').classList.remove('active');
                 card.querySelector('.back').classList.remove('active');
             });
 
             // Hide the game status container
-            game_status_container.style.visibility = 'hidden';
+            game_status_container.style.visibility = 'hidden'; // Hide the game outcome/status container
 
             // Unblock the board
-            board_grid.style.pointerEvents = 'auto';
+            board_grid.style.pointerEvents = 'auto'; // Enable interactions with the game board
 
             // Show the navigation menu
-            nav_menu.style.visibility = 'visible';
+            nav_menu.style.visibility = 'visible'; // Display the navigation menu
 
             // Show the game info
-            game_info.style.visibility = 'visible';
+            game_info.style.visibility = 'visible'; // Display the game info
 
             // Reset the game info to Player 1's Move
-            game_info.innerText = "Player 1's Move";
+            game_info.innerText = "Player 1's Move"; // Set the game info to indicate Player 1's turn
 
-            // block cards
+            // Block cards temporarily
             cards.forEach(card => {
-                card.style.pointerEvents = 'none';
+                card.style.pointerEvents = 'none'; // Disable interactions with cards
             });
 
-            // unlock cards after 1s
+            // Unlock cards after a short delay
             setTimeout(() => {
                 cards.forEach(card => {
-                    card.style.pointerEvents = 'auto';
+                    card.style.pointerEvents = 'auto'; // Re-enable interactions with cards
                 });
             }, 500);
         });
     });
 })();
+
 
 // Run all modules
 
